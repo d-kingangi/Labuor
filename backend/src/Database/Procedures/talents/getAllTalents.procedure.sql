@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE getAllTalents
+AS
+BEGIN
+    SELECT *
+    FROM talents;
+END;
