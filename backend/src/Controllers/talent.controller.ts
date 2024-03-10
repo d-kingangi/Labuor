@@ -104,7 +104,7 @@ export const updateTalent = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig)
 
         let result = (await pool.request()
-        .input("talentId", mssql.VarChar, id)
+        .input("talentId", id)
         .input("profileImg", mssql.VarChar, profileImg)
         .input("firstname", mssql.VarChar, firstname)
         .input("lastname", mssql.VarChar, lastname)

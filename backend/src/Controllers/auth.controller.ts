@@ -11,7 +11,7 @@ interface UserType {
     userType: 'talent' | 'employer';
 }
 
-const loginUser = async (email: string, password: string, userType: 'talent' | 'employer'): Promise<UserType | null> => {
+export const loginUser = async (email: string, password: string, userType: 'talent' | 'employer'): Promise<UserType | null> => {
     try {
         let { error } = loginUserSchema.validate({ email, password });
 
@@ -84,6 +84,13 @@ export const loginTalent = async (req: Request, res: Response) => {
     }
 };
 
+export const checkUserDetails =async (req: ExtendedUserRequest, res: Response) => {
+    if(req.info){
+        return res.json({
+            info: req.info
+        })
+    }
+}
 
 //remember to implement the recover password
 
