@@ -7,6 +7,10 @@ export interface employer{
     password: string;
 }
 
+export interface employerResponse{
+    message: string,
+}
+
 export interface employerInfoResponse{
     info:{
         orgId: string;

@@ -3,26 +3,31 @@
 <div class="container">
     <div class="form-container">
       <h1>Join Labour</h1>
-      <form action="/submit-form" method="post">
+      <!-- <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+      <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div> -->
+      <form class="" [formGroup]="registerTalentForm" (ngSubmit)="registerTalentForm(registertTalentForm.value)">
         <div class="form-group">
           <label for="profile-image">Profile Image</label>
           <input type="file" id="profile-image" name="profile-image">
         </div>
         <div class="form-group">
           <label for="firstname">Firstname</label>
-          <input type="text" id="firstname" name="firstname">
+          <input type="text" id="firstname" name="firstname" formControlName="firstname">
+          <div class="fname-error" id="error" *ngIf="registerTalentForm.get('firstname')?.invalid && registerTalentForm.get('firstname')?.touched && !registerTalentForm.get('firstName')?.dirty">This is required</div>
         </div>
         <div class="form-group">
           <label for="lastname">Lastname</label>
-          <input type="text" id="lastname" name="lastname">
+          <input type="text" id="lastname" name="lastname" formControlName="lastname">
+          <div class="lname-error" id="error" *ngIf="registerTalentForm.get('lastname')?.invalid && registerTalentForm.get('lastname')?.touched && !registerTalentForm.get('lastname')?.dirty">This is required</div>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" formControlName="email">
+          <div class="email-error" id="error" *ngIf="registerTalentForm.get('email')?.invalid && registerTalentForm.get('email')?.touched && !registerTalentForm.get('email')?.dirty">This is required</div>
         </div>
         <div class="form-group">
           <label for="industry">Industry</label>
-          <input type="text" id="industry" name="industry">
+          <input type="text" id="industry" name="industry" formControlName="industry">
         </div>
         <div class="form-group">
           <label for="location">Location</label>
@@ -39,6 +44,7 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password">
+          <div class="pass-error" id="error" *ngIf="registerTalentForm.get('password')?.invalid && registerTalentForm.get('password')?.touched && !registerTalentForm.get('password')?.dirty">Password is required</div>
         </div>
         <div class="form-group">
           <button type="submit">Register</button>

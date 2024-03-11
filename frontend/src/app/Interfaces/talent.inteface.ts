@@ -11,6 +11,10 @@ export interface talent{
     password: string;
 }
 
+export interface talentResponse{
+    message: string,
+}
+
 export interface talentInfoResponse{
     info:{
         orgId: string;

@@ -37,7 +37,7 @@
   
   #profile-image {
     width: 100%;
-    padding: 20px 0; /* Larger input box for image */
+    padding: 20px 0; 
   }
   
   .input-group {
@@ -62,4 +62,31 @@
   .form-group button#cancelButton {
     background-color: #f44336;
   }
+
+  
+#error {
+  color: red;
+}
+
+.error-message {
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+
+.success-message {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  color: #155724;
+  background-color: #d4edda;
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+}
   
