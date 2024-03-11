@@ -1,8 +1,7 @@
 import joi, { string } from "joi";
 
 export const newTalentSchema = joi.object({
-    talentId: joi.string().required(),
-    profileImg: joi.string().required(),
+    profileImg: joi.string(),
     firstname: joi.string().required(),
     lastname: joi.string().required(),
     email: joi.string().required(),

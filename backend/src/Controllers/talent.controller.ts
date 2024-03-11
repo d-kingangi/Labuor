@@ -12,7 +12,7 @@ export const createTalent = async(req: Request, res: Response)=>{
 
         const { profileImg, firstname, lastname, email, industryId, speciality, talentWallet, location, phone, password}:talent = req.body
 
-        const hashed_pwd = await bcrypt.hash(password, 6)       
+        const hashed_pwd = await bcrypt.hash(password, 6) 
 
         let {error} = newTalentSchema.validate(req.body)
 

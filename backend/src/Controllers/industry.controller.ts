@@ -18,6 +18,9 @@ export const createIndustry = async (req: Request, res: Response) => {
                 error: error
             })
         }
+
+        const industryData: industry = {industryId: id, industryName}
+
         const pool = await mssql.connect(sqlConfig)
 
         let result = await(await pool.request()
