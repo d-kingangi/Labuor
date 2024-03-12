@@ -5,6 +5,13 @@ import { v4 } from "uuid";
 import { newIndustrySchema } from "../Validators/industry.validator";
 import { industry } from "../Interfaces/industry.interface";
 
+/**
+ * Create a new industry based on the request body, and return a response based on the result.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a promise that resolves with the result
+ */
 export const createIndustry = async (req: Request, res: Response) => {
     try {
         const id = v4()
@@ -36,6 +43,14 @@ export const createIndustry = async (req: Request, res: Response) => {
     }
 }
 
+/**
+ * Asynchronous function to retrieve all industries and send them as a JSON response.
+ *
+ * @param {Request} req - The request object
+ * @param {Response} res - The response object
+ * @return {Promise<void>} Promise that resolves to void
+ */
+
 export const getAllIndustries = async (req: Request, res:Response) => {
     try {
         const pool = await mssql.connect(sqlConfig)
@@ -50,6 +65,14 @@ export const getAllIndustries = async (req: Request, res:Response) => {
     }
 }
 
+/**
+ * Asynchronous function to retrieve a single industry.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to the retrieved industry
+ */
+
 export const getOneIndustry = async(req: Request, res:Response)=>{
     try {
         const id = req.params.id
@@ -63,6 +86,13 @@ export const getOneIndustry = async(req: Request, res:Response)=>{
     }
 }
 
+/**
+ * Update an industry in the database.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to void
+ */
 export const updateIndustry = async (req:Request, res: Response) => {
     try {
         const id = req.params.id
@@ -85,6 +115,14 @@ export const updateIndustry = async (req:Request, res: Response) => {
         
     }
 }
+
+/**
+ * Delete an industry by ID from the database.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} Promise that resolves to void
+ */
 
 export const deleteIndustry = async(req: Request, res: Response)=>{
     try {

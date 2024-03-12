@@ -3,15 +3,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/talent.inteface';
 import { employer, allEmployersResponse, employerInfoResponse } from '../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interface';
+import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
 import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiServiceService {
   private apiUrl = 'http://localhost:3500'
 
-  token = localStorage.getItem('token') as string
+  getToken(){
+     const token = localStorage.getItem('token') as string
+
+     return token
+  }
+
+ 
 
   constructor(private http:HttpClient) { }
 
@@ -53,7 +61,7 @@ export class ApiServiceService {
     return this.http.put<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`, talent), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -62,7 +70,7 @@ export class ApiServiceService {
     return this.http.delete<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -104,7 +112,7 @@ export class ApiServiceService {
     return this.http.put<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`, employer), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -113,7 +121,7 @@ export class ApiServiceService {
     return this.http.delete<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -132,7 +140,7 @@ export class ApiServiceService {
     return this.http.post<jobInfoResponse>(`${this.apiUrl}/job`, job),{
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -165,7 +173,7 @@ export class ApiServiceService {
     return this.http.put<jobInfoResponse>(`${this.apiUrl}/job/${jobId}`, job), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
   }
@@ -174,8 +182,22 @@ export class ApiServiceService {
     return this.http.delete<jobInfoResponse>(`${this.apiUrl}/job/${jobId}`), {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.getToken()}`
       })
     }
+  }
+
+  //industries service
+
+  createIndustry(){
+    return this.http.post<industryInfoResponse>(`${this.apiUrl}/industry`, null, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+      })
+    });
+  }
+
+  getAllIndustries(){
+    return this.http.get<allIndustriesResponse>(`${this.apiUrl}/industry`)
   }
 }

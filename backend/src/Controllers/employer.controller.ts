@@ -6,6 +6,14 @@ import { employer } from '../Interfaces/employer.interface';
 import { sqlConfig } from '../Config/sql.config';
 import { newEmployerSchema } from '../Validators/employer.validator';
 
+
+/**
+ * Create a new employer with the given information.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to void
+ */
 export const createEmployer = async (req: Request, res: Response) => {
     try {
         const id = v4()
@@ -41,6 +49,14 @@ export const createEmployer = async (req: Request, res: Response) => {
     }
 }
 
+/**
+ * This function handles the request to get all employers.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to the JSON response with the list of employers
+ */
+
 export const getAllEmployers = async(req: Request, res: Response)=>{
     try{
         const pool = await mssql.connect(sqlConfig);
@@ -55,6 +71,14 @@ export const getAllEmployers = async(req: Request, res: Response)=>{
     }
 }
 
+
+/**
+ * Asynchronous function to retrieve a single employer.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} returns a Promise with the retrieved employer data
+ */
 export const getSingleEmployer = async (req: Request, res:Response) => {
     try {
         const id = req.params.id
@@ -71,6 +95,14 @@ export const getSingleEmployer = async (req: Request, res:Response) => {
     }
 }
 
+
+/**
+ * Updates an employer's information in the database.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to nothing
+ */
 export const updateEmployer = async (req:Request, res: Response) => {
     try {
         const id = req.params.id
@@ -99,6 +131,13 @@ export const updateEmployer = async (req:Request, res: Response) => {
     }
 }
 
+/**
+ * Retrieves employers per industry based on the provided request and response objects.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to the JSON response containing the retrieved employers per industry
+ */
 export const getEmployerPerIndustry = async (req: Request, res: Response) => {
     try {
         const id = req.params.id
@@ -116,6 +155,14 @@ export const getEmployerPerIndustry = async (req: Request, res: Response) => {
     
 }
 
+
+/**
+ * Deletes an employer by ID.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} Promise of void
+ */
 export const deleteEmployer = async (req: Request, res: Response) => {
     try {
         const id = req.params.id

@@ -6,6 +6,14 @@ import {talent} from "../Interfaces/talent.interface";
 import { sqlConfig } from "../Config/sql.config";
 import { newTalentSchema } from '../Validators/talent.validator';
 
+
+/**
+ * Create a talent with the given information.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves to nothing
+ */
 export const createTalent = async(req: Request, res: Response)=>{
     try {
         const id = v4()
@@ -46,7 +54,13 @@ export const createTalent = async(req: Request, res: Response)=>{
     }
 }
 
-
+/**
+ * Retrieves all talents from the database and sends them as a JSON response.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a Promise that resolves when the talents are sent as a JSON response
+ */
 export const getAllTalents =  async(req: Request, res:Response)=>{
     try {
         const pool = await mssql.connect(sqlConfig);
@@ -61,6 +75,14 @@ export const getAllTalents =  async(req: Request, res:Response)=>{
     }
 }
 
+
+/**
+ * Function to retrieve a single talent.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} JSON response with the talent object or error
+ */
 export const getSingleTalent = async (req: Request, res: Response) => {
     try {
         const id = req.params.id
@@ -77,7 +99,13 @@ export const getSingleTalent = async (req: Request, res: Response) => {
     }
 }
 
-
+/**
+ * Retrieves talents based on industry ID and sends the result as JSON response.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} JSON response containing talents
+ */
 export const getTalentsPerIndustry = async (req: Request, res: Response) => {
     try {
         const id = req.params.id
@@ -95,6 +123,13 @@ export const getTalentsPerIndustry = async (req: Request, res: Response) => {
     
 }
 
+/**
+ * Update a talent profile.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} Promise that resolves when the talent is updated
+ */
 export const updateTalent = async (req: Request, res: Response) => {
     try {
         const id = req.params.id
@@ -127,6 +162,14 @@ export const updateTalent = async (req: Request, res: Response) => {
     }
 }
 
+
+/**
+ * deleteTalent function deletes a talent from the database using the provided talent ID.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} Promise that resolves once the talent is deleted
+ */
 export const deleteTalent = async (req: Request, res: Response) => {
     try {
         const id = req.params.id

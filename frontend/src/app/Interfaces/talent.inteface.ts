@@ -11,7 +11,7 @@ export interface talent{
     password: string;
 }
 
-export interface talentResponse{
+export interface talentInfoResponse{
     message: string,
 }
 

@@ -9,9 +9,9 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 export const routes: Routes = [
     {path: '', component: LandingComponent},
-    {path: '/talent-registration', component: TalentRegistrationComponent},
-    {path: '/employer-registration', component: EmployerRegistrationComponent},
-    {path: '/login', component: LoginComponent},
+    {path: 'talent-registration', component: TalentRegistrationComponent},
+    {path: 'employer-registration', component: EmployerRegistrationComponent},
+    {path: 'login', component: LoginComponent},
     { path: '**', component: NotFoundComponent},
 ];
 @NgModule({
