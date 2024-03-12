@@ -1,0 +1,22 @@
+<div>
+    <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+    <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
+    <div>
+        <form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser(loginForm.value)">
+            <div class="input-div">
+                <input data-cy="email-input" formControlName="email" name="email" type="email" placeholder="Email">
+                <div class="email-err" id="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" data-cy="email-error">Email is required</div>
+            </div>
+            <div class="input-div">
+                <input data-cy="password-input" type="password" name="password" formControlName="password" placeholder="Password">
+                <div class="pass-err" id="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" data-cy="email-error">Password is required</div>
+            </div>
+            <div class="input-div">
+                <input data-cy="submit-login-btn" type="submit" value="Continue" class="submit-btn">
+            </div>
+        </form>
+    </div>
+    <div class="illustration-container">
+        <img src="../../../assets/high-3.jpeg" alt="Illustration of a person working on a laptop">
+    </div>
+</div>
