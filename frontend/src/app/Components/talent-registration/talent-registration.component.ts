@@ -1,0 +1,83 @@
+import { Component } from '@angular/core';
+import { AuthServiceService } from '../../Services/auth-service.service';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
+import { industry, industryInfoResponse, allIndustriesResponse } from '../../Interfaces/industry.interface';
+import { ApiServiceService } from '../../Services/api-service.service';
+
+@Component({
+  selector: 'app-talent-registration',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './talent-registration.component.html',
+  styleUrl: './talent-registration.component.css'
+})
+
+export class TalentRegistrationComponent {
+  registerTalentForm!: FormGroup;
+  errorMsg!:string;
+  successMsg!: string;
+  errorDiv = false
+  successDiv = false
+  // industries: allIndustriesResponse.{} = [];
+  industries : industry[] = [];
+
+
+  constructor(private authservice: AuthServiceService, private fb:FormBuilder, private apiservice: ApiServiceService){
+    this.registerTalentForm = this.fb.group({
+      firstname: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      industry: ['', [Validators.required]],
+      location: ['', [Validators.required]],
+      skills: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    })
+    this.getIndustries()
+  }
+
+  getIndustries(){
+    this.apiservice.getAllIndustries().subscribe(res =>{
+      if(res.industries){
+        res.industries.forEach((industry) => {
+          // const industryResponse: allIndustriesResponse = {
+          //   industries: res.industries,
+          //   error: res.error
+          // };
+          this.industries.push(industry);
+        })
+      }
+    })
+  }
+
+  displaySuccess(msg:string){
+    this.successMsg = msg;
+    this.successDiv = true
+    setTimeout(() => {
+      this.successDiv = false
+      // this.router.navigate(['/login'])
+    }, 2000);
+  }
+
+  displayErrors(msg: string){
+    this.errorMsg = msg;
+    this.errorDiv = true
+
+    setTimeout(() => {
+      this.errorDiv = false
+    }, 2000);
+  }
+
+  registerTalent(details: talent){
+    if(this.registerTalentForm.valid){
+      this.authservice.registerTalent(details).subscribe(res =>{
+        if(res.message){
+          this.displaySuccess(res.message)
+        }
+      })
+    }
+  }
+}

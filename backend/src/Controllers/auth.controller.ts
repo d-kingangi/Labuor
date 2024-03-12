@@ -11,7 +11,15 @@ interface UserType {
     userType: 'talent' | 'employer';
 }
 
-const loginUser = async (email: string, password: string, userType: 'talent' | 'employer'): Promise<UserType | null> => {
+/**
+ * Asynchronously authenticates a user and returns the user information if successful.
+ *
+ * @param {string} email - The email of the user
+ * @param {string} password - The password of the user
+ * @param {'talent' | 'employer'} userType - The type of user (talent or employer)
+ * @return {Promise<UserType | null>} The user information if authentication is successful, otherwise null
+ */
+export const loginUser = async (email: string, password: string, userType: 'talent' | 'employer'): Promise<UserType | null> => {
     try {
         let { error } = loginUserSchema.validate({ email, password });
 
@@ -48,6 +56,14 @@ const loginUser = async (email: string, password: string, userType: 'talent' | '
     }
 };
 
+
+/**
+ * Authenticates an employer using the provided email and password.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} a promise that resolves after handling the authentication
+ */
 export const loginEmployer = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const result = await loginUser(email, password, 'employer');
@@ -66,6 +82,14 @@ export const loginEmployer = async (req: Request, res: Response) => {
     }
 };
 
+
+/**
+ * Handles the login process for a talent user.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} Promise that resolves when the login process is complete
+ */
 export const loginTalent = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const result = await loginUser(email, password, 'talent');
@@ -84,6 +108,21 @@ export const loginTalent = async (req: Request, res: Response) => {
     }
 };
 
+
+/**
+ * Check user details and return info if available.
+ *
+ * @param {ExtendedUserRequest} req - the extended user request object
+ * @param {Response} res - the response object
+ * @return {object} the JSON object with user info, if available
+ */
+export const checkUserDetails =async (req: ExtendedUserRequest, res: Response) => {
+    if(req.info){
+        return res.json({
+            info: req.info
+        })
+    }
+}
 
 //remember to implement the recover password
 
@@ -116,6 +155,14 @@ export const resetPassword = async (req:Request, res:Response) => {
     }
 }
 
+
+/**
+ * Logs out the user by clearing the token cookie and sending a JSON response for successful logout.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {void} 
+ */
 export const logoutUser = (req: Request, res: Response) => {
     res.clearCookie('token'); 
     res.json({ message: 'Logout successful' });

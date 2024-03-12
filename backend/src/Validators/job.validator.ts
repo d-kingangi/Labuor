@@ -1,7 +1,6 @@
 import joi from "joi";
 
 export const newJobSchema = joi.object({
-    jobId: joi.string().required(),
     jobname: joi.string().required(),
     orgId: joi.string().required(),
     industryId: joi.string().required(),

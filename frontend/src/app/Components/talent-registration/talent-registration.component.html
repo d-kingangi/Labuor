@@ -1,0 +1,77 @@
+<div class="body">
+    
+<div class="container">
+    <div class="form-container">
+      <h1>Join Labour</h1>
+      <!-- <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+      <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div> -->
+      <form class="" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">
+        <div class="form-group">
+          <label for="profile-image">Profile Image</label>
+          <input type="file" id="profile-image" name="profile-image">
+        </div>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input type="text" id="firstname" name="firstname" formControlName="firstname">
+          <div class="fname-error" id="error" *ngIf="registerTalentForm.get('firstname')?.invalid && registerTalentForm.get('firstname')?.touched && !registerTalentForm.get('firstName')?.dirty">This is required</div>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input type="text" id="lastname" name="lastname" formControlName="lastname">
+          <div class="lname-error" id="error" *ngIf="registerTalentForm.get('lastname')?.invalid && registerTalentForm.get('lastname')?.touched && !registerTalentForm.get('lastname')?.dirty">This is required</div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" formControlName="email">
+          <div class="email-error" id="error" *ngIf="registerTalentForm.get('email')?.invalid && registerTalentForm.get('email')?.touched && !registerTalentForm.get('email')?.dirty">This is required</div>
+        </div>
+        <div class="form-group">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry" formControlName="industry">
+            <option *ngFor="let industry of industries; let i = index" value="{{ industry.industryId }}">{{ industry.industryName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <select id="location" name="location" formControlName="location">
+            <option value="Cairo">Cairo, Egypt</option>
+            <option value="Lagos">Lagos, Nigeria</option>
+            <option value="Nairobi">Nairobi, Kenya</option>
+            <option value="Johannesburg">Johannesburg, South Africa</option>
+            <option value="Casablanca">Casablanca, Morocco</option>
+            <option value="Accra">Accra, Ghana</option>
+            <option value="Dakar">Dakar, Senegal</option>
+            <option value="Addis Ababa">Addis Ababa, Ethiopia</option>
+            <option value="Dar es Salaam">Dar es Salaam, Tanzania</option>
+            <option value="Kigali">Kigali, Rwanda</option>
+            <option value="Abuja">Abuja, Nigeria</option>
+            <option value="Cape Town">Cape Town, South Africa</option>
+            <option value="Luanda">Luanda, Angola</option>
+            <option value="Khartoum">Khartoum, Sudan</option>
+            <option value="Maputo">Maputo, Mozambique</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="skills">Skills</label>
+          <input type="text" id="skills" name="skills">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+          <div class="pass-error" id="error" *ngIf="registerTalentForm.get('password')?.invalid && registerTalentForm.get('password')?.touched && !registerTalentForm.get('password')?.dirty">Password is required</div>
+        </div>
+        <div class="form-group">
+          <button type="submit">Register</button>
+          <button type="button" onclick="">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="illustration-container">
+      <img src="../../../assets/high-4.jpeg" alt="Illustration of a person working on a laptop">
+    </div>
+  </div>
+</div>
