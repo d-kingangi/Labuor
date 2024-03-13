@@ -53,9 +53,25 @@
 
     <div class="talents">
         <div><h3>All Talents</h3></div>
+        <div class="talent-grid" *ngIf="talents.length > 0">
+          <div class="talent-card" *ngFor="let talent of talents">
+            <div><img [src]="talent.profileImg" alt=""></div>
+            <div>
+              <p><b>Name:</b> {{ talent.firstname }} {{ talent.lastname }}</p>
+              <p><b>Email:</b> {{ talent.email }}</p>
+              <p><b>Location:</b> {{ talent.location }}</p>
+              <p><b>Speciality:</b> {{ talent.speciality }}</p>
+              <p><b>Phone:</b> {{ talent.phone }}</p>
+              <!-- Add more details as needed -->
+              <div class="button-container">
+                <button class="reg-btn">Profile</button>
+            </div>
+            </div>
+          </div>
+        </div>
     </div>
     <hr>
-    
+
     <div class="faq">
         
     </div>

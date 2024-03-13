@@ -34,12 +34,7 @@ export class ApiServiceService {
   // }
 
   getAllTalents(){
-    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`)}
 
   getSingleTalent(talentId: string){
     return this.http.get<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`),{
