@@ -8,3 +8,7 @@ CREATE TABLE employers (
     password VARCHAR(255),
     FOREIGN KEY (industryId) REFERENCES industry(industryId)
 );
+
+DELETE FROM employers
+
+SELECT * FROM employers

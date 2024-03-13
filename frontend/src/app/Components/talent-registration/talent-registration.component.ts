@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../../Interfaces/industry.interface';
 import { ApiServiceService } from '../../Services/api-service.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-talent-registration',
@@ -25,7 +26,7 @@ export class TalentRegistrationComponent {
   industries : industry[] = [];
 
 
-  constructor(private authservice: AuthServiceService, private fb:FormBuilder, private apiservice: ApiServiceService){
+  constructor(private authservice: AuthServiceService, private fb:FormBuilder, private apiservice: ApiServiceService, private router: Router){
     this.registerTalentForm = this.fb.group({
       firstname: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
@@ -43,10 +44,6 @@ export class TalentRegistrationComponent {
     this.apiservice.getAllIndustries().subscribe(res =>{
       if(res.industries){
         res.industries.forEach((industry) => {
-          // const industryResponse: allIndustriesResponse = {
-          //   industries: res.industries,
-          //   error: res.error
-          // };
           this.industries.push(industry);
         })
       }
@@ -58,7 +55,7 @@ export class TalentRegistrationComponent {
     this.successDiv = true
     setTimeout(() => {
       this.successDiv = false
-      // this.router.navigate(['/login'])
+      this.router.navigate(['/login'])
     }, 2000);
   }
 
@@ -73,11 +70,15 @@ export class TalentRegistrationComponent {
 
   registerTalent(details: talent){
     if(this.registerTalentForm.valid){
+      console.log('Submitting form with details:', details);
       this.authservice.registerTalent(details).subscribe(res =>{
+        console.log('Response from server:', res);
         if(res.message){
           this.displaySuccess(res.message)
         }
       })
     }
   }
+
+  resetForm(){}
 }

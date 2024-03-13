@@ -25,21 +25,16 @@ export class ApiServiceService {
 
   //talents api service
 
-  createTalent(talent: talent){
-    return this.http.post<talentInfoResponse>(`${this.apiUrl}/talent`, talent),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+  // createTalent(talent: talent){
+  //   return this.http.post<talentInfoResponse>(`${this.apiUrl}/talent`, talent),{
+  //     headers: new HttpHeaders({
+  //       'content-type': 'application/json'
+  //     })
+  //   }
+  // }
 
   getAllTalents(){
-    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`)}
 
   getSingleTalent(talentId: string){
     return this.http.get<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`),{
@@ -76,13 +71,14 @@ export class ApiServiceService {
   }
 
   //employer api service
-  createEmployer(employer: employer){
-    return this.http.post<employerInfoResponse>(`${this.apiUrl}/employer`, employer),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+  
+  // createEmployer(employer: employer){
+  //   return this.http.post<employerInfoResponse>(`${this.apiUrl}/employer`, employer),{
+  //     headers: new HttpHeaders({
+  //       'content-type': 'application/json'
+  //     })
+  //   }
+  // }
 
   getAllEmployers(){
     return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`), {
@@ -145,7 +141,7 @@ export class ApiServiceService {
     }
   }
 
-  getAllJobs(){
+  getEveryJob(){
     return this.http.get<allJobsResponse>(`${this.apiUrl}/job`), {
       headers: new HttpHeaders({
         'content-type': 'application/json'
@@ -153,9 +149,17 @@ export class ApiServiceService {
     }
   }
 
-  getJobsByIndustry(industryId: string){
+  getAllJobsByIndustry(industryId: string){
     return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`),{
       headers: new HttpHeaders({
+        'content-type': 'application/json'
+      })
+    }
+  }
+
+  getJobsByEmployer(orgId: string){
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/employer/${orgId}`),{
+      headers : new HttpHeaders({
         'content-type': 'application/json'
       })
     }

@@ -1,0 +1,58 @@
+.employer-reg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.employer-reg > div {
+    flex: 1;
+}
+
+.form {
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff; 
+}
+
+.input-div {
+    margin-bottom: 20px;
+}
+
+.input-div input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+
+.email-err {
+    color: red; 
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green; 
+}
+
+.submit-btn {
+    width: 40%;
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00a1ff; 
+    color: #fff; 
+    cursor: pointer;
+}
+

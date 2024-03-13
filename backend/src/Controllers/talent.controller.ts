@@ -43,7 +43,7 @@ export const createTalent = async(req: Request, res: Response)=>{
         .input("talentWallet", mssql.VarChar, talentWallet)
         .input("location", mssql.VarChar, location)
         .input("phone", mssql.VarChar, phone)
-        .input("password", mssql.VarChar, password)
+        .input("password", mssql.VarChar, hashed_pwd)
         .execute('CreateTalent')).rowsAffected
 
         return res.json({

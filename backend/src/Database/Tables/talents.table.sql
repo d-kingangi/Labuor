@@ -15,3 +15,5 @@ CREATE TABLE talents (
 
 
 -- DROP TABLE Talents
+-- SELECT * FROM talents
+-- DELETE FROM talents
