@@ -1,7 +1,11 @@
-<div>
-    <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
-    <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
+<app-navbar></app-navbar>
+
+
+<div class="login"> 
     <div>
+        <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+        <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
+
         <form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser(loginForm.value)">
             <div class="input-div">
                 <input data-cy="email-input" formControlName="email" name="email" type="email" placeholder="Email">
@@ -14,9 +18,12 @@
             <div class="input-div">
                 <input data-cy="submit-login-btn" type="submit" value="Continue" class="submit-btn">
             </div>
+            <div>
+                Don't have an Account? <a href="">Sign-Up</a>
+            </div>
         </form>
     </div>
     <div class="illustration-container">
-        <img src="../../../assets/high-3.jpeg" alt="Illustration of a person working on a laptop">
+        <img src="../../../assets/high-2.jpeg" alt="Illustration of a person working on a laptop">
     </div>
 </div>

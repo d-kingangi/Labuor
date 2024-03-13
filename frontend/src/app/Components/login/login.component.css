@@ -1,0 +1,72 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.login > div {
+    flex: 1;
+}
+
+.form {
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff; 
+}
+
+.input-div {
+    margin-bottom: 20px;
+}
+
+.input-div input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.pass-err {
+    color: red; 
+}
+
+.email-err {
+    color: red; 
+}
+
+.submit-btn {
+    width: 40%;
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00a1ff; 
+    color: #fff; 
+    cursor: pointer;
+}
+
+.illustration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration-container img {
+    width: 75%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green; 
+}

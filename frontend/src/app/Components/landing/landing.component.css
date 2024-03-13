@@ -1,0 +1,158 @@
+.hero {
+    display: flex;
+    height: 75vh;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.hero > div {
+    flex: 1; 
+}
+
+.hero > div:first-child {
+    margin-right: 10px;
+}
+
+.hero-1{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.hero-1-txt{
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+.hero-2{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 10px; 
+}
+
+.hero-3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.hero-3 button {
+    background-color: #3129a4; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    margin: 0 10px; 
+}
+
+.hero-3 button:last-child {
+    background-color: #f9a804; 
+}
+
+.benefits{
+    display: flex;
+    height: 80vh;
+    width: 80vw;
+    border-radius: 20px;
+    border: 1px black;
+    background-color: black;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.benefits > div {
+    flex: 1; 
+}
+
+.benefits > div:first-child {
+    margin-right: 10px;
+}
+
+.benefits{
+    display: flex;
+    height: 80vh;
+    width: 80vw;
+    border-radius: 20px;
+    background-color: #030130;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 30px;
+}
+
+.benefits > div {
+    flex: 1; 
+}
+
+.benefits > div:first-child {
+    margin-right: 10px;
+}
+
+.benefits-1{
+    font-size: 3rem;
+    text-align: center;
+    color: beige;
+    margin-top: 30px;
+}
+
+.benefits-2{
+    font-size: 1.5rem;
+    text-align: center;
+    color: beige;
+    margin-top: 30px;
+}
+
+.benefits-3{
+    font-size: 0.75rem;
+    text-align: center;
+    color: beige;
+    margin-top: 30px;
+}
+
+.button-container {
+    text-align: center; /* Align content center horizontally */
+}
+
+
+.reg-btn{
+    background-color: #f9a804;; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    color: black; 
+    border: none; 
+    cursor: pointer; 
+    margin: 0 10px;
+}
+
+.benefits img {
+    width: 500px; 
+    height: auto; 
+    margin-top: 100px;
+}
+
+.jobs{
+    height: 80vh;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.talents{
+    height: 80vh;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.faq{
+    height: 80vh;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

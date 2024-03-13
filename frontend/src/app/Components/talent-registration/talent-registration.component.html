@@ -3,8 +3,8 @@
 <div class="container">
     <div class="form-container">
       <h1>Join Labour</h1>
-      <!-- <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
-      <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div> -->
+      <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+      <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
       <form class="" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">
         <div class="form-group">
           <label for="profile-image">Profile Image</label>
@@ -64,9 +64,10 @@
           <input type="password" id="password" name="password">
           <div class="pass-error" id="error" *ngIf="registerTalentForm.get('password')?.invalid && registerTalentForm.get('password')?.touched && !registerTalentForm.get('password')?.dirty">Password is required</div>
         </div>
-        <div class="form-group">
-          <button type="submit">Register</button>
-          <button type="button" onclick="">Cancel</button>
+        <div class="action">
+          <input type="submit" value="Continue" class="submit-btn">
+          <!-- <button type="submit">Register</button> -->
+          <!-- <button type="button" onclick="">Cancel</button> -->
         </div>
       </form>
     </div>

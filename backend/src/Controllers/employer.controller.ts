@@ -83,9 +83,9 @@ export const getSingleEmployer = async (req: Request, res:Response) => {
     try {
         const id = req.params.id
 
-    const pool = await mssql.connect(sqlConfig)
+        const pool = await mssql.connect(sqlConfig)
 
-    let employer = (await pool.request().input("employerId", id).execute('getSingleEmployer')).recordset
+        let employer = (await pool.request().input("employerId", id).execute('getSingleEmployer')).recordset
 
     return res.json({
         employer
