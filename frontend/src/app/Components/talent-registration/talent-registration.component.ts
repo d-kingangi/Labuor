@@ -55,7 +55,7 @@ export class TalentRegistrationComponent {
     this.successDiv = true
     setTimeout(() => {
       this.successDiv = false
-      // this.router.navigate(['/login'])
+      this.router.navigate(['/login'])
     }, 2000);
   }
 

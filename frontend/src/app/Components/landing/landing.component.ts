@@ -10,4 +10,5 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class LandingComponent {
+  
 }

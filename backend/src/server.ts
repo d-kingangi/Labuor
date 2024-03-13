@@ -6,6 +6,7 @@ import cors from 'cors';
 import industryRouter from './Routes/industry.routes';
 import talentRouter from './Routes/talents.routes';
 import employerRouter from './Routes/employers.routes';
+import authRouter from './Routes/auth.routes';
 const multer  = require('multer')
 
 const app = express();
@@ -17,6 +18,8 @@ app.use(cors());
 app.use('/industry', industryRouter)
 app.use('/talent', talentRouter)
 app.use('/employer', employerRouter)
+app.use('/auth', authRouter)
+// app.use('/jobs', jobsRouter)
 
 const PORT = process.env.PORT as string;
 

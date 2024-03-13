@@ -6,107 +6,63 @@ import { sqlConfig } from "../Config/sql.config"
 import { loginUserSchema } from "../Validators/auth.validator";
 import { ExtendedUserRequest } from "../Middlewares/verifyToken";
 
-interface UserType {
-    user: any;
-    userType: 'talent' | 'employer';
-}
 
-/**
- * Asynchronously authenticates a user and returns the user information if successful.
- *
- * @param {string} email - The email of the user
- * @param {string} password - The password of the user
- * @param {'talent' | 'employer'} userType - The type of user (talent or employer)
- * @return {Promise<UserType | null>} The user information if authentication is successful, otherwise null
- */
-export const loginUser = async (email: string, password: string, userType: 'talent' | 'employer'): Promise<UserType | null> => {
+export const loginUser = async(req: Request, res: Response)=>{
     try {
-        let { error } = loginUserSchema.validate({ email, password });
+        const{email, password} = req.body
 
-        if (error) {
-            return null;
+        let {error} = loginUserSchema.validate(req.body)
+
+        if(error){
+            return res.status(201).json({
+                error: error.details[0].message
+            })
         }
 
-        const pool = await mssql.connect(sqlConfig);
+        const pool = await mssql.connect(sqlConfig)
+        
+        let user = (await pool.request()
+        .input("email", email)
+        .input("password", password)
+        .execute("loginUser")).recordset
+        
+        if(user[0]?.email == email){
+            const correct_pwd = await bcrypt.compare(password, user[0].password)
 
-        let user = (await pool.request().input('email', email).input('password', password).execute(`login${userType}`))
-            .recordset;
-
-        if (user[0]?.email == email) {
-            const correctPwd = await bcrypt.compare(password, user[0].password);
-
-            if (!correctPwd) {
-                return null;
+            if(!correct_pwd){
+                 return res.status(201).json({
+                    error: "Incorrect password"
+                 });
             }
 
-            const loginCredentials = user.map((response) => {
-                const { password, ...rest } = response;
-                return rest;
+            const loginCredentials = user.map(response =>{
+                const{password, ...rest} = response
+
+                return rest
+            })            
+
+            const token = jwt.sign(loginCredentials[0], process.env.SECRET as string, {
+                expiresIn: '36000s'
+            })
+            
+            return res.status(200).json({
+                message: "Logged in successfully", token,
+                ...loginCredentials[0]
+            })
+            
+        }else{
+            return res.json({
+                error: "User not found"
             });
-
-            return {
-                user: loginCredentials[0],
-                userType,
-            };
-        } else {
-            return null;
         }
+        
+
     } catch (error) {
-        return null;
+        return res.sendStatus(501).json({
+            error: "Internal Server Error"
+        })
     }
-};
-
-
-/**
- * Authenticates an employer using the provided email and password.
- *
- * @param {Request} req - the request object
- * @param {Response} res - the response object
- * @return {Promise<void>} a promise that resolves after handling the authentication
- */
-export const loginEmployer = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-    const result = await loginUser(email, password, 'employer');
-
-    if (result) {
-        const token = jwt.sign(result, process.env.SECRET as string, { expiresIn: '36000s' });
-        return res.status(200).json({
-            message: 'Logged in successfully',
-            token,
-            userType: result.userType,
-        });
-    } else {
-        return res.status(201).json({
-            error: 'User not found or incorrect password',
-        });
-    }
-};
-
-
-/**
- * Handles the login process for a talent user.
- *
- * @param {Request} req - the request object
- * @param {Response} res - the response object
- * @return {Promise<void>} Promise that resolves when the login process is complete
- */
-export const loginTalent = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-    const result = await loginUser(email, password, 'talent');
-
-    if (result) {
-        const token = jwt.sign(result, process.env.SECRET as string, { expiresIn: '36000s' });
-        return res.status(200).json({
-            message: 'Logged in successfully',
-            token,
-            userType: result.userType,
-        });
-    } else {
-        return res.status(201).json({
-            error: 'User not found or incorrect password',
-        });
-    }
-};
+}
 
 
 /**
