@@ -76,13 +76,14 @@ export class ApiServiceService {
   }
 
   //employer api service
-  createEmployer(employer: employer){
-    return this.http.post<employerInfoResponse>(`${this.apiUrl}/employer`, employer),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+  
+  // createEmployer(employer: employer){
+  //   return this.http.post<employerInfoResponse>(`${this.apiUrl}/employer`, employer),{
+  //     headers: new HttpHeaders({
+  //       'content-type': 'application/json'
+  //     })
+  //   }
+  // }
 
   getAllEmployers(){
     return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`), {
