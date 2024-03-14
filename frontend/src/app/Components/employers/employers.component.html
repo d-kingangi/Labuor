@@ -1,1 +1,27 @@
-<p>employers works!</p>
+<app-navbar></app-navbar>
+
+<div>
+    <div class="title"><h3>All Employers</h3></div>
+
+
+    <div class="employers-container">
+        <div *ngFor="let industry of employersByIndustry" class="industry-group">
+          <!-- <h2>Industry: {{ industry.industryId }}</h2> -->
+          <div class="employer-grid">
+            <div class="employer-card" *ngFor="let employer of industry.employers">
+              <div class="logo-container">
+                <img [src]="employer.logo" alt="Logo">
+              </div>
+              <div class="details-container">
+                <h3>{{ employer.orgname }}</h3>
+                <p>{{employer.industryId}}</p>
+                <div class="button-container">
+                  <button class="profile-btn" >View Profile</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

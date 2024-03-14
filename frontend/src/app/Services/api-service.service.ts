@@ -4,7 +4,6 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/ta
 import { employer, allEmployersResponse, employerInfoResponse } from '../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
-import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +14,8 @@ export class ApiServiceService {
 
   getToken(){
      const token = localStorage.getItem('token') as string
-
      return token
   }
-
  
 
   constructor(private http:HttpClient) { }
@@ -37,20 +34,10 @@ export class ApiServiceService {
     return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`)}
 
   getSingleTalent(talentId: string){
-    return this.http.get<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`)}
 
   getTalentsByIndustry(industryId: string){
-    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent/industry/${industryId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent/industry/${industryId}`)}
 
   updateTalent(talentId: string, talent: talent){
     return this.http.put<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`, talent), {
@@ -81,28 +68,13 @@ export class ApiServiceService {
   // }
 
   getAllEmployers(){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`)}
 
   getSingleEmployer(employerId: string){
-    return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`)}
 
   getEmployersByIndustry(industryId: string){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`)}
 
   updateEmployer(employerId: string, employer: employer){
     return this.http.put<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`, employer), {
@@ -142,12 +114,8 @@ export class ApiServiceService {
   }
 
   getEveryJob(){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job`)
+}
 
   getAllJobsByIndustry(industryId: string){
     return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`),{

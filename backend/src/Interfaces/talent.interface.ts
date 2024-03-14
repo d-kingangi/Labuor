@@ -5,6 +5,7 @@ export interface talent{
     lastname: string;
     email: string;
     industryId: string;
+    industryName: string;
     speciality: string;
     talentWallet: string;
     location: string;

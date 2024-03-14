@@ -145,7 +145,7 @@ export const deleteJob = async (req: Request, res: Response) => {
 
         let result = (await pool.request()
         .input("jobId", mssql.VarChar, id)
-        .execute('uodateJob')).rowsAffected
+        .execute('updateJob')).rowsAffected
 
     }catch (error) {
         return res.json({error})

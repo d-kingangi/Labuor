@@ -8,5 +8,5 @@ export const newJobSchema = joi.object({
     duration: joi.string().required(),
     startdate: joi.date().required(),
     salary: joi.number().required(),
-    talentId: joi.string().required(),  
+    talentId: joi.string(),  
 })
