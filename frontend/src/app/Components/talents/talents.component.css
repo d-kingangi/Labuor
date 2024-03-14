@@ -1,0 +1,38 @@
+.talent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  
+  .talent-card {
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  .talent-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .talent-details p {
+    margin: 5px 0;
+  }
+
+  .profile-btn{
+    background-color: #030130;; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    color: lightgray; 
+    border: none; 
+    cursor: pointer; 
+    margin: 0 10px;
+  }

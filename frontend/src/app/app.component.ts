@@ -4,12 +4,14 @@ import { TalentRegistrationComponent } from './Components/talent-registration/ta
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { LandingComponent } from './Components/landing/landing.component';
 import { LoginComponent } from './Components/login/login.component';
+import { TalentsComponent } from './Components/talents/talents.component';
+import { TalentProfileComponent } from './Components/talent-profile/talent-profile.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ RouterOutlet, TalentRegistrationComponent, NavbarComponent, LandingComponent, LoginComponent],
+  imports: [ RouterOutlet, TalentRegistrationComponent, NavbarComponent, LandingComponent, LoginComponent, TalentsComponent, TalentProfileComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -114,7 +114,7 @@
 }
 
 .button-container {
-    text-align: center; /* Align content center horizontally */
+    text-align: center; 
 }
 
 
@@ -179,6 +179,16 @@
   
   .talent-card p b {
     font-weight: bold;
+  }
+
+  .profile-btn{
+    background-color: #030130;; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    color: lightgray; 
+    border: none; 
+    cursor: pointer; 
+    margin: 0 10px;
   }
 
 .faq{

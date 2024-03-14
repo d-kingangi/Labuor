@@ -5,6 +5,7 @@ import { TalentRegistrationComponent } from './Components/talent-registration/ta
 import { LoginComponent } from './Components/login/login.component';
 import { EmployerRegistrationComponent } from './Components/employer-registration/employer-registration.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { TalentProfileComponent } from './Components/talent-profile/talent-profile.component';
 
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path: 'talent-registration', component: TalentRegistrationComponent},
     {path: 'employer-registration', component: EmployerRegistrationComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'talent', component: TalentProfileComponent},
     { path: '**', component: NotFoundComponent},
 ];
 @NgModule({
