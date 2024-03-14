@@ -47,12 +47,27 @@
     <hr>
 
     <div class="jobs">
-        <div><h3>All Jobs</h3></div>
+        <div><h3>Jobs</h3></div>
+        <div class="job-grid" *ngIf="jobs.length > 0">
+          <div class="job-card" *ngFor="let job of jobs">
+            <div>
+              <p><b>Name:</b> {{ job.jobname }}</p>
+              <p><b>Industry:</b> {{ job.industryId }}</p>
+              <p><b>Description:</b> {{ job.description }}</p>
+              <p><b>Duration:</b> {{ job.duration }}</p>
+              <p><b>Start Date:</b> {{ job.startdate }}</p>
+              <p><b>Salary:</b> {{ job.salary }}</p>
+              <div class="button-container">
+                <button class="job-btn">View job</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
     <hr>
 
     <div class="talents">
-        <div><h3>All Talents</h3></div>
+        <div><h3>Talents</h3></div>
         <div class="talent-grid" *ngIf="talents.length > 0">
           <div class="talent-card" *ngFor="let talent of talents">
             <div class="talent-image"><img class="talent-img" [src]="talent.profileImg" alt=""></div>
@@ -68,6 +83,23 @@
               </div>
             </div>
           </div>
+        </div>
+    </div>
+
+    <div class="employers">
+        <div><h3>Employers</h3></div>
+        <div class="employer-grid" *ngIf="employers.length > 0">
+            <div class="employer-card" *ngFor="let employer of employers">
+                <div class="employer-image"><img class="employer-img" [src]="employer.logo" alt=""></div>
+            </div>
+            <div>
+                <p><b>Name:</b> {{ employer.orgname }}</p>
+                <p><b>Email:</b> {{ employer.email }}</p>
+                <p><b>Industry:</b> {{ employer.industryId }}</p>
+                <div class="button-container">
+                    <button class="profile-btn">Profile</button>
+                </div>
+            </div>
         </div>
     </div>
 

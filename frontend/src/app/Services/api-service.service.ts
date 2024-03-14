@@ -68,28 +68,13 @@ export class ApiServiceService {
   // }
 
   getAllEmployers(){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer`)}
 
   getSingleEmployer(employerId: string){
-    return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`)}
 
   getEmployersByIndustry(industryId: string){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`)}
 
   updateEmployer(employerId: string, employer: employer){
     return this.http.put<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`, employer), {
@@ -129,12 +114,8 @@ export class ApiServiceService {
   }
 
   getEveryJob(){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
-  }
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job`)
+}
 
   getAllJobsByIndustry(industryId: string){
     return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`),{

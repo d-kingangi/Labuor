@@ -6,12 +6,13 @@ import { LandingComponent } from './Components/landing/landing.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TalentsComponent } from './Components/talents/talents.component';
 import { TalentProfileComponent } from './Components/talent-profile/talent-profile.component';
+import { EmployersComponent } from './Components/employers/employers.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ RouterOutlet, TalentRegistrationComponent, NavbarComponent, LandingComponent, LoginComponent, TalentsComponent, TalentProfileComponent],
+  imports: [ RouterOutlet, TalentRegistrationComponent, NavbarComponent, LandingComponent, LoginComponent, TalentsComponent, TalentProfileComponent, EmployersComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
