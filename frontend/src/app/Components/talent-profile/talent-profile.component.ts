@@ -15,9 +15,11 @@ import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces
 export class TalentProfileComponent {
 
   similarTalents: talent[] = [];
+  talentInfoResponse: talentInfoResponse; 
   errorMessage: string = '';
 
   constructor(private apiService: ApiServiceService, private router: Router){
+    this.talentInfoResponse = {} as talentInfoResponse;
   }
 
   getSingleTalent(id: string) {
@@ -55,6 +57,27 @@ export class TalentProfileComponent {
         this.errorMessage = 'Error fetching similar talents. Please try again.';
         console.error('Error fetching talents:', error);
       }
+    );
+  }
+
+  navigateToSingleTalent(talentId: string) {
+    console.log('Talent ID:', talentId);
+
+    this.apiService.getSingleTalent(talentId).subscribe(
+        (res: talentInfoResponse) => {
+            console.log('Response:', res);
+
+            if (res) {
+                this.talentInfoResponse = res;
+                console.log('Talent:', this.talentInfoResponse);  
+                this.router.navigate(['/talent', talentId]);
+            } else {
+              console.error('Talent not found or an error occurred:', res);
+            }
+        },
+        (error) => {
+            console.error('Error fetching talent:', error);
+        }
     );
   }
 

@@ -55,7 +55,7 @@
         <div><h3>All Talents</h3></div>
         <div class="talent-grid" *ngIf="talents.length > 0">
           <div class="talent-card" *ngFor="let talent of talents">
-            <div><img [src]="talent.profileImg" alt=""></div>
+            <div class="talent-image"><img class="talent-img" [src]="talent.profileImg" alt=""></div>
             <div>
               <p><b>Name:</b> {{ talent.firstname }} {{ talent.lastname }}</p>
               <p><b>Email:</b> {{ talent.email }}</p>
@@ -70,7 +70,7 @@
           </div>
         </div>
     </div>
-    <hr>
+
 
     <div class="faq">
         

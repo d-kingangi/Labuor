@@ -8,7 +8,7 @@
         <!-- <h2>{{ talentGroup.industryName }}</h2> -->
         <div class="talent-grid">
           <div *ngFor="let talent of talentGroup.talents" class="talent-card">
-            <div><img [src]="talent.profileImg" alt=""></div>
+            <div class="talent-image"><img class="talent-img" [src]="talent.profileImg" alt=""></div>
             <div>
               <p><b>Name:</b> {{ talent.firstname }} {{ talent.lastname }}</p>
               <p><b>Email:</b> {{ talent.email }}</p>
