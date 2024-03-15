@@ -91,7 +91,7 @@ export class JobInfoComponent {
         if(res){
           this.jobInfoResponse = res;
           console.log('Job details:', this.jobInfoResponse);
-          this.router.navigate(['/job', jobId]);
+          this.router.navigate(['/job-info', jobId]);
         } else {
           console.error('Job not found or an error occurred:', res);
         }

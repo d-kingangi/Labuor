@@ -131,7 +131,7 @@ export class LandingComponent {
         if(res){
           this.employerInfoResponse = res;
           console.log('Employer Info:', this.employerInfoResponse);
-          // this.router.navigate(['/employer', employerId])
+          this.router.navigate(['/employer-profile', employerId])
         } else {
           console.error('Employernot found or an error occurred:', res);
         }      
@@ -158,7 +158,7 @@ export class LandingComponent {
         if (res) {
           this.jobInfoResponse = res;
           console.log('Job details:', this.jobInfoResponse);
-          this.router.navigate(['/job', jobId]);
+          this.router.navigate(['/job-info', jobId]);
         } else {
           console.error('Job not found or an error occurred:', res);
         }
