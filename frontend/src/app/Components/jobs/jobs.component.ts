@@ -21,10 +21,22 @@ export class JobsComponent {
   isLoading = false;
   error = '';
 
+    /**
+   * Constructor for initializing ApiServiceService and Router.
+   *
+   * @param {ApiServiceService} apiService - instance of ApiServiceService
+   * @param {Router} router - instance of Router
+   */
+
   constructor(private apiService: ApiServiceService, private router: Router){
     this.jobInfoResponse = {} as jobInfoResponse;
     this.displayAllJobs();
   }
+
+    /**
+   * Display all jobs from the API response and handle errors.
+   *
+   */
 
   displayAllJobs(): void {
     this.isLoading = true;
@@ -63,6 +75,11 @@ export class JobsComponent {
     )
   }
 
+    /**
+   * Navigates to a single job with the given jobId.
+   *
+   * @param {string} jobId - The ID of the job to navigate to.
+   */
   navigateToSingleJob(jobId: string){
     console.log('Job ID:', jobId);
 

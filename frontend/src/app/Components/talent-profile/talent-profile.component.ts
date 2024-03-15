@@ -12,6 +12,7 @@ import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces
   templateUrl: './talent-profile.component.html',
   styleUrl: './talent-profile.component.css'
 })
+
 export class TalentProfileComponent {
 
   similarTalents: talent[] = [];
@@ -80,6 +81,7 @@ export class TalentProfileComponent {
       }
     );
   }
+
 
   navigateToSingleTalent(talentId: string) {
     console.log('Talent ID:', talentId);
