@@ -22,11 +22,23 @@ export class EmployersComponent {
   isLoading = false;
   error = '';
 
+    /**
+   * A description of the entire function.
+   *
+   * @param {ApiServiceService} apiService - description of parameter
+   * @param {Router} router - description of parameter
+   * @return {void} description of return value
+   */
+
   constructor(private apiService: ApiServiceService, private router: Router) {
     this.employerInfoResponse = {} as employerInfoResponse;
     this.displayAllEmployers();
   }
 
+
+    /**
+   * Display all employers and organize them by industry.
+   */
   displayAllEmployers(){
     this.isLoading = true;
     this.error = '';
@@ -63,6 +75,12 @@ export class EmployersComponent {
       }
     )
   }
+
+    /**
+   * A function that navigates to a single employer based on the provided employer ID.
+   *
+   * @param {string} employerId - The ID of the employer to navigate to
+   */
 
   navigateToSingleEmployer(employerId: string){
     console.log('EmployerId:', employerId);

@@ -21,11 +21,22 @@ export class LandingComponent {
   jobs: job[] = []
   employers: employer []= []
 
+    /**
+   * Constructor for initializing ApiServiceService and Router.
+   *
+   * @param {ApiServiceService} apiservice - the ApiServiceService instance
+   * @param {Router} router - the Router instance
+   */
+
   constructor(private apiservice: ApiServiceService, private router: Router) {
     this.displayTalents();
     this.displayJobs();
     this.displayEmployers()
   }
+
+    /**
+   * Display talents from the API response.
+   */
 
   displayTalents(){
     this.apiservice.getAllTalents().subscribe((res)=>{
@@ -37,9 +48,17 @@ export class LandingComponent {
     })
   }
 
+
+    /**
+   * Display jobs fetched from the API response.
+   *
+   */
+
   displayJobs(){
     this.apiservice.getEveryJob().subscribe((res)=>{
       if(res.jobs){
+        // console.log(res.jobs);
+        
         res.jobs.forEach((job)=>{
           this.jobs.push(job);
         })
@@ -47,6 +66,10 @@ export class LandingComponent {
     })
   }
 
+
+    /**
+   * Function to display the list of employers.
+   */
   displayEmployers(){
     this.apiservice.getAllEmployers().subscribe((res)=>{
       if(res.employers){

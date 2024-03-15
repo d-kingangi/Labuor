@@ -45,10 +45,18 @@ export const createJob = async (req:Request, res: Response) => {
         })
 
     } catch (error) {
-        
+        return res.json({error})
     }
 }
 
+
+/**
+ * Retrieves every job from the database and sends it as a JSON response.
+ *
+ * @param {Request} req - the request object
+ * @param {Response} res - the response object
+ * @return {Promise<void>} JSON response with all jobs or an error object
+ */
 export const getEveryJob = async (req: Request, res: Response) => {
     try {
         const pool = await mssql.connect(sqlConfig);

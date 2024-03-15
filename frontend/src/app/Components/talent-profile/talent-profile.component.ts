@@ -18,9 +18,24 @@ export class TalentProfileComponent {
   talentInfoResponse: talentInfoResponse; 
   errorMessage: string = '';
 
+    /**
+   * Constructor for initializing ApiServiceService and Router.
+   *
+   * @param {ApiServiceService} apiService - the ApiServiceService instance
+   * @param {Router} router - the Router instance
+   */
+
   constructor(private apiService: ApiServiceService, private router: Router){
     this.talentInfoResponse = {} as talentInfoResponse;
   }
+
+
+    /**
+   * Get a single talent information by ID.
+   *
+   * @param {string} id - The ID of the talent.
+   * @return {void} No return value.
+   */
 
   getSingleTalent(id: string) {
     this.apiService.getSingleTalent(id).subscribe(
@@ -38,6 +53,12 @@ export class TalentProfileComponent {
         }
     );
   }
+
+    /**
+   * Fetch talents by industry ID and store similar talents based on the response.
+   *
+   * @param {string} industryId - The ID of the industry to fetch talents for.
+   */
 
   fetchTalentsByIndustry(industryId: string) {
     console.log('Fetching talents by industry:', industryId);

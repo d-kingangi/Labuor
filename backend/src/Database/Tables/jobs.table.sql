@@ -12,3 +12,5 @@ CREATE TABLE jobs (
     FOREIGN KEY (industryId) REFERENCES industry(industryId),
     FOREIGN KEY (talentId) REFERENCES talents(talentId)
 );
+
+-- SELECT * FROM jobs

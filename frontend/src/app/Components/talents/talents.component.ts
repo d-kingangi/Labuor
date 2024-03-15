@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
@@ -26,6 +26,10 @@ export class TalentsComponent {
     this.displayAllTalents();
   }
 
+
+    /**
+   * Display all talents and handle the API response
+   */
   displayAllTalents(): void {
     this.isLoading = true;
     this.error = '';
@@ -63,6 +67,13 @@ export class TalentsComponent {
     );
   }
 
+
+    /**
+   * Navigates to a single talent based on the provided talent ID.
+   *
+   * @param {string} talentId - the ID of the talent to navigate to
+   * @return {void} 
+   */
   navigateToSingleTalent(talentId: string) {
     console.log('Talent ID:', talentId);
 

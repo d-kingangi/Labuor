@@ -126,19 +126,11 @@ export class ApiServiceService {
   }
 
   getJobsByEmployer(orgId: string){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/employer/${orgId}`),{
-      headers : new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/employer/${orgId}`)
   }
 
   getSingleJob(jobId: string){
-    return this.http.get<jobInfoResponse>(`${this.apiUrl}/job/${jobId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
+    return this.http.get<jobInfoResponse>(`${this.apiUrl}/job/${jobId}`)
   }
 
   updateJob(jobId: string, job: job){
