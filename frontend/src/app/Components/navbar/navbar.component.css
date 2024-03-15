@@ -1,9 +1,9 @@
 nav {
     width: 80vw;
     height: 8vh;
-    border-radius: 15px;
+    border-radius: 25px;
     margin-top: 20px;
-    /* background-color: #c4c4c4; */
+    /* background-color: lightgray; */
     display: flex;
     justify-content: space-between;
     align-items: center;

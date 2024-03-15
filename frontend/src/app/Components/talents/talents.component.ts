@@ -20,10 +20,12 @@ export class TalentsComponent {
   talentsByIndustry: { industryId: string; talents: talent[] }[] = [];
   isLoading = false;
   error = '';
+  // talentId: string;
 
   constructor(private apiService: ApiServiceService, private router: Router){
     this.talentInfoResponse = {} as talentInfoResponse;
     this.displayAllTalents();
+    // this.navigateToSingleTalent(talentId);
   }
 
 
@@ -84,7 +86,7 @@ export class TalentsComponent {
             if (res) {
                 this.talentInfoResponse = res;
                 console.log('Talent:', this.talentInfoResponse);  
-                this.router.navigate(['/talent', talentId]);
+                this.router.navigate(['/talent-profile', talentId]);
             } else {
               console.error('Talent not found or an error occurred:', res);
             }

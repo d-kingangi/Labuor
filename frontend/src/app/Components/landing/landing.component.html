@@ -1,3 +1,6 @@
+<app-navbar></app-navbar>
+
+
 <div>
 
     <div class="hero">
@@ -64,10 +67,12 @@
           </div>
         </div>
     </div>
+
     <hr>
 
     <div class="talents">
         <div><h3>Talents</h3></div>
+        <div><h5>Hire professionals with a wide range of skills, or offer your own in-demand expertise</h5></div>
         <div class="talent-grid" *ngIf="talents.length > 0">
           <div class="talent-card" *ngFor="let talent of talents | slice:0:3">
             <div class="talent-image"><img class="talent-img" [src]="talent.profileImg" alt=""></div>
@@ -86,6 +91,25 @@
         </div>
     </div>
 
+    <hr>
+
+    <div class="banner">
+        <div>
+            <div class="banner-1">
+                Get started for free
+            </div>
+            <div class="banner-2">
+                <div>Find employer from all over the world. Find remote work on Labour</div>
+            </div>
+            <div class="button-container">
+                <button class="try-btn">
+                    Try Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
 
     <div class="employers">
         <div><h3>Employers</h3></div>

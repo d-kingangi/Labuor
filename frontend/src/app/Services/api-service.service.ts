@@ -118,11 +118,7 @@ export class ApiServiceService {
 }
 
   getAllJobsByIndustry(industryId: string){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`)
   }
 
   getJobsByEmployer(orgId: string){

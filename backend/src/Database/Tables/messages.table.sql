@@ -4,8 +4,8 @@ CREATE TABLE messages (
     talentId VARCHAR(255),
     content TEXT,
     timestamp DATETIME,
-    FOREIGN KEY (orgId) REFERENCES Employers(orgId),
-    FOREIGN KEY (talentId) REFERENCES Talents(talentId)
+    FOREIGN KEY (orgId) REFERENCES employers(orgId),
+    FOREIGN KEY (talentId) REFERENCES talents(talentId)
 );
 
 -- DROP TABLE Messages
