@@ -1,5 +1,18 @@
 <app-navbar></app-navbar>
 
-<div>
-    
+<div class="main">
+    <div class="title">
+        <h2>Profile</h2>
+    </div>
+
+    <div *ngIf="talent" >
+        <img src="{{ talent.profileImg }}" alt="Profile Image">
+        <p><strong>Name:</strong> {{ talent.firstname }} {{ talent.lastname }}</p>
+        <p><strong>Email:</strong> {{ talent.email }}</p>
+        <p><strong>Location:</strong> {{ talent.location }}</p>
+        <p><strong>Speciality:</strong> {{ talent.speciality }}</p>
+        <p><strong>Contact:</strong> {{ talent.phone }}</p>
+    </div>
+      
+      
 </div>

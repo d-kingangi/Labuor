@@ -1,4 +1,5 @@
 export interface talent{
+    talentId: string;
     profileImg: string;
     firstname: string;
     lastname: string;
@@ -17,12 +18,16 @@ export interface talentInfoResponse{
 
 export interface talentInfoResponse{
     info:{
-        orgId: string;
-        orgname: string;
+        talentId: string;
+        profileImg: string;
+        firstname: string;
+        lastname: string;
         email: string;
-        logo: string;
         industryId: string;
-        employerWallet: string;
+        speciality: string;
+        talentWallet: string;
+        location: string;
+        phone: string;
         password: string;
     }, 
     error: string

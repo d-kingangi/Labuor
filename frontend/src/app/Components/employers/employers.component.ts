@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 
@@ -22,11 +22,24 @@ export class EmployersComponent {
   isLoading = false;
   error = '';
 
-  constructor(private apiService: ApiServiceService, private router: Router) {
+
+  
+    /**
+   * A description of the entire function.
+   *
+   * @param {ApiServiceService} apiService - description of parameter
+   * @param {Router} router - description of parameter
+   * @return {void} description of return value
+   */
+
+  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,) {
     this.employerInfoResponse = {} as employerInfoResponse;
     this.displayAllEmployers();
   }
 
+    /**
+   * Display all employers and organize them by industry.
+   */
   displayAllEmployers(){
     this.isLoading = true;
     this.error = '';
@@ -64,6 +77,12 @@ export class EmployersComponent {
     )
   }
 
+    /**
+   * A function that navigates to a single employer based on the provided employer ID.
+   *
+   * @param {string} employerId - The ID of the employer to navigate to
+   */
+
   navigateToSingleEmployer(employerId: string){
     console.log('EmployerId:', employerId);
 
@@ -74,7 +93,7 @@ export class EmployersComponent {
         if(res){
           this.employerInfoResponse = res;
           console.log('Employer Info:', this.employerInfoResponse);
-          // this.router.navigate(['/employer', employerId])
+          this.router.navigate(['/employer-profile', employerId])
         } else {
           console.error('Employernot found or an error occurred:', res);
         }      
@@ -83,7 +102,6 @@ export class EmployersComponent {
         console.error('Error fetching employer:', error);
       }
     )
-    
   }
 
 }

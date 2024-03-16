@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
@@ -16,16 +16,23 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces
 export class TalentsComponent {
 
   talents: talent [] = [];
+  talent: talent | null = null; 
   talentInfoResponse: talentInfoResponse;
   talentsByIndustry: { industryId: string; talents: talent[] }[] = [];
   isLoading = false;
   error = '';
+  // talentId: string;
 
   constructor(private apiService: ApiServiceService, private router: Router){
     this.talentInfoResponse = {} as talentInfoResponse;
     this.displayAllTalents();
+    // this.navigateToSingleTalent(talentId);
   }
 
+
+    /**
+   * Display all talents and handle the API response
+   */
   displayAllTalents(): void {
     this.isLoading = true;
     this.error = '';
@@ -63,6 +70,13 @@ export class TalentsComponent {
     );
   }
 
+
+    /**
+   * Navigates to a single talent based on the provided talent ID.
+   *
+   * @param {string} talentId - the ID of the talent to navigate to
+   * @return {void} 
+   */
   navigateToSingleTalent(talentId: string) {
     console.log('Talent ID:', talentId);
 
@@ -71,9 +85,9 @@ export class TalentsComponent {
             console.log('Response:', res);
 
             if (res) {
-                this.talentInfoResponse = res;
+                this.talent = res.info;
                 console.log('Talent:', this.talentInfoResponse);  
-                this.router.navigate(['/talent', talentId]);
+                this.router.navigate(['/talent-profile', talentId]);
             } else {
               console.error('Talent not found or an error occurred:', res);
             }
@@ -83,5 +97,4 @@ export class TalentsComponent {
         }
     );
   }
-
 }
