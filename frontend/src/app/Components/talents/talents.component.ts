@@ -81,11 +81,11 @@ export class TalentsComponent {
     console.log('Talent ID:', talentId);
 
     this.apiService.getSingleTalent(talentId).subscribe(
-        (res: talent) => {
+        (res: talentInfoResponse) => {
             console.log('Response:', res);
 
             if (res) {
-                this.talent = res;
+                this.talent = res.info;
                 console.log('Talent:', this.talentInfoResponse);  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {
@@ -97,5 +97,4 @@ export class TalentsComponent {
         }
     );
   }
-
 }

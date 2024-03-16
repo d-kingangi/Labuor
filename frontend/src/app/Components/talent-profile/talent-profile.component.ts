@@ -53,9 +53,9 @@ export class TalentProfileComponent {
 
     getSingleTalent(id: string) {
       this.apiService.getSingleTalent(id).subscribe(
-          (res: talent) => {
+          (res: talentInfoResponse) => {
               console.log('Res:',res);
-              this.talent = res; 
+              this.talent = res.info; 
               console.log('Talent here we go:', this.talent.industryId); 
               
               if (res) {
@@ -104,11 +104,11 @@ export class TalentProfileComponent {
     console.log('Talent ID:', talentId);
 
     this.apiService.getSingleTalent(talentId).subscribe(
-        (res: talent) => {
+        (res: talentInfoResponse) => {
             console.log('Response:', res);
 
             if (res) {
-                this.talent = res;
+                this.talent = res.info;
                 console.log('Talent:', this.talentInfoResponse);  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {
