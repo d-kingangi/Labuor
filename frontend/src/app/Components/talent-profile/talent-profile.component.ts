@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
 
 @Component({
@@ -15,6 +15,8 @@ import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces
 
 export class TalentProfileComponent {
 
+  talents: talent [] = [];
+  talent : talent={} as talent
   similarTalents: talent[] = [];
   talentInfoResponse: talentInfoResponse; 
   errorMessage: string = '';
@@ -26,34 +28,49 @@ export class TalentProfileComponent {
    * @param {Router} router - the Router instance
    */
 
-  constructor(private apiService: ApiServiceService, private router: Router){
+  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
     this.talentInfoResponse = {} as talentInfoResponse;
   }
 
+    ngOnInit(){
+      const talentId = this.route.snapshot.paramMap.get('talentId');
+      if (talentId) {
+        this.getSingleTalent(talentId);
+        // this.fetchTalentsByIndustry(this.talent?.industryId);
+      } else {
+        console.error('Talent ID not provided');
+      }
+    }  
 
-    /**
+
+
+     /**
    * Get a single talent information by ID.
    *
    * @param {string} id - The ID of the talent.
    * @return {void} No return value.
    */
 
-  getSingleTalent(id: string) {
-    this.apiService.getSingleTalent(id).subscribe(
-        (res: talentInfoResponse) => {
-            console.log(res);
-
-            if (res) {
-                console.log('Talent details:', res);
-            } else {
-                console.error('Talent not found or an error occurred:', res);
-            }
-        },
-        (error) => {
-            console.error('Error fetching talent:', error);
-        }
-    );
-  }
+    getSingleTalent(id: string) {
+      this.apiService.getSingleTalent(id).subscribe(
+          (res: talent) => {
+              console.log('Res:',res);
+              this.talent = res; 
+              console.log('Talent here we go:', this.talent.industryId); 
+              
+              if (res) {
+                 
+                // console.log('Talent details:', );
+                
+              } else {
+                  console.error('Talent not found or an error occurred:', res);
+              }
+          },
+          (error) => {
+              console.error('Error fetching talent:', error);
+          }
+      );
+    }
 
     /**
    * Fetch talents by industry ID and store similar talents based on the response.
@@ -87,13 +104,13 @@ export class TalentProfileComponent {
     console.log('Talent ID:', talentId);
 
     this.apiService.getSingleTalent(talentId).subscribe(
-        (res: talentInfoResponse) => {
+        (res: talent) => {
             console.log('Response:', res);
 
             if (res) {
-                this.talentInfoResponse = res;
+                this.talent = res;
                 console.log('Talent:', this.talentInfoResponse);  
-                this.router.navigate(['/talent', talentId]);
+                this.router.navigate(['/talent-profile', talentId]);
             } else {
               console.error('Talent not found or an error occurred:', res);
             }

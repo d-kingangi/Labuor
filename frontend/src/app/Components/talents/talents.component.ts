@@ -16,6 +16,7 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces
 export class TalentsComponent {
 
   talents: talent [] = [];
+  talent: talent | null = null; 
   talentInfoResponse: talentInfoResponse;
   talentsByIndustry: { industryId: string; talents: talent[] }[] = [];
   isLoading = false;
@@ -80,11 +81,11 @@ export class TalentsComponent {
     console.log('Talent ID:', talentId);
 
     this.apiService.getSingleTalent(talentId).subscribe(
-        (res: talentInfoResponse) => {
+        (res: talent) => {
             console.log('Response:', res);
 
             if (res) {
-                this.talentInfoResponse = res;
+                this.talent = res;
                 console.log('Talent:', this.talentInfoResponse);  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {

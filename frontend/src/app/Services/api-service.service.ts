@@ -34,7 +34,7 @@ export class ApiServiceService {
     return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent`)}
 
   getSingleTalent(talentId: string){
-    return this.http.get<talentInfoResponse>(`${this.apiUrl}/talent/${talentId}`)}
+    return this.http.get<talent>(`${this.apiUrl}/talent/${talentId}`)}
 
   getTalentsByIndustry(industryId: string){
     return this.http.get<allTalentsResponse>(`${this.apiUrl}/talent/industry/${industryId}`)}

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
@@ -18,8 +19,17 @@ export class EmployerProfileComponent {
     employerInfoResponse: employerInfoResponse;
     errorMessage: string = '';
 
-    constructor(private apiService: ApiServiceService, private router: Router){
+    constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
         this.employerInfoResponse = {} as employerInfoResponse;
+    }
+
+    ngOnInit(){
+        const employerId = this.route.snapshot.paramMap.get('employerId');
+        if (employerId) {
+            this.getSingleEmployer(employerId);
+        } else {
+            console.error('Employer ID not provided');
+        }
     }
 
     getSingleEmployer(id: string) {
@@ -88,7 +98,7 @@ export class EmployerProfileComponent {
                 if (res) {
                   this.employerInfoResponse = res;
                   console.log('Employer:', this.employerInfoResponse);
-                  this.router.navigate(['/employer', employerId]);
+                  this.router.navigate(['/employer-profile', employerId]);
                 } else {
                   console.error('Employer not found or an error occurred:', res);
                 }

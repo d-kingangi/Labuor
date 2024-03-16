@@ -4,6 +4,7 @@ import {v4} from 'uuid';
 import { message } from '../Interfaces/message.interface';
 import { newMessageSchema } from '../Validators/message.validator';
 import { sqlConfig } from '../Config/sql.config';
+import {io} from '../server'
 
 /**
  * Create a message using the provided request body and store it in the database.
@@ -36,6 +37,14 @@ export const createMessage = async (req:Request, res: Response) => {
         .input("timestamp", timestamp)
         .execute('createMessage'))
 
+        io.emit('message', {
+            messageId: id,
+            orgId,
+            talentId,
+            content,
+            timestamp
+        });
+
         return res.json({
             result
         })
@@ -57,3 +66,55 @@ export  const getTalentMessages = async (req:Request, res: Response) => {
         
     }
 }
+
+export const getEmployerMessages = async (req:Request, res: Response) => {
+    try {
+        const employerId = req.params.employerId
+
+        const pool = await mssql.connect(sqlConfig)
+
+        let messages = (await pool.request()
+        .input("employerId", employerId)
+        .execute('getEmployerMessages')).recordset
+
+        res.json({messages})
+
+    } catch (error){
+        res.json({error})
+    }
+}
+
+export const getChatSessionMessages = async(req:Request, res: Response) => {
+    try{
+        const {talentId, employerId} = req.params
+
+        const pool = await mssql.connect(sqlConfig)
+
+        let messages = (await pool.request()
+        .input("talentId", talentId)
+        .input("employerId", employerId)
+        .execute('getChatSessionMessages')).recordset
+
+        res.json({messages})
+    } catch (error){
+        res.json({error})
+    }
+}
+
+export const updateMessageStatus = async (req: Request, res: Response) => {
+    try {
+        const messageId = req.params.messageId;
+        const status = req.body.status; // Assuming status is being sent in the request body
+
+        const pool = await mssql.connect(sqlConfig);
+
+        let result = await pool.request()
+            .input("messageId", messageId)
+            .input("status", status)
+            .execute('updateMessageStatus');
+
+        res.json({ result });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+};
