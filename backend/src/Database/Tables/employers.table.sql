@@ -6,9 +6,14 @@ CREATE TABLE employers (
     industryId VARCHAR(255),
     employerWallet VARCHAR(255) ,
     password VARCHAR(255),
+    isWelcomed BIT DEFAULT 0,
+    isVerified BIT DEFAULT 0,
     FOREIGN KEY (industryId) REFERENCES industry(industryId)
 );
 
 DELETE FROM employers
 
 SELECT * FROM employers
+
+ALTER TABLE employers ADD isWelcomed BIT DEFAULT 0
+ALTER TABLE employers ADD isVerified BIT DEFAULT 0
