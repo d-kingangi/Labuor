@@ -21,7 +21,7 @@
 }
 
 .input-div {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .input-div input {
@@ -31,6 +31,14 @@
     border-bottom: 1px solid black;
 }
 
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 40px;
+}
 
 .email-err {
     color: red; 
@@ -54,5 +62,18 @@
     background-color: #00a1ff; 
     color: #fff; 
     cursor: pointer;
+}
+
+.image-container {
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center; 
+}
+
+.image-container img {
+    max-width: 80%; 
+    height: auto;
+    margin-left: auto;
+    margin-right: auto; 
 }
 
