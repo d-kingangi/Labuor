@@ -27,7 +27,8 @@
     "socket.io": "^4.7.4",
     "speakeasy": "^2.0.0",
     "supertest": "^6.3.4",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "viem": "^2.8.11"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

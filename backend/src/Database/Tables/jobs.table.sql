@@ -17,4 +17,6 @@ CREATE TABLE jobs (
 ALTER TABLE jobs 
 ADD applicants TEXT
 
--- SELECT * FROM jobs
+DELETE FROM jobs
+
+SELECT * FROM jobs

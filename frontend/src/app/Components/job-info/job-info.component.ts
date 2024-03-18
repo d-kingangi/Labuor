@@ -44,13 +44,10 @@ export class JobInfoComponent {
   getSingleJob(id: string) {
     this.apiService.getSingleJob(id).subscribe(
       (res: jobInfoResponse) => {
+        res.job.forEach((job)=>{
+          this.job = job
+        })
         console.log(res);
-
-        if (res) {
-          console.log('Job details:', res);
-        } else {
-          console.error('Job not found or an error occurred:', res);
-        }
       },
       (error) => {
         console.error('Error fetching job:', error);

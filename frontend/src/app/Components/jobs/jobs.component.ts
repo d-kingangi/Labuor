@@ -16,7 +16,8 @@ import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.inte
 export class JobsComponent {
 
   jobs: job [] = [];
-  jobInfoResponse: jobInfoResponse;
+  job: job | null = null;
+  jobInfoResponse = {} as jobInfoResponse
   jobsByIndustry: { industryId: string; jobs: job[] }[] = [];
   isLoading = false;
   error = '';
@@ -47,6 +48,7 @@ export class JobsComponent {
       (res: { jobs: job[] }) => {
         
         if (res && Array.isArray(res.jobs)) {
+          
           res.jobs.forEach((job: job) => {
             const industryIndex = this.jobsByIndustry.findIndex(
               (industry) => industry.industryId === job.industryId
@@ -88,9 +90,9 @@ export class JobsComponent {
         console.log('Response:', res);
 
         if (res) {
-          this.jobInfoResponse = res;
+          res.job.forEach((job)=>{this.job = job})
           console.log('Job details:', this.jobInfoResponse);
-          this.router.navigate(['/job', jobId]);
+          this.router.navigate(['/job-info', jobId]);
         } else {
           console.error('Job not found or an error occurred:', res);
         }

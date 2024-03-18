@@ -17,7 +17,8 @@ export interface talentInfoResponse{
 }
 
 export interface talentInfoResponse{
-    info:{
+    talent: [
+        {
         talentId: string;
         profileImg: string;
         firstname: string;
@@ -29,9 +30,11 @@ export interface talentInfoResponse{
         location: string;
         phone: string;
         password: string;
-    }, 
+    }
+], 
     error: string
 }
+
 
 export interface allTalentsResponse{
     talents:[

@@ -6,7 +6,7 @@ const jobRouter = Router()
 
 jobRouter.post('/', createJob)
 jobRouter.get('/:id', getSingleJob)
-jobRouter.get('/:industryId', getAllJobsByIndustry)
+jobRouter.get('/industry/:industryId', getAllJobsByIndustry)
 jobRouter.get('/:orgId', getJobsByEmployer)
 jobRouter.get('/', getEveryJob)
 jobRouter.put('/:id', verifyToken, updateJob)

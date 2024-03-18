@@ -73,15 +73,19 @@ export const getEveryJob = async (req: Request, res: Response) => {
 
 export const getAllJobsByIndustry = async (req: Request, res: Response) => {
     try {
-        const id = req.params.id;
+        const id = req.params.industryId;
+
+        // console.log("Industry ID:", id)
 
         const pool = await mssql.connect(sqlConfig)
 
-        let jobs = (await pool.request()).input("industryId", id).execute('getAllJobsByIndustry');
+        const result = (await pool.request()
+            .input("industryId", id)
+            .execute('getAllJobsByIndustry')).recordset;
 
-        return res.json({
-            jobs
-        })
+        let jobs = result
+
+        return res.json({ jobs });
     } catch (error) {
         return res.json({error})
     }
@@ -99,7 +103,7 @@ export const getJobsByEmployer = async (req: Request, res: Response) => {
             jobs
         })
     } catch (error) {
-        
+        return res.json({error})
     }
 }
 
@@ -110,8 +114,12 @@ export const getSingleJob = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig)
 
         let job = (await pool.request().input("jobId", id).execute('getSingleJob')).recordset;
+
+        return res.json({
+            job
+        })
     } catch (error) {
-        
+        return res.json({error})
     }
 }
 
@@ -154,6 +162,10 @@ export const deleteJob = async (req: Request, res: Response) => {
         let result = (await pool.request()
         .input("jobId", mssql.VarChar, id)
         .execute('updateJob')).rowsAffected
+
+        return res.json({
+            message: "Job deleted successfully"
+        })
 
     }catch (error) {
         return res.json({error})

@@ -21,10 +21,10 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     { path: 'employers', component: EmployersComponent},
     { path: 'talents', component: TalentsComponent},
+    {path: 'jobs', component: JobsComponent},
     { path: 'talent-profile/:talentId', component: TalentProfileComponent},
     {path: 'employer-profile/:employerId', component: EmployerProfileComponent},
-    {path: 'job-info', component: JobInfoComponent},
-    {path: 'jobs', component: JobsComponent},
+    {path: 'job-info/:jobId', component: JobInfoComponent},
     // {path: 'chats', component: ChatsComponent},
     { path: '**', component: NotFoundComponent},
 ];

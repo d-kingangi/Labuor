@@ -6,7 +6,7 @@ const talentRouter = Router()
 
 talentRouter.post('/', createTalent)
 talentRouter.get('/:id', getSingleTalent)
-talentRouter.get('/:industryId', getTalentsPerIndustry)
+talentRouter.get('/industry/:industryId', getTalentsPerIndustry)
 talentRouter.get('/', getAllTalents)
 talentRouter.put('/:id',verifyToken, updateTalent)
 talentRouter.delete('/:id', verifyToken, deleteTalent)
