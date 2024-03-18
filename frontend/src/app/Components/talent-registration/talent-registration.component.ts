@@ -7,11 +7,12 @@ import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../../Interfaces/industry.interface';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { error } from 'console';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-talent-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, NavbarComponent],
   templateUrl: './talent-registration.component.html',
   styleUrl: './talent-registration.component.css'
 })

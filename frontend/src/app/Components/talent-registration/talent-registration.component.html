@@ -1,39 +1,31 @@
+
+<app-navbar></app-navbar>
+
 <div class="body">
-    
-<div class="container">
-    <div class="form-container">
-      <h1>Join Labour</h1>
+  <!-- <h3>Join Labour</h3> -->
+  <div class="container">
+    <form class="form-container" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">
+      
       <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
-      <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
-      <form class="" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">
+      <div *ngIf="successDiv" class="success-message">{{successMsg}}</div>
+
+      <!-- <div class="form-group">
+        <label for="profile-image">Profile Image</label>
+        <input type="file" id="profile-image" name="profile-image">
+      </div> -->
+
+      <div class="form-container-left">
         <div class="form-group">
-          <label for="profile-image">Profile Image</label>
-          <input type="file" id="profile-image" name="profile-image">
-        </div>
-        <div class="form-group">
-          <label for="firstname">Firstname</label>
-          <input type="text" id="firstname" name="firstname" formControlName="firstname">
+          <input type="text" id="firstname" name="firstname" formControlName="firstname" placeholder="Firstname">
           <div class="fname-error" id="error" *ngIf="registerTalentForm.get('firstname')?.invalid && registerTalentForm.get('firstname')?.touched && !registerTalentForm.get('firstName')?.dirty">This is required</div>
         </div>
         <div class="form-group">
-          <label for="lastname">Lastname</label>
-          <input type="text" id="lastname" name="lastname" formControlName="lastname">
-          <div class="lname-error" id="error" *ngIf="registerTalentForm.get('lastname')?.invalid && registerTalentForm.get('lastname')?.touched && !registerTalentForm.get('lastname')?.dirty">This is required</div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" formControlName="email">
+          <input type="email" id="email" name="email" formControlName="email" placeholder="Email">
           <div class="email-error" id="error" *ngIf="registerTalentForm.get('email')?.invalid && registerTalentForm.get('email')?.touched && !registerTalentForm.get('email')?.dirty">This is required</div>
         </div>
         <div class="form-group">
-          <label for="industry">Industry</label>
-          <select id="industry" name="industry" formControlName="industry">
-            <option *ngFor="let industry of industries; let i = index" value="{{ industry.industryId }}">{{ industry.industryName }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="location">Location</label>
-          <select id="location" name="location" formControlName="location">
+          <select id="location" name="location" formControlName="location" >
+            <option value="" disabled selected>Location</option>
             <option value="Cairo">Cairo, Egypt</option>
             <option value="Lagos">Lagos, Nigeria</option>
             <option value="Nairobi">Nairobi, Kenya</option>
@@ -52,25 +44,36 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="skills">Skills</label>
-          <input type="text" id="skills" name="skills">
+          <input type="tel" id="phone" name="phone" placeholder="Phone">
+        </div>
+      </div>
+
+      <div class="form-container-right">
+        <div class="form-group">
+          <input type="text" id="lastname" name="lastname" formControlName="lastname" placeholder="Lastname">
+          <div class="lname-error" id="error" *ngIf="registerTalentForm.get('lastname')?.invalid && registerTalentForm.get('lastname')?.touched && !registerTalentForm.get('lastname')?.dirty">This is required</div>
         </div>
         <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone">
+          <select id="industry" name="industry" formControlName="industry" >
+            <option value="" disabled selected>Industry</option>
+            <option *ngFor="let industry of industries; let i = index" value="{{ industry.industryId }}" placeholder="Industry">{{ industry.industryName }}</option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password">
+          <input type="text" id="skills" name="skills" placeholder="Skills">
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="Password">
           <div class="pass-error" id="error" *ngIf="registerTalentForm.get('password')?.invalid && registerTalentForm.get('password')?.touched && !registerTalentForm.get('password')?.dirty">Password is required</div>
         </div>
-        <div class="action">
-          <input type="submit" value="Continue" class="submit-btn">
-          <button type="submit">Register</button>
-          <button type="button">Cancel</button>
-        </div>
-      </form>
-    </div>
+      </div>
+
+      <div class="action">
+        <input type="submit" value="Continue" class="submit-btn">
+      </div>
+      
+    </form>
+
     <div class="illustration-container">
       <img src="../../../assets/high-4.jpeg" alt="Illustration of a person working on a laptop">
     </div>

@@ -1,10 +1,9 @@
 .body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
+    background-color: #fff;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 80vh;
   }
   
   .container {
@@ -12,28 +11,42 @@
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    width: 80vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
   }
   
   .form-container {
-    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    grid-gap: 20px; 
     padding: 20px;
+    align-items: start; 
   }
   
   .form-container h1 {
-    text-align: center;
-    color: #333;
+    grid-column: 1 / span 2; 
   }
   
-  .form-group {
-    margin-bottom: 20px;
+  .form-container-left,
+  .form-container-right {
+    align-items: center; 
+  }
+
+  .form-container-right .form-group input,
+  .form-container-right .form-group select,
+  .form-container-left .form-group input,
+  .form-container-left .form-group select {
+    margin-top: 40px;
+    width: 80%;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid black;
   }
   
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
   
   #profile-image {
     width: 100%;
@@ -63,30 +76,53 @@
     background-color: #f44336;
   }
 
+    .email-err {
+      color: red; 
+  }
   
-#error {
-  color: red;
-}
+  #error {
+    color: red;
+  }
 
-.error-message {
-  color: #721c24;
-  background-color: #f8d7da;
-  padding: 10px;
-  border: 1px solid #f5c6cb;
-  border-radius: 5px;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-}
+  .error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+  }
 
-.success-message {
-  width: 100%;
-  position: fixed;
-  text-align: center;
-  color: #155724;
-  background-color: #d4edda;
-  padding: 10px;
-  border: 1px solid #c3e6cb;
-  border-radius: 5px;
-}
+  .success-message {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    color: #155724;
+    background-color: #d4edda;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+  }
+
+  .action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit-btn {
+    background-color: dodgerblue;
+    color: white; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+  }
+
+  
+  .submit-btn:hover {
+    background-color: #0073e6; 
+  }
+  
   
