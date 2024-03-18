@@ -10,9 +10,14 @@ CREATE TABLE talents (
     location VARCHAR(255),
     phone VARCHAR(255),
     password VARCHAR(255),
+    isWelcomed BIT DEFAULT 0,
+    isVerified BIT DEFAULT 0,
     FOREIGN KEY (industryId) REFERENCES industry(industryId)
 );
 
+
+ALTER TABLE talents ADD isWelcomed BIT DEFAULT 0
+ALTER TABLE talents ADD isVerified BIT DEFAULT 0
 
 -- DROP TABLE Talents
 -- SELECT * FROM talents

@@ -119,8 +119,7 @@ export const getTalentsPerIndustry = async (req: Request, res: Response) => {
         })
     } catch (error) {
         return res.json({error})
-    }
-    
+    }   
 }
 
 /**

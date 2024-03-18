@@ -1,6 +1,6 @@
 --gets jobs within the industry by industryId
 
-CREATE OR ALTER PROCEDURE GetAllJobsByIndustry
+CREATE OR ALTER PROCEDURE getAllJobsByIndustry
     @industryId VARCHAR(255)
 AS
 BEGIN
@@ -32,3 +32,5 @@ BEGIN
     WHERE
         jobs.industryId = @industryId;
 END;
+
+

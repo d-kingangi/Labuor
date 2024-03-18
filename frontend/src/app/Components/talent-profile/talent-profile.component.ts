@@ -36,7 +36,7 @@ export class TalentProfileComponent {
       const talentId = this.route.snapshot.paramMap.get('talentId');
       if (talentId) {
         this.getSingleTalent(talentId);
-        // this.fetchTalentsByIndustry(this.talent?.industryId);
+        this.fetchTalentsByIndustry(this.talent?.industryId);
       } else {
         console.error('Talent ID not provided');
       }
@@ -54,17 +54,10 @@ export class TalentProfileComponent {
     getSingleTalent(id: string) {
       this.apiService.getSingleTalent(id).subscribe(
           (res: talentInfoResponse) => {
-              console.log('Res:',res);
-              this.talent = res.info; 
-              console.log('Talent here we go:', this.talent.industryId); 
+              res.talent.forEach((talent) =>{
+                this.talent = talent
+              });
               
-              if (res) {
-                 
-                // console.log('Talent details:', );
-                
-              } else {
-                  console.error('Talent not found or an error occurred:', res);
-              }
           },
           (error) => {
               console.error('Error fetching talent:', error);
@@ -108,7 +101,8 @@ export class TalentProfileComponent {
             console.log('Response:', res);
 
             if (res) {
-                this.talent = res.info;
+              res.talent.forEach((talent)=>{this.talent = talent})
+                // this.talent = res.talent;
                 console.log('Talent:', this.talentInfoResponse);  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {

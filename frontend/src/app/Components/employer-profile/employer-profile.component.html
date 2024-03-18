@@ -1,12 +1,36 @@
 
 <app-navbar></app-navbar>
 
-<div>
-    <div>
-        <h2>Profile</h2>
+<div class="main">
+    <div *ngIf="employer" class="employer-container">
+        <h2>Employer Details</h2>
+        <div class="image-container">
+          <img [src]="employer.logo" alt="Employer Logo">
+        </div>
+        <div class="details-container">
+          <p><strong>Organization ID:</strong> {{ employer.orgId }}</p>
+          <p><strong>Organization Name:</strong> {{ employer.orgname }}</p>
+          <p><strong>Email:</strong> {{ employer.email }}</p>
+          <p><strong>Industry ID:</strong> {{ employer.industryId }}</p>
+          <p><strong>Employer Wallet:</strong> {{ employer.employerWallet }}</p>
+        </div>
+      </div>
+
+    <div class="more-jobs">
+        <div>
+            <h3>Jobs from this employer</h3>
+        </div>
+        <div>
+
+        </div>
     </div>
 
     <div>
-        
+        <div>
+            <h3>More employers like this</h3>
+        </div>
+        <div>
+
+        </div>
     </div>
 </div>

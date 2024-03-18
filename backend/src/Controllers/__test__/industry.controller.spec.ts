@@ -36,9 +36,6 @@ describe('getAllIndustries', () => {
       const req: Request = {} as Request;
       const res: Response = { json: jest.fn(), status: jest.fn().mockReturnThis() } as unknown as Response;
   
-      // Mock the database or pool interaction to return a specific set of industries
-      // This depends on the testing framework and database interaction library being used
-  
       await getAllIndustries(req, res);
   
       expect(res.status).toHaveBeenCalledWith(200);
@@ -50,10 +47,7 @@ describe('getAllIndustries', () => {
     it('should handle errors by returning an error response', async () => {
       const req: Request = {} as Request;
       const res: Response = { json: jest.fn(), status: jest.fn().mockReturnThis() } as unknown as Response;
-  
-      // Mock the database or pool interaction to throw an error
-      // This depends on the testing framework and database interaction library being used
-  
+
       await getAllIndustries(req, res);
   
       expect(res.json).toHaveBeenCalledWith({ error: /* Expected error message or object */ });

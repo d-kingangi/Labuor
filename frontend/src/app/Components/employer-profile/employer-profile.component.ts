@@ -15,6 +15,8 @@ import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.inte
 })
 export class EmployerProfileComponent {
 
+    employers: employer [] =[];
+    employer : employer = {} as employer;
     similarEmployer: employer[] = [];
     employerInfoResponse: employerInfoResponse;
     errorMessage: string = '';
@@ -36,12 +38,10 @@ export class EmployerProfileComponent {
         this.apiService.getSingleEmployer(id).subscribe(
             (res: employerInfoResponse) => {
                 console.log(res);
-
-                if (res) {
-                    console.log('Employer details:', res);
-                } else {
-                    console.error('Employer not found or an error occurred:', res);
-                }
+                
+                res.employer.forEach((employer) => {
+                    this.employer = employer;
+                })
             },
             (error) => {
                 console.error('Error fetching employer:', error);

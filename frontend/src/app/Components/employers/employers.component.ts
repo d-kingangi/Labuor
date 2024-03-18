@@ -17,7 +17,8 @@ import { employer, employerInfoResponse, allEmployersResponse } from '../../Inte
 export class EmployersComponent {
 
   employers: employer[] =[];
-  employerInfoResponse: employerInfoResponse;
+  employer: employer | null = null;
+  employerInfoResponse= {} as employerInfoResponse;
   employersByIndustry: { industryId: string; employers: employer[] }[] = [];
   isLoading = false;
   error = '';
@@ -33,7 +34,6 @@ export class EmployersComponent {
    */
 
   constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,) {
-    this.employerInfoResponse = {} as employerInfoResponse;
     this.displayAllEmployers();
   }
 
@@ -83,19 +83,19 @@ export class EmployersComponent {
    * @param {string} employerId - The ID of the employer to navigate to
    */
 
-  navigateToSingleEmployer(employerId: string){
-    console.log('EmployerId:', employerId);
+  navigateToSingleEmployer(orgId: string){
+    console.log('EmployerId:', orgId);
 
-    this.apiService.getSingleEmployer(employerId).subscribe(
+    this.apiService.getSingleEmployer(orgId).subscribe(
       (res: employerInfoResponse) => {
         console.log('Response:', res);
 
         if(res){
-          this.employerInfoResponse = res;
+          res.employer.forEach((employer)=>{ this.employer = employer })
           console.log('Employer Info:', this.employerInfoResponse);
-          this.router.navigate(['/employer-profile', employerId])
+          this.router.navigate(['/employer-profile', orgId])
         } else {
-          console.error('Employernot found or an error occurred:', res);
+          console.error('Employer not found or an error occurred:', res);
         }      
       }, 
       (error) =>{

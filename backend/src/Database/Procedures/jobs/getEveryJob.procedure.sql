@@ -67,3 +67,39 @@ SELECT
     JOIN
         employers ON 1 = 1;
 END;
+
+
+-- CREATE OR ALTER PROCEDURE getEveryJob
+-- AS
+-- BEGIN
+--     SELECT
+--         jobs.jobId,
+--         jobs.jobname,
+--         jobs.orgId,
+--         employers.orgname AS employerName,
+--         jobs.industryId,
+--         industry.industryName AS industryName,
+--         CAST(jobs.description AS VARCHAR(MAX)) AS description,
+--         jobs.duration,
+--         jobs.startdate,
+--         jobs.salary,
+--         jobs.talentId,
+--         talents.firstname AS talentFirstName,
+--         talents.lastname AS talentLastName
+--     FROM
+--         jobs
+--     JOIN
+--         employers ON jobs.orgId = employers.orgId
+--     JOIN
+--         industry ON jobs.industryId = industry.industryId
+--     LEFT JOIN
+--         talents ON jobs.talentId = talents.talentId
+--     WHERE
+--         jobs.jobname IS NOT NULL OR
+--         jobs.description IS NOT NULL OR
+--         jobs.duration IS NOT NULL OR
+--         jobs.startdate IS NOT NULL OR
+--         jobs.salary IS NOT NULL OR
+--         talents.firstname IS NOT NULL OR
+--         talents.lastname IS NOT NULL;
+-- END;

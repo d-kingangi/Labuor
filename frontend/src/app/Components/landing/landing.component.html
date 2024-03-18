@@ -40,7 +40,7 @@
                 <p>Benefits include bonuses for Customers, while providing reduced fees, priority placement and visual highlighting in search results for Freelancers – putting them in prime position to win more work, and earn a higher income.</p>
             </div>
             <div class="button-container">
-                <button class="reg-btn">Register</button>
+                <button class="reg-btn" routerLink="">Register</button>
             </div>
         </div>
         <div>
@@ -51,20 +51,44 @@
 
     <div class="jobs">
         <div><h3>Jobs</h3></div>
+        <div><h5>Find remote jobs, get paid working wherever, whenever</h5></div>
         <div class="job-grid" *ngIf="jobs.length > 0">
           <div class="job-card" *ngFor="let job of jobs | slice:0:3">
             <div>
-              <p><b>Name:</b> {{ job.jobname }}</p>
-              <p><b>Industry:</b> {{ job.industryId }}</p>
-              <p><b>Description:</b> {{ job.description }}</p>
-              <p><b>Duration:</b> {{ job.duration }}</p>
-              <p><b>Start Date:</b> {{ job.startdate }}</p>
-              <p><b>Salary:</b> {{ job.salary }}</p>
+                <!-- <p><b>Job ID:</b> {{ job?.jobId }}</p> -->
+                <p><b>Job Name:</b> {{ job?.jobname }}</p>
+                <!-- <p><b>Organization ID:</b> {{ job?.orgId }}</p> -->
+                <p><b>Employer Name:</b> {{ job?.employerName }}</p>
+                <!-- <p><b>Industry ID:</b> {{ job?.industryId }}</p> -->
+                <p><b>Industry Name:</b> {{ job?.industryName }}</p>
+                <p><b>Description:</b> {{ job?.description }}</p>
+                <p><b>Duration:</b> {{ job?.duration }}</p>
+                <p><b>Start Date:</b> {{ job?.startdate | date }}</p>
+                <p><b>Salary:</b> {{ job?.salary | currency }}</p>
+                <!-- <p><b>Talent ID:</b> {{ job?.talentId }}</p> -->
+                <p><b>Talent Name:</b> {{ job?.talentFirstName }}  {{ job?.talentLastName }}</p>
+                
               <div class="button-container">
                 <button class="job-btn">View job</button>
               </div>
             </div>
           </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="banner">
+        <div>
+            <div class="banner-1">
+                Get started for free
+            </div>
+            <div class="banner-2">
+                <div>Find employer from all over the world. Find remote work on Labour</div>
+            </div>
+            <div class="button-container">
+                <button class="try-btn"> Try Now </button>
+            </div>
         </div>
     </div>
 
@@ -84,52 +108,45 @@
               <p><b>Phone:</b> {{ talent.phone }}</p>
               <!-- Add more details as needed -->
               <div class="button-container">
-                <button class="profile-btn">Profile</button>
+                <button class="profile-btn" (click)="navigateToSingleTalent(talent.talentId)">Profile</button>
               </div>
             </div>
           </div>
         </div>
     </div>
 
-    <hr>
-
-    <div class="banner">
-        <div>
-            <div class="banner-1">
-                Get started for free
-            </div>
-            <div class="banner-2">
-                <div>Find employer from all over the world. Find remote work on Labour</div>
-            </div>
-            <div class="button-container">
-                <button class="try-btn">
-                    Try Now
-                </button>
-            </div>
-        </div>
-    </div>
 
     <hr>
 
     <div class="employers">
-        <div><h3>Employers</h3></div>
+        <div class="e-title"><h3>Employers</h3></div>
         <div class="employer-grid" *ngIf="employers.length > 0">
-            <div class="employer-card" *ngFor="let employer of employers | slice:0:4">
+            <div class="employer-card" *ngFor="let employer of employers | slice:0:4 ">
                 <div class="employer-image"><img class="employer-img" [src]="employer.logo" alt=""></div>
                 <div class="details-container">
                     <p><b>Name:</b> {{ employer.orgname }}</p>
                     <p><b>Email:</b> {{ employer.email }}</p>
                     <p><b>Industry:</b> {{ employer.industryId }}</p>
                     <div class="button-container">
-                        <button class="profile-btn">Profile</button>
+                        <button class="profile-btn" (click)="navigateToSingleEmployer(employer.orgId)" >Profile</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <hr>
 
     <div class="faq">
-        
+        <div class="faq-title">
+            <h3>FAQ</h3>
+        </div>
+
+        <div class="faq-grid" *ngIf="faqs.length > 0">
+            <div class="faq-card" *ngFor="let faq of faqs">
+                <div class="faq-question">{{ faq.question }}</div>
+                <div class="faq-answer">{{ faq.answer }}</div>
+            </div>
+        </div>
     </div>
 </div>

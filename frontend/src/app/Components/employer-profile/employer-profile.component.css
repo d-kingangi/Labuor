@@ -1,0 +1,32 @@
+.main{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.title{
+    margin: 20px;
+}
+
+.employer-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.image-container {
+    max-width: 350px;
+    height: auto;
+    margin-left: 50px;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.details-container {
+    flex: 1; 
+}

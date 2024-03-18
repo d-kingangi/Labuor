@@ -1,1 +1,30 @@
+<app-navbar></app-navbar>
 
+<div class="main">
+    <div class="title">
+        <h2>Jobs</h2>
+    </div>
+
+    <div class="jobs-container">
+        <div *ngFor="let job of jobsByIndustry" class="industry-group">
+          <!-- <h2>{{ job.industryName }}</h2> -->
+          <div class="job-grid">
+            <div *ngFor="let jobItem of job.jobs" class="job-card">
+              <div class="job-details">
+                <p><b>Job Name:</b> {{ jobItem.jobname }}</p>
+                <p><b>Employer:</b> {{ jobItem.employerName }}</p>
+                <p><b>Description:</b> {{ jobItem.description }}</p>
+                <p><b>Duration:</b> {{ jobItem.duration }}</p>
+                <p><b>Start Date:</b> {{ jobItem.startdate | date }}</p>
+                <p><b>Salary:</b> {{ jobItem.salary | currency }}</p>
+                <p><b>Talent Assigned:</b> {{ jobItem.talentFirstName }} {{ jobItem.talentLastName }}</p>
+                <!-- Add more details as needed -->
+                <div class="button-container">
+                  <button class="profile-btn" (click)="navigateToSingleJob(jobItem.jobId)">View Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

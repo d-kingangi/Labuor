@@ -1,4 +1,5 @@
 export interface employer{
+    orgId: string;
     orgname: string;
     email: string;
     logo: string;
@@ -12,7 +13,7 @@ export interface employerResponse{
 }
 
 export interface employerInfoResponse{
-    info:{
+    employer:[{
         orgId: string;
         orgname: string;
         email: string;
@@ -20,7 +21,7 @@ export interface employerInfoResponse{
         industryId: string;
         employerWallet: string;
         password: string;
-    }, 
+    }], 
     error: string
 }
 

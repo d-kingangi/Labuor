@@ -217,13 +217,15 @@
  
 
 .jobs {
-    height: 80vh;
+    height: 60vh;
     width: 80vw;
     margin-left: auto; 
     margin-right: auto;
   }
 
   .job-grid{
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
@@ -258,12 +260,14 @@
 
   .banner-1{
     font-size: 3rem;
+    font-weight: 600;
     text-align: center;
     color: #3129a4;
     margin-top: 30px;
   }
 
   .banner-2{
+    font-weight: 500;
     font-size: 1.5rem;
     text-align: center;
     color: #3129a4;
@@ -303,10 +307,20 @@
     margin-right: auto;
   }
 
+  .e-title{
+    height: auto;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .employer-grid{
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 20px;
+    height: auto;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .employer-card{
@@ -352,14 +366,85 @@
 
 /* faq */
 
-.faq{
+/* .faq{
     height: 80vh;
     width: 80vw;
     margin-left: auto; 
     margin-right: auto; 
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: auto;
 }
+
+.faq-title {
+  margin-bottom: 20px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; 
+}
+
+.faq-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px; 
+} */
+
+
+.faq {
+  /* max-width: 600px; 
+  margin: 0 auto;
+  padding: 20px; */
+
+  height: 80vh;
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: auto
+}
+
+.faq-title {
+  text-align: center;
+}
+
+.faq-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.faq-answer {
+  padding: 15px;
+  display: none;
+}
+
+.faq-question.active {
+  background-color: #f9a804;
+  color: #fff;
+}
+
+.faq-question.active + .faq-answer {
+  display: block;
+}
+
 
 
   

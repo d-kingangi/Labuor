@@ -1,5 +1,37 @@
 <app-navbar></app-navbar>
 
-<div>
-    
+<div class="main">
+    <div><h2>Job Details</h2></div>
+<hr>
+    <div class="job-details"  *ngIf="job">
+        <p><b>Job Name:</b> {{ job.jobname }}</p>
+        <p><b>Employer:</b> {{ job.employerName }}</p>
+        <p><b>Industry:</b> {{ job.industryName }}</p>
+        <p><b>Description:</b> {{ job.description }}</p>
+        <p><b>Duration:</b> {{ job.duration }}</p>
+        <p><b>Start Date:</b> {{ job.startdate | date }}</p>
+        <p><b>Salary:</b> {{ job.salary | currency }}</p>
+        <p><b>Talent:</b> {{ job.talentFirstName }} {{ job.talentLastName }}</p>
+        <!-- Add more details as needed -->
+    </div>
+<hr>
+    <div><h2>Similar Jobs</h2></div>
+    <div class="job-grid">
+        <div *ngFor="let job of similarJobs" class="job-card">
+            <div class="job-details">
+                <p><b>Job Name:</b> {{ job.jobname }}</p>
+                <p><b>Employer:</b> {{ job.employerName }}</p>
+                <p><b>Industry:</b> {{ job.industryName }}</p>
+                <p><b>Description:</b> {{ job.description }}</p>
+                <p><b>Duration:</b> {{ job.duration }}</p>
+                <p><b>Start Date:</b> {{ job.startdate | date }}</p>
+                <p><b>Salary:</b> {{ job.salary | currency }}</p>
+                <p><b>Talent:</b> {{ job.talentFirstName }} {{ job.talentLastName }}</p>
+                <!-- Add more details as needed -->
+                <div class="button-container">
+                    <button class="profile-btn" (click)="navigateToSingleJob(job.jobId)">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

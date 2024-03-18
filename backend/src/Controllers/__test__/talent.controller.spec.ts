@@ -43,8 +43,6 @@ describe('Talents Controller', () => {
     await getAllTalents(mockRequest as Request, mockResponse as Response);
 
     expect(mockResponse.status).toHaveBeenCalledWith(200);
-    // Add more assertions based on expected response
   });
 
-  // Add similar test cases for getSingleTalent, getTalentsPerIndustry, updateTalent, and deleteTalent functions
 });

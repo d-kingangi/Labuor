@@ -11,6 +11,7 @@ import { TalentsComponent } from './Components/talents/talents.component';
 import { EmployerProfileComponent } from './Components/employer-profile/employer-profile.component';
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { JobsComponent } from './Components/jobs/jobs.component';
+// import { ChatsComponent } from './Components/chats/chats.component';
 
 
 export const routes: Routes = [
@@ -20,10 +21,11 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     { path: 'employers', component: EmployersComponent},
     { path: 'talents', component: TalentsComponent},
+    {path: 'jobs', component: JobsComponent},
     { path: 'talent-profile/:talentId', component: TalentProfileComponent},
     {path: 'employer-profile/:employerId', component: EmployerProfileComponent},
-    {path: 'job-info', component: JobInfoComponent},
-    {path: 'jobs', component: JobsComponent},
+    {path: 'job-info/:jobId', component: JobInfoComponent},
+    // {path: 'chats', component: ChatsComponent},
     { path: '**', component: NotFoundComponent},
 ];
 
