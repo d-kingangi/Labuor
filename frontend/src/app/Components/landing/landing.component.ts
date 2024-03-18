@@ -20,8 +20,9 @@ import { FaqItem }  from '../../Interfaces/faq.interface';
 export class LandingComponent {
 
   talents: talent[] = [];
-  talentInfoResponse: talentInfoResponse;
+  talentInfoResponse = {} as talentInfoResponse;
   jobs: job[] = []
+  job : job | null = null;
   employers: employer []= []
   employerInfoResponse: employerInfoResponse;
   jobInfoResponse: jobInfoResponse;
@@ -37,7 +38,6 @@ export class LandingComponent {
     this.displayTalents();
     this.displayJobs();
     this.displayEmployers()
-    this.talentInfoResponse = {} as talentInfoResponse;
     this.employerInfoResponse = {} as employerInfoResponse;
     this.jobInfoResponse = {} as jobInfoResponse;
   }
@@ -65,8 +65,6 @@ export class LandingComponent {
   displayJobs(){
     this.apiservice.getEveryJob().subscribe((res)=>{
       if(res.jobs){
-        // console.log(res.jobs);
-        
         res.jobs.forEach((job)=>{
           this.jobs.push(job);
         })
@@ -122,26 +120,28 @@ export class LandingComponent {
    *
    * @param {string} employerId - The ID of the employer to navigate to
    */
-  // navigateToSingleEmployer(employerId: string){
-  //   console.log('EmployerId:', employerId);
 
-  //   this.apiservice.getSingleEmployer(employerId).subscribe(
-  //     (res: employerInfoResponse) => {
-  //       console.log('Response:', res);
+  
+  navigateToSingleEmployer(employerId: string){
+    console.log('EmployerId:', employerId);
 
-  //       if(res){
-  //         this.employerInfoResponse = res;
-  //         console.log('Employer Info:', this.employerInfoResponse);
-  //         this.router.navigate(['/employer-profile', employerId])
-  //       } else {
-  //         console.error('Employernot found or an error occurred:', res);
-  //       }      
-  //     }, 
-  //     (error) =>{
-  //       console.error('Error fetching employer:', error);
-  //     }
-  //   )
-  // }
+    this.apiservice.getSingleEmployer(employerId).subscribe(
+      (res: employerInfoResponse) => {
+        console.log('Response:', res);
+
+        if(res){
+          this.employerInfoResponse = res;
+          console.log('Employer Info:', this.employerInfoResponse);
+          this.router.navigate(['/employer-profile', employerId])
+        } else {
+          console.error('Employer not found or an error occurred:', res);
+        }      
+      }, 
+      (error) =>{
+        console.error('Error fetching employer:', error);
+      }
+    )
+  }
 
 
    /**

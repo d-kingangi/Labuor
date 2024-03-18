@@ -17,16 +17,13 @@ export class TalentsComponent {
 
   talents: talent [] = [];
   talent: talent | null = null; 
-  talentInfoResponse: talentInfoResponse;
+  talentInfoResponse = {} as talentInfoResponse
   talentsByIndustry: { industryId: string; talents: talent[] }[] = [];
   isLoading = false;
   error = '';
-  // talentId: string;
 
   constructor(private apiService: ApiServiceService, private router: Router){
-    this.talentInfoResponse = {} as talentInfoResponse;
     this.displayAllTalents();
-    // this.navigateToSingleTalent(talentId);
   }
 
 
@@ -85,7 +82,8 @@ export class TalentsComponent {
             console.log('Response:', res);
 
             if (res) {
-                this.talent = res.info;
+              res.talent.forEach((talent)=>{this.talent = talent})
+                // this.talent = res.talent;
                 console.log('Talent:', this.talentInfoResponse);  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { RouterLink, Router, RouterOutlet } from '@angular/router';
+import { RouterLink, Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
 
 @Component({
@@ -15,12 +15,23 @@ import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.inte
 
 export class JobInfoComponent {
 
+  jobs: job [] = [];
+  job: job = {} as job;
   similarJobs: job[] = [];
   jobInfoResponse: jobInfoResponse;
   errorMessage: string = '';
 
-  constructor(private apiService: ApiServiceService, private router: Router) {
+  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute) {
     this.jobInfoResponse = {} as jobInfoResponse;
+  }
+
+  ngOnInit(){
+    const jobId = this.route.snapshot.paramMap.get('jobId');
+    if (jobId) {
+      this.getSingleJob(jobId);
+    } else {
+      console.error('Job ID not provided');
+    }
   }
 
 

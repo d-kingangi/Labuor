@@ -16,7 +16,7 @@
                 <h3>{{ employer.orgname }}</h3>
                 <p>{{employer.industryId}}</p>
                 <div class="button-container">
-                  <button class="profile-btn" >View Profile</button>
+                  <button class="profile-btn" (click)="navigateToSingleEmployer(employer.orgId)" >View Profile</button>
                 </div>
               </div>
             </div>
