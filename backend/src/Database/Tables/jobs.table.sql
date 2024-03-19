@@ -15,7 +15,9 @@ CREATE TABLE jobs (
 );
 
 ALTER TABLE jobs 
-ADD applicants TEXT
+DROP COLUMN applicants 
+
+ALTER TABLE jobs ADD "status" VARCHAR(255) CHECK ("status" IN ('INCOMPLETE', 'COMPLETE'));
 
 DELETE FROM jobs
 

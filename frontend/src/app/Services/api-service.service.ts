@@ -94,14 +94,7 @@ export class ApiServiceService {
     }
   }
 
-  //checkuser details
-  checkUserDetails(token: string){
-    return this.http.get<talentInfoResponse|employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
-      headers: {
-        token
-      }
-    })
-  }
+
 
   //jobs service
   createJob(job: job){

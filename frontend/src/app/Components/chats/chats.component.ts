@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../Services/chat.service';
 import { Observable } from 'rxjs';
 import { message, allMessagesResponse, messageInfoResponse } from '../../Interfaces/message.interface';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-chats',
   standalone: true,
-  imports: [],
+  imports: [ NavbarComponent],
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.css'
 })
@@ -24,7 +25,7 @@ export class ChatsComponent implements OnInit{
   }
 
   loadMessages() {
-    this.messages$ = this.chatService.getAllMessages();
+    this.messages$ = this.chatService.getAllMessages(id: string);
   }
 
   sendMessage(){
@@ -41,5 +42,6 @@ export class ChatsComponent implements OnInit{
       )
     }
   }
+
   
 }

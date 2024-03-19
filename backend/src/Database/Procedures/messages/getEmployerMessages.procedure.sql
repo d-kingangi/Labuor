@@ -1,6 +1,13 @@
-CREATE PROCEDURE getEmployerMessages 
-    @employerId VARCHAR(255)
+CREATE OR ALTER PROCEDURE getEmployerMessages 
+    @orgId VARCHAR(255)
 AS
 BEGIN
-    SELECT * FROM messages WHERE orgId = @employerId;
+    SELECT m.messageId, m.content, m.timestamp, m.isDeleted, m.isRead,
+           t.firstname AS talentFirstname, t.lastname AS talentLastname,
+           e.orgname AS employerOrgname,
+           m.talentId, m.orgId AS orgId
+    FROM messages m
+    LEFT JOIN talents t ON m.talentId = t.talentId
+    LEFT JOIN employers e ON m.orgId = e.orgId
+    WHERE m.orgId = @orgId;
 END;

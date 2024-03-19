@@ -27,6 +27,15 @@ export class AuthServiceService {
     return this.http.post<loginResponse>(`${this.apiUrl}/auth/login`, details)
   }
 
+    //checkuser details
+  checkUserDetails(token: string){
+    return this.http.get<talentInfoResponse|employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
+       headers: {
+        token
+      }
+    })
+  }
+
   registerTalent(talent: talent){
     return this.http.post<talentInfoResponse>(`${this.apiUrl}/talent`, talent)
   }
