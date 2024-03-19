@@ -335,12 +335,13 @@
   }
 
   .employer-image{
-    width: 100px;
+    width: 120px;
     margin-right: 20px;
   }
 
-  .employeer-img{
-    width: 100%;
+  .employer-img{
+    width: 120px;
+    height: auto;
     border-radius: 10px;
   }
 

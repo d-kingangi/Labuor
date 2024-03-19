@@ -75,8 +75,6 @@ export const getAllJobsByIndustry = async (req: Request, res: Response) => {
     try {
         const id = req.params.industryId;
 
-        // console.log("Industry ID:", id)
-
         const pool = await mssql.connect(sqlConfig)
 
         const result = (await pool.request()
@@ -93,7 +91,7 @@ export const getAllJobsByIndustry = async (req: Request, res: Response) => {
 
 export const getJobsByEmployer = async (req: Request, res: Response) => {
     try {
-        const id = req.params.id
+        const id = req.params.orgId
 
         const pool = await mssql.connect(sqlConfig)
 

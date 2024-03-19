@@ -140,14 +140,14 @@ export const updateEmployer = async (req:Request, res: Response) => {
  */
 export const getEmployerPerIndustry = async (req: Request, res: Response) => {
     try {
-        const id = req.params.id
+        const id = req.params.industryId
 
         const pool = await mssql.connect(sqlConfig)
 
-        let talents = (await pool.request().input("industryId", id).execute('getEmployersPerIndustry'))
+        let employers = (await pool.request().input("industryId", id).execute('getEmployersPerIndustry')).recordset
 
         return res.json({
-            talents
+            employers
         })
     } catch (error) {
         return res.json({error})

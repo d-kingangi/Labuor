@@ -74,7 +74,7 @@ export class ApiServiceService {
     return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`)}
 
   getEmployersByIndustry(industryId: string){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`)}
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/industry/${industryId}`)}
 
   updateEmployer(employerId: string, employer: employer){
     return this.http.put<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`, employer), {
@@ -118,7 +118,7 @@ export class ApiServiceService {
 }
 
   getAllJobsByIndustry(industryId: string){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`)
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/industry/${industryId}`)
   }
 
   getJobsByEmployer(orgId: string){

@@ -46,8 +46,8 @@ export class JobInfoComponent {
       (res: jobInfoResponse) => {
         res.job.forEach((job)=>{
           this.job = job
+          this.fetchJobsByIndustry(job.industryId);
         })
-        console.log(res);
       },
       (error) => {
         console.error('Error fetching job:', error);
@@ -70,7 +70,6 @@ export class JobInfoComponent {
 
         if (res && Array.isArray(res.jobs)) {
           this.similarJobs = res.jobs.slice(0, 6);
-          console.log('Similar Jobs:', this.similarJobs);
         } else {
           this.errorMessage = 'Unexpected response structure.';
           console.error('Unexpected response structure:', res);
@@ -94,11 +93,9 @@ export class JobInfoComponent {
 
     this.apiService.getSingleJob(jobId).subscribe(
       (res: jobInfoResponse) => {
-        console.log('Response:', res);
 
         if(res){
           this.jobInfoResponse = res;
-          console.log('Job details:', this.jobInfoResponse);
           this.router.navigate(['/job-info', jobId]);
         } else {
           console.error('Job not found or an error occurred:', res);
