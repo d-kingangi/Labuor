@@ -11,7 +11,7 @@ import { application, applicationInfoResponse, allApplicationsResponse } from '.
 })
 
 export class ApiServiceService {
-  private apiUrl = 'http://localhost:3500'
+  private apiUrl = 'http://localhost:3000'
 
   getToken(){
      const token = localStorage.getItem('token') as string
@@ -116,6 +116,10 @@ export class ApiServiceService {
 
   getSingleJob(jobId: string){
     return this.http.get<jobInfoResponse>(`${this.apiUrl}/job/${jobId}`)
+  }
+
+  getJobsForTalent(talentId: string){
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/talent/${talentId}`)
   }
 
   updateJob(jobId: string, job: job){

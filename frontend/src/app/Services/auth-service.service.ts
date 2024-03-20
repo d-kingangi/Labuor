@@ -10,12 +10,12 @@ import { employer, allEmployersResponse, employerInfoResponse } from '../Interfa
 })
 export class AuthServiceService {
 
-  private apiUrl = 'http://localhost:3500';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http:HttpClient) { }
 
   readToken(token:string){
-    return this.http.get<talentInfoResponse|employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
+    return this.http.get<{info:talentInfoResponse|employerInfoResponse}>(`${this.apiUrl}/auth/checkdetails`, {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'token': token
@@ -36,17 +36,6 @@ export class AuthServiceService {
     })
   }
 
-  // checkUserDetails(): Observable<talentInfoResponse | employerInfoResponse> {
-  //   const token = localStorage.getItem('token');
-  //   if (!token) {=
-  //     return of(null);
-  //   }
-  //   return this.http.get<talentInfoResponse | employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
-  //     headers: {
-  //       'Authorization': `Bearer ${token}`
-  //     }
-  //   });
-  // }
 
   registerTalent(talent: talent){
     return this.http.post<talentInfoResponse>(`${this.apiUrl}/talent`, talent)

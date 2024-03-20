@@ -5,6 +5,8 @@ import { AuthServiceService } from '../../Services/auth-service.service';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
 import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
+import {  allApplicationsResponse, application, applicationInfoResponse} from '../../Interfaces/application.interface'
+import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
 
 @Component({
   selector: 'app-talent-dash',
@@ -13,19 +15,37 @@ import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/route
   templateUrl: './talent-dash.component.html',
   styleUrl: './talent-dash.component.css'
 })
+
 export class TalentDashComponent {
 
   talents: talent [] = [];
   talent : talent={} as talent
-  talentInfoResponse: talentInfoResponse; 
+  jobs: job []=[]
+  job: job={} as job
+  // applications: application [] =[]
+  // application: application={} as application
+  application: any | null = null
+  applications: any [] = []
+  talentInfoResponse: talentInfoResponse;
+  jobInfoResponse: jobInfoResponse;
+  applicationInfoResponse: applicationInfoResponse 
   errorMessage: string = '';
 
-  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
+  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute){
     this.talentInfoResponse = {} as talentInfoResponse;
+    this.applicationInfoResponse= {} as applicationInfoResponse
+    this.jobInfoResponse= {} as jobInfoResponse
   }
 
   ngOnInit(){
-
+    const talentId = this.route.snapshot.paramMap.get('talentId');
+      if (talentId) {
+        this.getSingleTalent(talentId);
+        this.getTalentJobs(talentId)
+        this.getTalentApplications(talentId)
+      } else {
+        console.error('Talent ID not provided');
+      }
   }
 
   getSingleTalent(id: string) {
@@ -42,11 +62,29 @@ export class TalentDashComponent {
     );
   }
 
-  getTalentJobs(id: string){
-
+  getTalentJobs(talentId: string){
+    console.log('talentid:', talentId);
+    
+    this.apiService.getJobsForTalent(talentId).subscribe((res)=>{
+      if(res.jobs){
+        console.log('Talents jobs', res.jobs);
+        
+        res.jobs.forEach((job)=>{
+          this.jobs.push(job)
+        })
+      }
+    })
   }
 
-  getTalentApplications(id: string){
-    
+  getTalentApplications(talentId: string){
+    this.apiService.getTalentApplications(talentId).subscribe((res)=>{
+      if(res.applications){
+        console.log('Talent Application', this.applications);
+
+        res.applications.forEach((application)=>{
+          this.applications.push(application)
+        })   
+      }
+    })
   }
 }

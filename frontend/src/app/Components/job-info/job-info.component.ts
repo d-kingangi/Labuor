@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { ApiServiceService } from '../../Services/api-service.service';
+import { AuthServiceService } from '../../Services/auth-service.service';
 import { RouterLink, Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+import { application } from '../../Interfaces/application.interface';
+import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
+import { employer, allEmployersResponse, employerInfoResponse } from '../../Interfaces/employer.interface';
 
 @Component({
   selector: 'app-job-info',
@@ -19,10 +23,14 @@ export class JobInfoComponent {
   job: job = {} as job;
   similarJobs: job[] = [];
   jobInfoResponse: jobInfoResponse;
+  talentInfoResponse: talentInfoResponse
+  employerInfoResponse: employerInfoResponse
   errorMessage: string = '';
 
-  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute) {
+  constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute, private authService: AuthServiceService) {
     this.jobInfoResponse = {} as jobInfoResponse;
+    this.talentInfoResponse= {} as talentInfoResponse;
+    this.employerInfoResponse= {} as employerInfoResponse
   }
 
   ngOnInit(){
@@ -44,6 +52,8 @@ export class JobInfoComponent {
   getSingleJob(id: string) {
     this.apiService.getSingleJob(id).subscribe(
       (res: jobInfoResponse) => {
+        console.log('Job Info Response:', res);
+        
         res.job.forEach((job)=>{
           this.job = job
           this.fetchJobsByIndustry(job.industryId);
@@ -54,6 +64,54 @@ export class JobInfoComponent {
       }
     )
   }
+
+
+  createApplication(jobId: string, orgId: string) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+    console.error('Token not found');
+    return;
+   }
+
+    this.authService.readToken(token).subscribe(
+      (res) => {
+        let talentId: string
+        console.log(res.info);
+        
+        if ('talentId' in res.info) {
+          talentId = res.info.talentId as string;
+          console.log('Talent Id', talentId);
+        } else if ('orgId' in res.info) {
+            talentId = (res.info as employerInfoResponse).employer[0].orgId;
+        } else {
+            console.error('ID not found in response:', res.info);
+            return;
+        }
+
+        const application: application = {
+          jobId: jobId,
+          orgId: orgId,
+          talentId: talentId
+        };
+  
+        this.apiService.createApplication(application).subscribe(
+          (response) => {
+            console.log('Application created successfully:', response);
+          },
+          (error) => {
+            console.error('Error creating application:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error retrieving user details:', error);
+      }
+    );
+  }
+
+
+  
+  
 
     /**
    * Fetches jobs by industry.
@@ -66,7 +124,6 @@ export class JobInfoComponent {
     console.log('Fetching jobs by industry:', industryId);
     this.apiService.getAllJobsByIndustry(industryId).subscribe(
       (res: allJobsResponse) => {
-        console.log('Response:', res);
 
         if (res && Array.isArray(res.jobs)) {
           this.similarJobs = res.jobs.slice(0, 6);
@@ -89,7 +146,7 @@ export class JobInfoComponent {
    */
 
   navigateToSingleJob(jobId: string) {
-    console.log('Job ID:', jobId);
+    // console.log('Job ID:', jobId);
 
     this.apiService.getSingleJob(jobId).subscribe(
       (res: jobInfoResponse) => {

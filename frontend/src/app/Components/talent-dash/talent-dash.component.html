@@ -24,13 +24,65 @@
     <hr>
 
     <div class="jobs">
-
+        <div class="title">
+            <h2>Your Jobs</h2>
+        </div>
+        <table class="job-table" *ngIf="jobs.length > 0">
+            <thead>
+              <tr>
+                <th>Job Name</th>
+                <th>Employer Name</th>
+                <!-- <th>Industry Name</th> -->
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Start Date</th>
+                <th>Salary</th>
+                <!-- <th>Talent Name</th> -->
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let job of jobs" >
+                <td>{{ job?.jobname }}</td>
+                <td>{{ job?.employerName }}</td>
+                <!-- <td>{{ job?.industryName }}</td> -->
+                <td>{{ job?.description }}</td>
+                <td>{{ job?.duration }}</td>
+                <td>{{ job?.startdate | date }}</td>
+                <td>{{ job?.salary | currency }}</td>
+                <!-- <td>{{ job?.talentFirstName }} {{ job?.talentLastName }}</td> -->
+                <!-- <td>{{ job?.status }}</td> -->
+                <td><!-- Add your action button here --></td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 
     <hr>
 
     <div class="applications">
+        <div class="title">
+            <h2>Your Applications</h2>
+        </div>
 
+        <table class="job-table" *ngIf="applications.length > 0">
+            <thead>
+              <tr>
+                <th>Job Name</th>
+                <th>Organization Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let application of applications">
+                <td>{{ application.jobname }}</td>
+                <td>{{ application.employerName }}</td>
+                <td>{{ application.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
     </div>
 
 </div>

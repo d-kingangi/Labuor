@@ -121,6 +121,25 @@ export const getSingleJob = async (req: Request, res: Response) => {
     }
 }
 
+export const getJobsForTalent = async (req: Request, res: Response) => {
+    try {
+        const talentId = req.params.talentId
+
+        const pool = await mssql.connect(sqlConfig)
+
+        let result = (await pool.request()
+        .input("talentId", talentId)
+        .execute('getJobsForTalent')).recordset;
+
+        const jobs = result
+
+        return res.json({jobs})
+
+    } catch (error) {
+        return res.json({ error: 'Internal server error'})
+    }
+}
+
 export const updateJob = async (req: Request, res: Response) => {
     try {
         const id = req.params.id

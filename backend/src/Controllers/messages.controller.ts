@@ -106,7 +106,7 @@ export const getChatSessionMessages = async(req:Request, res: Response) => {
 export const updateMessageStatus = async (req: Request, res: Response) => {
     try {
         const messageId = req.params.messageId;
-        const status = req.body.status; // Assuming status is being sent in the request body
+        const status = req.body.status; 
 
         const pool = await mssql.connect(sqlConfig);
 

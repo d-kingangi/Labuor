@@ -1,18 +1,24 @@
 export interface application{
-    applicationId: string
+    orgId: string
     jobId: string
     talentId: string
-    status: string
-    timestamp: Date
+}
+
+export interface applicationResponse{
+    message: string
 }
 
 export interface applicationInfoResponse{
     application:[{
         applicationId: string
-        jobId: string
-        talentId: string
         status: string
-        timestamp: Date
+        jobId: string
+        jobname: string
+        talentId: string
+        firstname: string
+        lastname: string
+        orgId: string
+        orgname: string
     }]
     error: string
 }
@@ -20,10 +26,14 @@ export interface applicationInfoResponse{
 export interface allApplicationsResponse{
     applications:[{
         applicationId: string
-        jobId: string
-        talentId: string
         status: string
-        timestamp: Date
+        jobId: string
+        jobname: string
+        talentId: string
+        firstname: string
+        lastname: string
+        orgId: string
+        orgname: string
     }]
     error: string
 }
