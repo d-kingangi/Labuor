@@ -14,7 +14,7 @@
         <p><b>Talent:</b> {{ job.talentFirstName }} {{ job.talentLastName }}</p>
         <!-- Add more details as needed -->
         <div class="button-container">
-            <button class="apply-btn">Apply</button>
+            <button class="apply-btn" (click)="createApplication(job.jobId, job.orgId)">Apply</button>
         </div>
     </div>
 <hr>

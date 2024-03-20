@@ -169,11 +169,15 @@ export class LandingComponent {
 
   // FAQ items here
 
+  toggleExpansion(faq: FaqItem): void {
+    faq.expanded = !faq.expanded;
+  }
+
   faqs: FaqItem[] = [
     { 
       question: "What are the benefits of freelancing?", 
       answer: "Because Labour is borderless and global, anyone can apply for a job and get paid, no matter where our Freelancers and Customers are in the world, and regardless of whether they have access to banking services. .", 
-      expanded: false 
+      expanded: true
     },
     { 
       question: "How can I earn on Labour?", 
@@ -200,6 +204,8 @@ export class LandingComponent {
       answer: "Whenever a task is completed and a job payment is made, Labour converts its fee into LABOUR, the native token of the wider labour.tech ecosystem. ",
       expanded: false
     }
+
+    
   ];
 
 }

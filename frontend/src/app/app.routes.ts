@@ -12,6 +12,8 @@ import { EmployerProfileComponent } from './Components/employer-profile/employer
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { JobsComponent } from './Components/jobs/jobs.component';
 // import { ChatsComponent } from './Components/chats/chats.component';
+import { TalentDashComponent } from './Components/talent-dash/talent-dash.component';
+import { EmployerDashComponent } from './Components/employer-dash/employer-dash.component';
 
 
 export const routes: Routes = [
@@ -19,12 +21,14 @@ export const routes: Routes = [
     {path: 'talent-registration', component: TalentRegistrationComponent},
     {path: 'employer-registration', component: EmployerRegistrationComponent},
     {path: 'login', component: LoginComponent},
-    { path: 'employers', component: EmployersComponent},
-    { path: 'talents', component: TalentsComponent},
+    {path: 'employers', component: EmployersComponent},
+    {path: 'talents', component: TalentsComponent},
     {path: 'jobs', component: JobsComponent},
-    { path: 'talent-profile/:talentId', component: TalentProfileComponent},
+    {path: 'talent-profile/:talentId', component: TalentProfileComponent},
     {path: 'employer-profile/:employerId', component: EmployerProfileComponent},
     {path: 'job-info/:jobId', component: JobInfoComponent},
+    {path: 'talent-dashboard/:talentId', component: TalentDashComponent},
+    {path: 'employer-dashboard/:employerId', component: EmployerDashComponent},
     // {path: 'chats', component: ChatsComponent},
     { path: '**', component: NotFoundComponent},
 ];

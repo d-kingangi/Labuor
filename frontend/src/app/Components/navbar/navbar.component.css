@@ -32,15 +32,15 @@ div:nth-child(3) li {
 
 .nav-links li a,
 div:nth-child(3) li a {
-    color: #000; /* Default link color */
-    text-decoration: none; /* Remove default underline */
-    transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition effect */
+    color: #000; 
+    text-decoration: none; 
+    transition: color 0.3s, border-bottom-color 0.3s; 
 }
 
 .nav-links li a:hover,
 div:nth-child(3) li a:hover {
-    color: #f9a804; /* Change link color on hover */
-    border-bottom: 2px solid #f9a804; /* Add underline on hover */
+    color: #f9a804; 
+    border-bottom: 2px solid #f9a804; 
 }
 
 .nav-btn button {
@@ -53,3 +53,12 @@ div:nth-child(3) li a:hover {
     cursor: pointer;
 }
 
+.profile-logo{
+
+}
+
+
+.profile-logo img{
+    width: 30px; 
+    height: auto;
+}

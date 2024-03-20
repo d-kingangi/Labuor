@@ -2,7 +2,7 @@ CREATE OR ALTER PROCEDURE getJobApplications
     @jobId VARCHAR(255)
 AS
 BEGIN
-    SELECT j.jobId, j.jobname, t.talentId, t.firstname, t.lastname, e.orgId, e.orgname
+    SELECT a.applicationId, a.status, j.jobId, j.jobname, t.talentId, t.firstname, t.lastname, e.orgId, e.orgname
     FROM jobs j
     JOIN applications a ON j.jobId = a.jobId
     JOIN talents t ON a.talentId = t.talentId

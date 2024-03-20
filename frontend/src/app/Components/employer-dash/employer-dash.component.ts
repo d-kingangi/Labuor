@@ -6,6 +6,7 @@ import { ApiServiceService } from '../../Services/api-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+import {  allApplicationsResponse, application, applicationInfoResponse} from '../../Interfaces/application.interface'
 
 @Component({
   selector: 'app-employer-dash',
@@ -21,18 +22,30 @@ export class EmployerDashComponent {
     employer : employer = {} as employer;
     jobs: job[] = []
     job : job | null = null;
+    applications: any [] = []
+    application: any | null = null
     employerInfoResponse: employerInfoResponse;
     jobInfoResponse: jobInfoResponse;
+    applicationInfoResponse: applicationInfoResponse
     errorMessage: string = '';
 
     constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
       this.employerInfoResponse = {} as employerInfoResponse;
       this.jobInfoResponse = {} as jobInfoResponse;
+      this.applicationInfoResponse = {} as applicationInfoResponse
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+      const employerId = this.route.snapshot.paramMap.get('employerId');
+        if (employerId) {
+            this.getSingleEmployer(employerId);
+        } else {
+            console.error('Employer ID not provided');
+        }
+    }
 
     getSingleEmployer(id: string) {
+      
       this.apiService.getSingleEmployer(id).subscribe(
           (res: employerInfoResponse) => {
               
@@ -57,5 +70,15 @@ export class EmployerDashComponent {
       })   
     }
 
-    displayJobApplicants(jobId: string){}
+    getJobApplications(jobId: string){
+      this.apiService.getJobApplications(jobId).subscribe((res)=>{
+        if(res.applications){
+          console.log('Applications', this.applications);
+          
+          res.applications.forEach((application)=>{
+            this.applications.push(application);
+          })
+        }
+      })
+    }
 }

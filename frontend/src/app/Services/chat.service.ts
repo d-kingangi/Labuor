@@ -12,7 +12,7 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/ta
 })
 export class ChatService {
 
-  private apiUrl = 'http://localhost:3501'
+  private apiUrl = 'http://localhost:3001'
 
   constructor(private http: HttpClient) { }
 
