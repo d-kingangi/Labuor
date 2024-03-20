@@ -69,7 +69,7 @@
                 <p><b>Talent Name:</b> {{ job?.talentFirstName }}  {{ job?.talentLastName }}</p>
                 
               <div class="button-container">
-                <button class="job-btn">View job</button>
+                <button class="job-btn" (click)="navigateToSingleJob(job.jobId)">View job</button>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@
                 <div class="details-container">
                     <p><b>Name:</b> {{ employer.orgname }}</p>
                     <p><b>Email:</b> {{ employer.email }}</p>
-                    <p><b>Industry:</b> {{ employer.industryId }}</p>
+                    <!-- <p><b>Industry:</b> {{ employer.industryId }}</p> -->
                     <div class="button-container">
                         <button class="profile-btn" (click)="navigateToSingleEmployer(employer.orgId)" >Profile</button>
                     </div>

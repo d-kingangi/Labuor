@@ -13,16 +13,22 @@ import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.inte
   templateUrl: './employer-profile.component.html',
   styleUrl: './employer-profile.component.css'
 })
+
 export class EmployerProfileComponent {
 
     employers: employer [] =[];
     employer : employer = {} as employer;
-    similarEmployer: employer[] = [];
+    // similarEmployer: employer[] = [];
+    jobs: job[] = []
+    job : job | null = null;
+    // jobInfoResponse = {} as jobInfoResponse;
+    jobInfoResponse: jobInfoResponse;
     employerInfoResponse: employerInfoResponse;
     errorMessage: string = '';
 
     constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
         this.employerInfoResponse = {} as employerInfoResponse;
+        this.jobInfoResponse = {} as jobInfoResponse;
     }
 
     ngOnInit(){
@@ -37,10 +43,11 @@ export class EmployerProfileComponent {
     getSingleEmployer(id: string) {
         this.apiService.getSingleEmployer(id).subscribe(
             (res: employerInfoResponse) => {
-                console.log(res);
                 
                 res.employer.forEach((employer) => {
                     this.employer = employer;
+                    this.displayJobsByEmployer(employer.orgId);
+                    this.fetchEmployersByIndustry(employer.industryId)
                 })
             },
             (error) => {
@@ -51,15 +58,14 @@ export class EmployerProfileComponent {
 
     // display jobs by this employer
 
-    displayJobsByEmployer(employerId: string){
-      console.log('Employer ID:', employerId);
-
-      this.apiService.getJobsByEmployer(employerId).subscribe(
-        (res: allJobsResponse) => {
-          console.log('Response:', res);
+    displayJobsByEmployer(orgId: string){
+      this.apiService.getJobsByEmployer(orgId).subscribe((res)=>{
+        if(res.jobs){
+          res.jobs.forEach((job)=>{
+            this.jobs.push(job);
+          })
         }
-      )
-      
+      })   
     }
 
 
@@ -67,38 +73,29 @@ export class EmployerProfileComponent {
     // display similar employers
 
     fetchEmployersByIndustry(industryId: string) {
-        console.log('Fetching employers by industry:', industryId);
-        this.apiService.getEmployersByIndustry(industryId).subscribe(
-            (res: allEmployersResponse) => {
-                console.log('Response:', res);
 
-                if( res && Array.isArray(res.employers)) {
-                    this.similarEmployer = res.employers.slice(0, 6);
-                    console.log('Similar Employer:', this.similarEmployer);
-                } else {
-                    this.errorMessage = 'Unexpected response structure.';
-                    console.error('Unexpected response structure:', res);
-                }
-            },
-            (error) => {
-                this.errorMessage = 'Error fetching similar employers. Please try again.';
-                console.error('Error fetching employers:', error);
-            }
-        )
+        this.apiService.getEmployersByIndustry(industryId).subscribe((res)=>{
+          if(res.employers){
+            
+            res.employers.forEach((employer)=>{
+              this.employers.push(employer);
+            })
+          }
+        })
     }
 
 
-    navigateToSingleEmployer(employerId: string) {
-        console.log('Employer ID:', employerId);
+    navigateToSingleEmployer(orgId: string) {
+        console.log('Employer ID:', orgId);
 
-        this.apiService.getSingleEmployer(employerId).subscribe(
+        this.apiService.getSingleEmployer(orgId).subscribe(
             (res: employerInfoResponse) => {
                 console.log('Response:', res);
 
                 if (res) {
                   this.employerInfoResponse = res;
                   console.log('Employer:', this.employerInfoResponse);
-                  this.router.navigate(['/employer-profile', employerId]);
+                  this.router.navigate(['/employer-profile', orgId]);
                 } else {
                   console.error('Employer not found or an error occurred:', res);
                 }
@@ -108,4 +105,24 @@ export class EmployerProfileComponent {
             }
         )
     }
+
+    navigateToSingleJob(jobId: string){
+        console.log('Job ID:', jobId);
+    
+        this.apiService.getSingleJob(jobId).subscribe(
+          (res: jobInfoResponse) => {
+    
+            if (res) {
+              res.job.forEach((job)=>{this.job = job})
+              this.router.navigate(['/job-info', jobId]);
+            } else {
+              console.error('Job not found or an error occurred:', res);
+            }
+          },
+          (error) => {
+            console.error('Error fetching job:', error);
+          }
+        )
+        
+      }
 }

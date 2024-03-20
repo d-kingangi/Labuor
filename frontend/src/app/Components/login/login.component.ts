@@ -49,30 +49,28 @@ export class LoginComponent {
   constructor( private apiservice: ApiServiceService,private authservice: AuthServiceService, private fb:FormBuilder, private router:Router){
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     })
   }
 
-  loginUser(details: loginDetails){
-    if(this.loginForm.valid){
-      this.authservice.loginUser(details).subscribe(response =>{
+  loginUser(details: loginDetails) {
+    if (this.loginForm.valid) {
+      this.authservice.loginUser(details).subscribe(response => {
         console.log(response);
-        if(response.message){
-          this.apiservice.checkUserDetails(response.token).subscribe((res: any) =>{
-            if (res.info.isAdmin){
-              this.displaySuccess(response.message, 'admin/products', response.token);
-            }
-            else if(!res.info.isAdmin){
-              this.displaySuccess(response.message, '', response.token)
-            } else if(response.error){
-              this.displayErrors(response.error)
-            }
-          })
+        if (response.message) {
+          this.displaySuccess(response.message, '', response.token);
         }
-      })
+      }, error => {
+        console.error('Error:', error);
+        this.displayErrors(error.error);
+      });
     } else {
-      this.displayErrors('Please fill in all the fields')
-
+      this.displayErrors('Please fill in all the fields');
     }
+  }
+  
+
+  resetForm(){
+    this.loginForm.reset()
   }
 }

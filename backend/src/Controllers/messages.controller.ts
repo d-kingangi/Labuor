@@ -35,7 +35,7 @@ export const createMessage = async (req:Request, res: Response) => {
         .input("talentId", talentId)
         .input("content", content)
         .input("timestamp", timestamp)
-        .execute('createMessage'))
+        .execute('createMessage')).rowsAffected
 
         io.emit('message', {
             messageId: id,
@@ -62,19 +62,21 @@ export  const getTalentMessages = async (req:Request, res: Response) => {
         let messages = (await pool.request()
         .input("talentId", talentId)
         .execute('getTalentMessages')).recordset
-    } catch{
-        
+
+        res.json({messages})
+    } catch (error){
+        return res.json({error})
     }
 }
 
 export const getEmployerMessages = async (req:Request, res: Response) => {
     try {
-        const employerId = req.params.employerId
+        const orgId = req.params.orgId
 
         const pool = await mssql.connect(sqlConfig)
 
         let messages = (await pool.request()
-        .input("employerId", employerId)
+        .input("orgId", orgId)
         .execute('getEmployerMessages')).recordset
 
         res.json({messages})
@@ -115,6 +117,6 @@ export const updateMessageStatus = async (req: Request, res: Response) => {
 
         res.json({ result });
     } catch (error) {
-        res.status(500).json({ error });
+        res.json({ error });
     }
 };

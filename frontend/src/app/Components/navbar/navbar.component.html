@@ -11,8 +11,9 @@
         <li><a routerLink="/chats"> Chats</a></li>
     </div>
     <div>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="">Sign-up</a></li>
+        <li><a *ngIf="!isLogged"  routerLink="/login">Login</a></li>
+        <li><a *ngIf="isLogged" (click)="logout()">Logout</a></li>
+        <li><a *ngIf="isLogged" routerLink="">Sign-up</a></li>
     </div>
     <div class="nav-btn">
         <button>

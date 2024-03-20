@@ -6,7 +6,6 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Retrieve details of jobs in the specified industry
     SELECT
         jobs.jobId,
         jobs.jobname,

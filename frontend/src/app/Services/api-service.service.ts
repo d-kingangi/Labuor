@@ -4,6 +4,7 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/ta
 import { employer, allEmployersResponse, employerInfoResponse } from '../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
+import { application, applicationInfoResponse, allApplicationsResponse } from '../Interfaces/application.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +75,7 @@ export class ApiServiceService {
     return this.http.get<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`)}
 
   getEmployersByIndustry(industryId: string){
-    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/${industryId}`)}
+    return this.http.get<allEmployersResponse>(`${this.apiUrl}/employer/industry/${industryId}`)}
 
   updateEmployer(employerId: string, employer: employer){
     return this.http.put<employerInfoResponse>(`${this.apiUrl}/employer/${employerId}`, employer), {
@@ -94,23 +95,11 @@ export class ApiServiceService {
     }
   }
 
-  //checkuser details
-  checkUserDetails(token: string){
-    return this.http.get<talentInfoResponse|employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
-      headers: {
-        token
-      }
-    })
-  }
+
 
   //jobs service
   createJob(job: job){
-    return this.http.post<jobInfoResponse>(`${this.apiUrl}/job`, job),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${this.getToken()}`
-      })
-    }
+    return this.http.post<jobInfoResponse>(`${this.apiUrl}/job`, job)
   }
 
   getEveryJob(){
@@ -118,7 +107,7 @@ export class ApiServiceService {
 }
 
   getAllJobsByIndustry(industryId: string){
-    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/${industryId}`)
+    return this.http.get<allJobsResponse>(`${this.apiUrl}/job/industry/${industryId}`)
   }
 
   getJobsByEmployer(orgId: string){
@@ -159,5 +148,36 @@ export class ApiServiceService {
 
   getAllIndustries(){
     return this.http.get<allIndustriesResponse>(`${this.apiUrl}/industry`)
+  }
+
+  // application services
+  createApplication(application: application){
+    return this.http.post<applicationInfoResponse>(`${this.apiUrl}/application`, application)
+  }
+
+  getJobApplications(jobId: string){
+    return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/job/${jobId}`)
+  }
+
+  getTalentApplications(talentId: string){
+    return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/talent/${talentId}`)
+  }
+
+  updateApplication(applicationId: string, application: application){
+    return this.http.put<applicationInfoResponse>(`${this.apiUrl}/application/${applicationId}`, application), {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    }
+  }
+
+  deleteApplication(applicationId: string){
+    return this.http.delete<applicationInfoResponse>(`${this.apiUrl}/application/${applicationId}`), {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    }
   }
 }

@@ -1,0 +1,65 @@
+.main{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.title{
+    margin: 20px;
+}
+
+.employer-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    max-width: 350px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.details-container {
+    flex: 1; 
+    align-items: center;
+    justify-content: center;
+}
+
+/* .jobs-table{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.job-table {
+    width: 80vw;
+    border-collapse: collapse;
+  }
+  
+  .job-table th,
+  .job-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  .job-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .job-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .job-table tbody tr:nth-child(odd) {
+    background-color: #dbdbdb;
+  }

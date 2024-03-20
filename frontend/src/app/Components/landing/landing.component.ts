@@ -98,11 +98,9 @@ export class LandingComponent {
 
     this.apiservice.getSingleTalent(talentId).subscribe(
         (res: talentInfoResponse) => {
-            console.log('Response:', res);
 
             if (res) {
-                this.talentInfoResponse = res;
-                console.log('Talent:', this.talentInfoResponse);  
+                this.talentInfoResponse = res;  
                 this.router.navigate(['/talent-profile', talentId]);
             } else {
               console.error('Talent not found or an error occurred:', res);
@@ -127,11 +125,9 @@ export class LandingComponent {
 
     this.apiservice.getSingleEmployer(employerId).subscribe(
       (res: employerInfoResponse) => {
-        console.log('Response:', res);
 
         if(res){
           this.employerInfoResponse = res;
-          console.log('Employer Info:', this.employerInfoResponse);
           this.router.navigate(['/employer-profile', employerId])
         } else {
           console.error('Employer not found or an error occurred:', res);
@@ -149,16 +145,14 @@ export class LandingComponent {
    *
    * @param {string} jobId - The ID of the job to navigate to.
    */
-  navigateToSingleJob(jobId: string){
+   navigateToSingleJob(jobId: string){
     console.log('Job ID:', jobId);
 
     this.apiservice.getSingleJob(jobId).subscribe(
       (res: jobInfoResponse) => {
-        console.log('Response:', res);
 
         if (res) {
-          this.jobInfoResponse = res;
-          console.log('Job details:', this.jobInfoResponse);
+          res.job.forEach((job)=>{this.job = job})
           this.router.navigate(['/job-info', jobId]);
         } else {
           console.error('Job not found or an error occurred:', res);

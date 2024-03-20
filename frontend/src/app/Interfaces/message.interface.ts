@@ -6,7 +6,7 @@ export interface message{
 }
 
 export interface messageInfoResponse{
-    info: {
+    message: {
         messageId: string;
         orgId: string;
         talentId: string;
