@@ -14,6 +14,10 @@ export interface job{
     talentLastName: string;
 }
 
+export interface jobInfoResponse {
+    message: string;
+  }
+
 export interface jobInfoResponse{
     job:[{
         jobId: string;

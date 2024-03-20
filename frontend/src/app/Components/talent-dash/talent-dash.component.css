@@ -1,0 +1,25 @@
+.title{
+    margin: 20px;
+}
+
+.talent-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.image-container {
+    max-width: 350px;
+    height: auto;
+    margin-left: 50px;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.details-container {
+    flex: 1; 
+}

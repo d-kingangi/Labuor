@@ -81,5 +81,7 @@ export class TalentRegistrationComponent {
     }
   }
 
-  resetForm(){}
+  resetForm(){
+    this.registerTalentForm.reset()
+  }
 }

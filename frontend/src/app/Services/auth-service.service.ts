@@ -36,6 +36,18 @@ export class AuthServiceService {
     })
   }
 
+  // checkUserDetails(): Observable<talentInfoResponse | employerInfoResponse> {
+  //   const token = localStorage.getItem('token');
+  //   if (!token) {=
+  //     return of(null);
+  //   }
+  //   return this.http.get<talentInfoResponse | employerInfoResponse>(`${this.apiUrl}/auth/checkdetails`, {
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     }
+  //   });
+  // }
+
   registerTalent(talent: talent){
     return this.http.post<talentInfoResponse>(`${this.apiUrl}/talent`, talent)
   }

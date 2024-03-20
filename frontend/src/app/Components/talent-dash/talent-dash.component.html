@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="main">
+    <div class="title">
+        <h2>Dashboard</h2>
+    </div>
+
+    <div *ngIf="talent" class="talent-container">
+        <div class="image-container">
+            <img src="{{ talent.profileImg }}" alt="Profile Image">
+        </div>
+        <div class="details-container">
+            <p><strong>Name:</strong> {{ talent.firstname }} {{ talent.lastname }}</p>
+            <p><strong>Email:</strong> {{ talent.email }}</p>
+            <p><strong>Location:</strong> {{ talent.location }}</p>
+            <p><strong>Speciality:</strong> {{ talent.speciality }}</p>
+            <p><strong>Contact:</strong> {{ talent.phone }}</p>
+            <div class="button-container">
+                <button class="apply-btn">Message</button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="jobs">
+
+    </div>
+
+    <hr>
+
+    <div class="applications">
+
+    </div>
+
+</div>

@@ -45,3 +45,76 @@ export const createApplication = async (req: Request, res: Response) => {
         return res.json({ error });
     }
 }
+
+
+export const getJobApplications = async (req: Request, res: Response) =>{
+    try {
+        const { jobId } = req.params;
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const result = await pool.request()
+            .input("jobId", mssql.VarChar, jobId)
+            .execute('getJobApplications');
+
+        return res.json({
+            applications: result.recordset
+        });
+
+    } catch (error) {
+        return res.json({ error }); 
+    }
+}
+
+export const getTalentApplications = async (req: Request, res: Response) => {
+    try {
+        const { talentId } = req.params;
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const result = await pool.request()
+            .input("talentId", mssql.VarChar, talentId)
+            .execute('getTalentApplications');
+
+        return res.json({
+            applications: result.recordset
+        });
+    } catch (error) {
+        return res.json({ error });
+    }
+}
+
+
+export const updateApplication = async (req: Request, res: Response) => {
+    try {
+        const { applicationId, status } = req.body;
+
+        const pool = await mssql.connect(sqlConfig);
+
+        await pool.request()
+            .input("applicationId", mssql.VarChar, applicationId)
+            .input("status", mssql.VarChar, status)
+            .execute('updateApplication');
+
+        return res.json({ message: 'Application updated successfully' });
+    } catch (error) {
+        return res.json({ error });
+    }
+}
+
+
+export const deleteApplication = async (req: Request, res: Response) => {
+    try {
+        const { applicationId } = req.params;
+
+        const pool = await mssql.connect(sqlConfig);
+
+        await pool.request()
+            .input("applicationId", mssql.VarChar, applicationId)
+            .execute('deleteApplication');
+
+        return res.json({ message: 'Application deleted successfully' });
+    } catch (error) {
+        return res.json({ error });
+    }
+}
