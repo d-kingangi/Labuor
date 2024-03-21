@@ -67,18 +67,18 @@ export class PostJobComponent {
     }
   }
 
-  // createJob(details: job){
-  //   if(this.postJobForm.valid){
-  //     console.log('Job details',details);
-  //     this.apiservice.createJob(details).subscribe(res=>{
-  //       console.log('Server res', res);
-  //       if(res.message){
-  //         this.displaySuccess(res.message)
-  //       }
-  //     })
+  createJob(details: job){
+    if(this.postJobForm.valid){
+      console.log('Job details',details);
+      this.apiservice.createJob(details).subscribe(res=>{
+        console.log('Server res', res);
+        if(res.message){
+          this.displaySuccess(res.message)
+        }
+      })
       
-  //   }
-  // }
+    }
+  }
 
   // createJob(details:job){
   //   this.authservice.checkUserDetails(this.getToken()).subscribe(

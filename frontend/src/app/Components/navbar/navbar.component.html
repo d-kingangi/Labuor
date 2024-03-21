@@ -10,11 +10,16 @@
         <li><a routerLink="/employers">Employers</a></li>
         <li><a routerLink="/chats"> Chats</a></li>
     </div>
-    <div>
-        <li><a *ngIf="!isLogged"  routerLink="/login">Login</a></li>
+    <!-- <div>
+        <li><a *ngIf="!isLogged" routerLink="/login">Login</a></li>
         <li><a *ngIf="isLogged" (click)="logout()">Logout</a></li>
-        <li><a *ngIf="!isLogged" routerLink="">Sign-up</a></li>
-    </div>
+        <li><a *ngIf="!isLogged" routerLink="/signup">Sign-up</a></li>
+      </div> -->
+      <div>
+        <li><a *ngIf="!isTokenAvailable()" routerLink="/login">Login</a></li>
+        <li><a *ngIf="isTokenAvailable()" (click)="logout()">Logout</a></li>
+        <li><a *ngIf="!isTokenAvailable()" routerLink="/signup">Sign-up</a></li>
+      </div>
     <div class="profile-logo">
         <a routerLink="">
           <img src="../../../assets/user-png-icon-big-image-png-2240.png" alt="Labour Logo">

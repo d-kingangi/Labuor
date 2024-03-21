@@ -22,7 +22,7 @@
         <div>
             <h3>Jobs from this employer</h3>
         </div>
-        <div class="job-grid" *ngIf="jobs.length > 0">
+        <div class="job-grid" *ngIf="jobs.length > 0; else noJobs">
           <div class="job-card" *ngFor="let job of jobs">
             <div>
                 <!-- <p><b>Job ID:</b> {{ job?.jobId }}</p> -->
@@ -39,11 +39,15 @@
                 <p><b>Talent Name:</b> {{ job?.talentFirstName }}  {{ job?.talentLastName }}</p>
                 
               <div class="button-container">
-                <button class="job-btn" >View job</button>
+                <button class="job-btn" (click)="navigateToSingleJob(job.jobId)">View job</button>
               </div>
             </div>
           </div>
         </div>
+
+        <ng-template #noJobs>
+          <h5>No Jobs from this employer</h5>
+      </ng-template>
         
     </div>
 

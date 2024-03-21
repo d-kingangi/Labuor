@@ -13,13 +13,16 @@
           <p><strong>Email:</strong> {{ employer.email }}</p>
           <!-- <p><strong>Industry ID:</strong> {{ employer.industryId }}</p> -->
           <p><strong>Employer Wallet:</strong> {{ employer.employerWallet }}</p>
+          <div class="button-container">
+            <button class="edit-btn">Edit Profile</button>
+        </div>
         </div>
     </div>
  <hr>
     <!-- use a table to show jobs -->
 
       <div><h2>Jobs Posted</h2></div>
-        <table class="job-table" *ngIf="jobs.length > 0">
+        <table class="job-table" *ngIf="jobs.length > 0; else noJobs">
             <thead>
               <tr>
                 <th>Job Name</th>
@@ -49,12 +52,16 @@
               </tr>
             </tbody>
           </table>
+
+          <ng-template #noJobs>
+            <h5>No Job Posted</h5>
+        </ng-template>
 <hr>
 
         <div><h2>Jobs Applicants</h2></div>
   
 
-        <table class="job-table" *ngIf="applications.length > 0" >
+        <table class="job-table" *ngIf="applications.length > 0; else noApplicants" >
           <thead>
             <tr>
               <!-- <th>Application ID</th> -->
@@ -81,5 +88,9 @@
           </tr>
           </tbody>
       </table>
+
+      <ng-template #noApplicants>
+        <h5>No Applicants For This Job</h5>
+    </ng-template>
 
 </div>

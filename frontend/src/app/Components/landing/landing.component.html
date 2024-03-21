@@ -15,10 +15,10 @@
                  </p>
             </div>
             <div class="hero-3">
-                <button>
+                <button routerLink="/talents">
                     Find Talent
                 </button>
-                <button>
+                <button routerLink="jobs">
                     Find Jobs
                 </button>
             </div>
@@ -84,7 +84,7 @@
                 Get started for free
             </div>
             <div class="banner-2">
-                <div>Find employer from all over the world. Find remote work on Labour</div>
+                <div>Find employers from all over the world. Find remote work on Labour</div>
             </div>
             <div class="button-container">
                 <button class="try-btn"> Try Now </button>
@@ -106,7 +106,6 @@
               <p><b>Location:</b> {{ talent.location }}</p>
               <p><b>Speciality:</b> {{ talent.speciality }}</p>
               <p><b>Phone:</b> {{ talent.phone }}</p>
-              <!-- Add more details as needed -->
               <div class="button-container">
                 <button class="profile-btn" (click)="navigateToSingleTalent(talent.talentId)">Profile</button>
               </div>

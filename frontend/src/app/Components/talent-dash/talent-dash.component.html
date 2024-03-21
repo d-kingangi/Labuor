@@ -16,7 +16,8 @@
             <p><strong>Speciality:</strong> {{ talent.speciality }}</p>
             <p><strong>Contact:</strong> {{ talent.phone }}</p>
             <div class="button-container">
-                <button class="apply-btn">Message</button>
+                <!-- <button class="apply-btn">Message</button> -->
+                <button class="edit-btn">Edit Profile</button>
             </div>
         </div>
     </div>
@@ -27,7 +28,7 @@
         <div class="title">
             <h2>Your Jobs</h2>
         </div>
-        <table class="job-table" *ngIf="jobs.length > 0">
+        <table class="job-table" *ngIf="jobs.length > 0; else noCurrentJobs">
             <thead>
               <tr>
                 <th>Job Name</th>
@@ -57,6 +58,11 @@
               </tr>
             </tbody>
           </table>
+
+          <ng-template #noCurrentJobs class="template">
+            <h5>No Current Jobs</h5>
+          </ng-template>
+    
     </div>
 
     <hr>
@@ -66,7 +72,7 @@
             <h2>Your Applications</h2>
         </div>
 
-        <table class="job-table" *ngIf="applications.length > 0">
+        <table class="job-table" *ngIf="applications.length > 0; else noApplicationMade">
             <thead>
               <tr>
                 <th>Job Name</th>
@@ -82,6 +88,10 @@
               </tr>
             </tbody>
           </table>
+
+          <ng-template #noApplicationMade class="template">
+            <h5>No Applications Made</h5>
+        </ng-template>
           
     </div>
 

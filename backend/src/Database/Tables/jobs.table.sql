@@ -7,7 +7,7 @@ CREATE TABLE jobs (
     duration VARCHAR(255),
     startdate DATETIME,
     salary MONEY,
-    applicants TEXT  --stores an array of applicants
+    applicants TEXT  
     talentId VARCHAR(255),
     FOREIGN KEY (orgId) REFERENCES employers(orgId),
     FOREIGN KEY (industryId) REFERENCES industry(industryId),
