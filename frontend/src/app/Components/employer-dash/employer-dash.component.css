@@ -45,6 +45,18 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.post-btn{
+    background-color: #f9a804;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* .jobs-table{
     width: 80vw;
     margin-left: auto;

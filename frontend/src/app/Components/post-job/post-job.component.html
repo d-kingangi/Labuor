@@ -2,7 +2,7 @@
 
 <div class="main">
     <div>
-        <form action="" class="form" [formGroup]="postJobForm" ngsubmit="">
+        <form action="" class="form" [formGroup]="postJobForm" (ngsubmit)="onSubmit()">
             <div class="input-div" >
                 <input type="text" formControlName="jobname" placeholder="Job Name">
                 <div class="err" *ngIf="postJobForm.get('jobname')?.invalid && postJobForm.get('jobname')?.touched">Name is required</div>
@@ -23,17 +23,17 @@
                 <div class="err" *ngIf="postJobForm.get('duration')?.invalid && postJobForm.get('duration')?.touched">Duration is required</div>
             </div>
             <div class="input-div">
-                <mat-form-field>
-                  <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
-                  <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-                  <mat-datepicker #startDatePicker></mat-datepicker>
-                </mat-form-field>
-              </div>
+                <input type="date" id="startDate" formControlName="startDate" placeholder="Start Date">
+            </div>
               
-            <div class="input-div" placeholder="Salary">
-                <input type="text" formControlName="salary">
+            <div class="input-div">
+                <input type="text" formControlName="salary"  placeholder="Salary">
                 <div class="err" *ngIf="postJobForm.get('salary')?.invalid && postJobForm.get('salary')?.touched">Salary is required</div>
             </div>
+            <div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+            
         </form>
     </div>
 

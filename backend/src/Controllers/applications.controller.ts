@@ -5,57 +5,16 @@ import { sqlConfig } from "../Config/sql.config";
 import { application } from "../Interfaces/application.interface";
 import { createApplicationSchema } from "../Validators/applicants.validator";
 
-// export const createApplication = async (req: Request, res: Response) => {
-//     try {
-//         const {error} = createApplicationSchema.validate(req.body)
-
-//         if(error){
-//             return res.json({ error: error })
-//         } else {
-
-//             const { jobId, orgId, talentId }= req.body;
-
-//             const applicationId = v4()
-
-//             const pool = await mssql.connect(sqlConfig);
-
-//             if(pool.connected){
-//                 const result = (await pool.request()
-//                 .input("applicationId", mssql.VarChar, applicationId)
-//                 .input("jobId", mssql.VarChar, jobId)
-//                 .input("orgId", mssql.VarChar, orgId)
-//                 .input("talentId", mssql.VarChar, talentId)
-//                 // .input("status", mssql.VarChar, status)
-//                 .execute('createApplication')).rowsAffected
-
-//                 if  (result[0]>0) {
-//                     return res.json({ message: "Application created successfully" })
-//                 } else {
-//                     return res.json({ error: "Failed to create application" })
-//                 } 
-//             }else {
-//                 return res.json({ error: "Failed to establish database connection" });
-//             }
-//         }
-
-//     } catch (error) {
-//         return res.json({ error });
-//     }
-// }
-
-
 export const createApplication = async (req: Request, res: Response) => {
     try {
         const { jobId, orgId, talentId } = req.body;
 
-        // Check if the user has already applied for the specified job
         const existingApplication = await checkExistingApplication(jobId, talentId);
 
         if (existingApplication) {
             return res.json({ error: "You have already applied for this job" });
         }
 
-        // If user hasn't applied for the job, proceed with creating the application
         const applicationId = v4();
 
         const pool = await mssql.connect(sqlConfig);
@@ -81,7 +40,6 @@ export const createApplication = async (req: Request, res: Response) => {
     }
 };
 
-// Function to check if the user has already applied for the specified job
 async function checkExistingApplication(jobId: string, talentId: string): Promise<boolean> {
     const pool = await mssql.connect(sqlConfig);
 
@@ -91,7 +49,6 @@ async function checkExistingApplication(jobId: string, talentId: string): Promis
             .input("talentId", mssql.VarChar, talentId)
             .execute('checkExistingApplication')).recordset[0].count;
 
-        // const count = result.recordset[0].count;
         return result > 0;
     } else {
         throw new Error("Failed to establish database connection");

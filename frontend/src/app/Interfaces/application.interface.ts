@@ -37,3 +37,7 @@ export interface allApplicationsResponse{
     }]
     error: string
 }
+
+export interface updateApplicationPayload {
+    status: string;
+  }

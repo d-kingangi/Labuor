@@ -11,9 +11,10 @@ import { TalentsComponent } from './Components/talents/talents.component';
 import { EmployerProfileComponent } from './Components/employer-profile/employer-profile.component';
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { JobsComponent } from './Components/jobs/jobs.component';
-// import { ChatsComponent } from './Components/chats/chats.component';
+import { ChatsComponent } from './Components/chats/chats.component';
 import { TalentDashComponent } from './Components/talent-dash/talent-dash.component';
 import { EmployerDashComponent } from './Components/employer-dash/employer-dash.component';
+import { PostJobComponent } from './Components/post-job/post-job.component';
 
 
 export const routes: Routes = [
@@ -29,7 +30,8 @@ export const routes: Routes = [
     {path: 'job-info/:jobId', component: JobInfoComponent},
     {path: 'talent-dashboard/:talentId', component: TalentDashComponent},
     {path: 'employer-dashboard/:employerId', component: EmployerDashComponent},
-    // {path: 'chats', component: ChatsComponent},
+    {path: 'chats', component: ChatsComponent},
+    {path: 'post-job', component: PostJobComponent},
     { path: '**', component: NotFoundComponent},
 ];
 

@@ -76,7 +76,7 @@ export class JobInfoComponent {
     this.authService.readToken(token).subscribe(
       (res) => {
         let talentId: string
-        console.log(res.info);
+        // console.log(res.info);
         
         if ('talentId' in res.info) {
           talentId = res.info.talentId as string;

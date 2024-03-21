@@ -12,7 +12,7 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/ta
 })
 export class ChatService {
 
-  private apiUrl = 'http://localhost:3001'
+  private apiUrl = 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
 
@@ -46,14 +46,12 @@ export class ChatService {
     })
   }
 
-  sendMessage(message: message){
-    return this.http.post<allMessagesResponse>(`${this.apiUrl}/message`, message),{
-      headers: new HttpHeaders({
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${this.getToken()}`
-      })
-    }
+  sendMessage(message: message) {
+    return this.http.post<allMessagesResponse>(`${this.apiUrl}/message`, message, {
+      headers: this.getHeaders()
+    });
   }
+  
 
   getAllMessages(id: string, isTalent: boolean): Observable<allMessagesResponse> {
     let url: string;
@@ -72,13 +70,11 @@ export class ChatService {
   }
 
   getMessageById(messageId: string) {
-    return this.http.get<messageInfoResponse>(`${this.apiUrl}/message/${messageId}`), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${this.getToken()}`
-      })
-    }
+    return this.http.get<messageInfoResponse>(`${this.apiUrl}/message/${messageId}`, {
+      headers: this.getHeaders()
+    });
   }
+  
 
   getAllMessagesByTalentId(talentId: string){
     return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/talent/${talentId}`), {

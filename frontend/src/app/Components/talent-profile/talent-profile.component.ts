@@ -4,7 +4,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
-
+import { review, allReviewsResponse, reviewInfoResponse } from '../../Interfaces/review.interface';
 @Component({
   selector: 'app-talent-profile',
   standalone: true,
@@ -17,8 +17,11 @@ export class TalentProfileComponent {
 
   talents: talent [] = [];
   talent : talent={} as talent
+  reviews: review [] = [];
+  review: review={} as review
   similarTalents: talent[] = [];
   talentInfoResponse: talentInfoResponse; 
+  reviewInfoResponse: reviewInfoResponse;
   errorMessage: string = '';
 
     /**
@@ -30,6 +33,7 @@ export class TalentProfileComponent {
 
   constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute,){
     this.talentInfoResponse = {} as talentInfoResponse;
+    this.reviewInfoResponse = {} as reviewInfoResponse;
   }
 
     ngOnInit(){
@@ -37,6 +41,7 @@ export class TalentProfileComponent {
       if (talentId) {
         this.getSingleTalent(talentId);
         this.fetchTalentsByIndustry(this.talent?.industryId);
+        this.getTalentReviews(talentId);
       } else {
         console.error('Talent ID not provided');
       }
@@ -62,6 +67,20 @@ export class TalentProfileComponent {
           (error) => {
               console.error('Error fetching talent:', error);
           }
+      );
+    }
+
+    getTalentReviews(talentId: string) {
+      this.apiService.getTalentReviews(talentId).subscribe(
+        (res: allReviewsResponse) => {
+          console.log('Reviews:', res);
+          res.reviews.forEach((review) =>{
+            this.review = review
+          })
+        },
+        (error) => {
+          console.error('Error fetching reviews:', error);
+        }
       );
     }
 
