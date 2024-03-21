@@ -20,7 +20,21 @@
             </div>
         </div>
     </div>
-    
-      
+
+    <hr>
+
+    <div class="reviews">
+        <div><h3>Reviews</h3></div>
+        <div *ngFor="let review of reviews">
+            <div class="review">
+              <div class="review-details">
+                <div><strong>Review ID:</strong> {{ review.reviewId }}</div>
+                <div><strong>Comment:</strong> {{ review.comment }}</div>
+                <div><strong>Talent Name:</strong> {{ review.talentFirstName }} {{ review.talentLastName }}</div>
+                <div><strong>Organization Name:</strong> {{ review.orgName }}</div>
+              </div>
+            </div>
+          </div>
+    </div>   
       
 </div>

@@ -81,4 +81,25 @@ export class EmployerDashComponent {
         }
       })
     }
+
+    navigateToPostJob() {
+      this.router.navigate(['/post-job']);
+    }
+
+    // acceptJobApplication(applicationId: string) {
+    //   const statusUpdate: { status: string } = { status: 'Accepted' };
+    
+    //   this.apiService.updateApplication(applicationId, statusUpdate).subscribe(
+    //     (res: { message: string }) => {
+    //       console.log(res.message);
+    //       this.getJobApplications(this.job?.jobId as string); 
+    //     },
+    //     (error) => {
+    //       console.error('Error updating application:', error);
+    //     }
+    //   );
+    // }
+    
+
+    rejectJobApplication(applicationId: string){}
 }

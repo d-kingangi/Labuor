@@ -67,7 +67,6 @@ export class TalentDashComponent {
     
     this.apiService.getJobsForTalent(talentId).subscribe((res)=>{
       if(res.jobs){
-        console.log('Talents jobs', res.jobs);
         
         res.jobs.forEach((job)=>{
           this.jobs.push(job)
@@ -79,7 +78,7 @@ export class TalentDashComponent {
   getTalentApplications(talentId: string){
     this.apiService.getTalentApplications(talentId).subscribe((res)=>{
       if(res.applications){
-        console.log('Talent Application', this.applications);
+        // console.log('Talent Application', this.applications);
 
         res.applications.forEach((application)=>{
           this.applications.push(application)

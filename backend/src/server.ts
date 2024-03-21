@@ -12,6 +12,7 @@ import http from 'http'
 import {Server} from 'socket.io'
 import messageRouter from './Routes/messages.routes';
 import applicationRouter from './Routes/applications.routes';
+import reviewRouter from './Routes/review.routes';
 
 
 const multer  = require('multer')
@@ -38,6 +39,7 @@ app.use('/auth', authRouter)
 app.use('/job', jobsRouter)
 app.use('/message', messageRouter)
 app.use('/application', applicationRouter)
+app.use('/review', reviewRouter)
 
 
 

@@ -5,7 +5,7 @@ import { employer, allEmployersResponse, employerInfoResponse } from '../Interfa
 import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
 import { application, applicationInfoResponse, allApplicationsResponse } from '../Interfaces/application.interface';
-
+import { review, allReviewsResponse, reviewInfoResponse } from '../Interfaces/review.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -167,14 +167,20 @@ export class ApiServiceService {
     return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/talent/${talentId}`)
   }
 
-  updateApplication(applicationId: string, application: application){
-    return this.http.put<applicationInfoResponse>(`${this.apiUrl}/application/${applicationId}`, application), {
-      headers: new HttpHeaders({
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${this.getToken()}`
-      })
-    }
+  // updateApplication(applicationId: string){
+  //   return this.http.put<applicationInfoResponse>(`${this.apiUrl}/application/${applicationId}`)
+  // }
+
+  updateApplication(applicationId: string, statusUpdate: { status: string }) {
+    const url = `${this.apiUrl}/application/${applicationId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getToken()}`
+    });
+    const options = { headers: headers };
+    return this.http.put<{ message: string }>(url, statusUpdate, options);
   }
+  
 
   deleteApplication(applicationId: string){
     return this.http.delete<applicationInfoResponse>(`${this.apiUrl}/application/${applicationId}`), {
@@ -183,5 +189,15 @@ export class ApiServiceService {
         'Authorization': `Bearer ${this.getToken()}`
       })
     }
+  }
+
+
+  // reviews services
+  createReview(review: review){
+    return this.http.post<reviewInfoResponse>(`${this.apiUrl}/review`, review)
+  }
+
+  getTalentReviews(talentId: string){
+    return this.http.get<allReviewsResponse>(`${this.apiUrl}/review/talent/${talentId}`)
   }
 }

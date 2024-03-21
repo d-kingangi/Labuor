@@ -13,13 +13,17 @@
           <p><strong>Email:</strong> {{ employer.email }}</p>
           <!-- <p><strong>Industry ID:</strong> {{ employer.industryId }}</p> -->
           <p><strong>Employer Wallet:</strong> {{ employer.employerWallet }}</p>
+          <div class="button-container">
+            <button class="edit-btn">Edit Profile</button>
+            <button class="post-btn" (click)="navigateToPostJob()">Post Job</button>
+        </div>
         </div>
     </div>
  <hr>
     <!-- use a table to show jobs -->
 
       <div><h2>Jobs Posted</h2></div>
-        <table class="job-table" *ngIf="jobs.length > 0">
+        <table class="job-table" *ngIf="jobs.length > 0; else noJobs">
             <thead>
               <tr>
                 <th>Job Name</th>
@@ -45,27 +49,31 @@
                 <td>{{ job?.salary | currency }}</td>
                 <td>{{ job?.talentFirstName }} {{ job?.talentLastName }}</td>
                 <!-- <td>{{ job?.status }}</td> -->
-                <td><!-- Add your action button here --></td>
+                
               </tr>
             </tbody>
           </table>
+
+          <ng-template #noJobs>
+            <h5>No Job Posted</h5>
+        </ng-template>
 <hr>
 
         <div><h2>Jobs Applicants</h2></div>
   
 
-        <table class="job-table" *ngIf="applications.length > 0" >
+        <table class="job-table" *ngIf="applications.length > 0; else noApplicants" >
           <thead>
             <tr>
               <!-- <th>Application ID</th> -->
               <!-- <th>Job ID</th> -->
               <th>Job Name</th>
               <!-- <th>Talent ID</th> -->
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Organization ID</th>
+              <th>Applicants Name</th>
+              <!-- <th>Organization ID</th> -->
               <th>Organization Name</th>
               <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -78,8 +86,16 @@
               <!-- <td>{{ application?.orgId }}</td> -->
               <td>{{ application?.orgname }}</td>
               <td>{{ application?.status }}</td>
+              <td>
+                <button class="action-btn" >Accept</button>
+                <button class="action-btn">Reject</button>
+              </td>
           </tr>
           </tbody>
       </table>
+
+      <ng-template #noApplicants>
+        <h5>No Applicants For This Job</h5>
+    </ng-template>
 
 </div>

@@ -1,4 +1,4 @@
-export interface message{
+ export interface message{
     orgId: string;
     talentId: string;
     content: string;

@@ -7,7 +7,6 @@ import { job, jobInfoResponse } from '../../Interfaces/job.interface';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../../Interfaces/industry.interface';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-post-job',
@@ -46,7 +45,11 @@ export class PostJobComponent {
           this.industries.push(industry);
         })
       }
-    })
+    },
+    (error) => {
+      console.log('Error fetching industries:', error);
+    }
+    )
   }
 
   displaySuccess(msg:string){
@@ -67,37 +70,56 @@ export class PostJobComponent {
     }
   }
 
-  // createJob(details: job){
-  //   if(this.postJobForm.valid){
-  //     console.log('Job details',details);
-  //     this.apiservice.createJob(details).subscribe(res=>{
-  //       console.log('Server res', res);
-  //       if(res.message){
-  //         this.displaySuccess(res.message)
-  //       }
-  //     })
+  onSubmit() {
+    if (this.postJobForm.valid) {
+      this.createJob(this.postJobForm.value);
+    }
+  }
+
+  createJob(details: job){
+    const token = this.getToken();
+    if(!token){
+      console.error('Token not found')
+      return
+    }
+
+    this.authservice.readToken(token).subscribe(
+      (res)=>{
+        let orgId: string
+        console.log(res.info);
+
+        if('orgId' in res.info){
+          orgId = res.info.orgId as string
+          console.log('Org Id', orgId); 
+        }else {
+          console.error('ID not found in response:', res.info);
+          return
+        }
+      },(error) => {
+        console.error('Error reading token:', error);
+      }
+    )
+  }
+
+  createJobWithOrgId(details: job, orgId: string){
+    if(this.postJobForm.valid){
+      console.log('Job details',details);
+
+      const jobWithOrgId = {...details, orgId: orgId}
+      this.apiservice.createJob(jobWithOrgId).subscribe(
+        (res)=>{
+          console.log('Server res', res);
+          if(res.message){
+            this.displaySuccess(res.message)
+          }  
+      },
+      (error)=>{
+        console.error('Error creating job:', error);
+      }
+      )
       
-  //   }
-  // }
-
-  // createJob(details:job){
-  //   this.authservice.checkUserDetails(this.getToken()).subscribe(
-  //     (employer) = >{
-  //       const details = {
-  //         orgId: 
-  //       }
-
-  //       this.apiservice.createJob(details).subscribe(res=>{
-  //               console.log('Server res', res);
-  //               if(res.message){
-  //                 this.displaySuccess(res.message)
-  //               }
-  //             })
-  //     }
-  //   )
-  // }
-
-  
+    }
+  }
 
   resetForm(){
     this.postJobForm.reset()

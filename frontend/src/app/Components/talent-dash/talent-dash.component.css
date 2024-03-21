@@ -30,6 +30,33 @@
     flex: 1; 
 }
 
+.apply-btn{
+  background-color: #f9a804;; 
+  border-radius: 20px;
+  padding: 10px 20px; 
+  color: #ffffff; 
+  border: none; 
+  cursor: pointer; 
+  margin: 0 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.edit-btn{
+  background-color: #3968e7; 
+  border-radius: 20px;
+  padding: 10px 20px; 
+  color: #ffffff; 
+  border: none; 
+  cursor: pointer; 
+  margin: 0 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.template{
+  margin: 30px
+}
+
+
 
 .job-table {
     width: 80vw;
@@ -54,3 +81,4 @@
   .job-table tbody tr:nth-child(odd) {
     background-color: #dbdbdb;
   }
+
