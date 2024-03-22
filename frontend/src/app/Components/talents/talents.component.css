@@ -1,10 +1,29 @@
-.title{
+.combined-container {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  justify-content: space-between;
+  gap: 20px; 
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
+
+.search-input {
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 0.20rem;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+  margin-left: 75px;
+}
+
+.search-input:focus {
+  border: 1px solid #000000;
+}
+
+
 
 .talent-grid {
     display: grid;
