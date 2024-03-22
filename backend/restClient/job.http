@@ -1,0 +1,36 @@
+POST http://localhost:3000/job
+Content-Type: application/json
+
+{
+    "jobname": "Web Design",
+    "orgId": "a13d33e8-51dc-47ed-bb19-3fc36fde908d",
+    "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+    "description": "Design Wordpress website",
+    "duration": "30 days",
+    "startdate": "2024-03-15T12:00:00",
+    "salary": "3000", 
+    "talentId": "0d4a6cb6-d60f-4ee7-aa21-41c7efd1af75"
+}
+
+###
+GET http://localhost:3000/job/e339e578-e1ad-4a23-8b55-287c8ffd7fd7
+Content-Type: application/json
+
+
+### 
+GET http://localhost:3000/job/
+Content-Type: application/json
+
+
+
+###
+GET http://localhost:3000/job/industry/f4291f7c-cf93-4a93-9fbe-b44f4000d944
+Content-Type: application/json
+
+###
+GET http://localhost:3000/job/employer/a13d33e8-51dc-47ed-bb19-3fc36fde908d
+Content-Type: application/json
+
+###
+GET http://localhost:3000/job/talent/0d4a6cb6-d60f-4ee7-aa21-41c7efd1af75
+Content-Type: application/json

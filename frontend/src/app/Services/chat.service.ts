@@ -76,23 +76,41 @@ export class ChatService {
   }
   
 
-  getAllMessagesByTalentId(talentId: string){
-    return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/talent/${talentId}`), {
+  // getAllMessagesByTalentId(talentId: string){
+  //   return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/talent/${talentId}`), {
+  //     headers: new HttpHeaders({
+  //       'content-type': 'application/json',
+  //       'Authorization': `Bearer ${this.getToken()}`
+  //     })
+  //   }
+  // }
+
+  getAllMessagesByTalentId(talentId: string): Observable<allMessagesResponse> {
+    return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/talent/${talentId}`, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'Authorization': `Bearer ${this.getToken()}`
       })
-    }
+    });
   }
 
-  getAllMessagesByEmployerId(employerId: string){
-    return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/employer/${employerId}`), {
+  getAllMessagesByEmployerId(employerId: string): Observable<allMessagesResponse> {
+    return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/employer/${employerId}`, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'Authorization': `Bearer ${this.getToken()}`
       })
-    }
+    });
   }
+
+  // getAllMessagesByEmployerId(employerId: string){
+  //   return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/employer/${employerId}`), {
+  //     headers: new HttpHeaders({
+  //       'content-type': 'application/json',
+  //       'Authorization': `Bearer ${this.getToken()}`
+  //     })
+  //   }
+  // }
 
   getMessagesByTalentAndEmployerIds(talentId: string, employerId: string){
     return this.http.get<allMessagesResponse>(`${this.apiUrl}/message/talent/${talentId}/employer/${employerId}`), {
@@ -102,6 +120,4 @@ export class ChatService {
       })
     }
   }
-
-
 }

@@ -1,0 +1,95 @@
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+{
+  "orgname": "Shamba",
+  "email": "info@shamba.org",
+  "logo": "img.com",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "employerWallet": "kimg.com",
+  "password": "password123"
+}
+
+
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+{
+  "orgname": "Tech Solutions Inc.",
+  "email": "info@techsolutions.com",
+  "logo": "example.com/logo.jpg",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "employerWallet": "techsolutions.eth",
+  "password": "tech1234567"
+}
+
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+{
+  "orgname": "Sora Mitsu",
+  "email": "info@soramitsu.com",
+  "logo": "https://mma.prnewswire.com/media/887737/Soramitsu_Logo.jpg",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "employerWallet": "soramitsu.eth",
+  "password": "tech1234567"
+}
+
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+{
+  "orgname": "Webacy",
+  "email": "info@webacy.com",
+  "logo": "https://world.webacy.com/content/images/2021/11/white_on_dark_rectanglar.png",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "employerWallet": "webacy.eth",
+  "password": "tech1234567"
+}
+
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+{
+  "orgname": "Webacy",
+  "email": "info@webacy.com",
+  "logo": "https://world.webacy.com/content/images/2021/11/white_on_dark_rectanglar.png",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "employerWallet": "webacy.eth",
+  "password": "tech1234567"
+}
+
+
+
+
+###Create User
+POST http://localhost:3000/employer
+Content-Type: application/json
+
+
+{
+  "orgname": "Fashion World",
+  "email": "contact@fashionworld.com",
+  "logo": "example.com/fashion_logo.png",
+  "industryId": "d03b67f9-64aa-4cfb-95f3-7405f5d85437",
+  "employerWallet": "fashionworld.eth",
+  "password": "fashion456"
+}
+
+
+
+
+
+
+### get employers
+GET http://localhost:3000/employer/
+Content-Type: application/json
+
+### get employers
+GET http://localhost:3000/employer/industry/f4291f7c-cf93-4a93-9fbe-b44f4000d944
+Content-Type: application/json

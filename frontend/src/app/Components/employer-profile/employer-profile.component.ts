@@ -124,5 +124,9 @@ export class EmployerProfileComponent {
           }
         )
         
-      }
+    }
+
+    navigateToChat(orgId: string){
+      this.router.navigate(['/chats', orgId]);
+    }
 }

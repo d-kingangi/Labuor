@@ -1,8 +1,12 @@
 <app-navbar></app-navbar>
 
 <div>
-    <div class="title"><h3>All Talents</h3></div>
-  
+    <div class="combined-container">
+      <div class="title"><h3>All Talents</h3></div>
+      <div class="search-bar">
+        <input type="search" placeholder="Search for talent" class="search-input"/>
+      </div>
+    </div>
     <div class="talents-container">
       <div *ngFor="let talentGroup of talentsByIndustry" class="industry-group">
         <!-- <h2>{{ talentGroup.industryName }}</h2> -->

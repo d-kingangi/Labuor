@@ -5,7 +5,6 @@ import { Router, RouterLink } from '@angular/router';
 import { loginDetails, loginResponse } from '../../Interfaces/login.interface';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { response } from 'express';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
@@ -60,7 +59,7 @@ export class LoginComponent {
         if (response.message) {
           this.displaySuccess(response.message, '', response.token);
         }
-      }, error => {
+      }, (error) => {
         console.error('Error:', error);
         this.displayErrors(error.error);
       });
