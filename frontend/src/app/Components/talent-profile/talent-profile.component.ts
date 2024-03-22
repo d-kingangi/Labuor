@@ -70,18 +70,19 @@ export class TalentProfileComponent {
       );
     }
 
-    getTalentReviews(talentId: string) {
+    getTalentReviews (talentId: string){
       this.apiService.getTalentReviews(talentId).subscribe(
         (res: allReviewsResponse) => {
-          console.log('Reviews:', res);
-          res.reviews.forEach((review) =>{
-            this.review = review
-          })
+          if (res && Array.isArray(res.reviews)) {
+            this.reviews = res.reviews;
+          } else {
+            console.error('Unexpected response structure:', res);
+          }
         },
         (error) => {
           console.error('Error fetching reviews:', error);
         }
-      );
+      )
     }
 
     /**
