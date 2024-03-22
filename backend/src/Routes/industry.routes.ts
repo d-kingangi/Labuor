@@ -7,7 +7,7 @@ const industryRouter = Router()
 
 industryRouter.post('/', createIndustry)
 industryRouter.get('/:id', getOneIndustry)
-industryRouter.get('/', getAllIndustries)
+industryRouter.get('/',  getAllIndustries)
 industryRouter.put('/:id', verifyToken, updateIndustry)
 industryRouter.delete('/:id', verifyToken, deleteIndustry)
 

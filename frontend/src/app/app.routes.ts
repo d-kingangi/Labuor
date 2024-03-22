@@ -30,7 +30,7 @@ export const routes: Routes = [
     {path: 'job-info/:jobId', component: JobInfoComponent},
     {path: 'talent-dashboard/:talentId', component: TalentDashComponent},
     {path: 'employer-dashboard/:employerId', component: EmployerDashComponent},
-    {path: 'chats', component: ChatsComponent},
+    {path: 'chats/:orgId', component: ChatsComponent},
     {path: 'post-job', component: PostJobComponent},
     { path: '**', component: NotFoundComponent},
 ];

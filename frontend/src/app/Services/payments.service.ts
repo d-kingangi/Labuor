@@ -21,17 +21,17 @@ export class PaymentsService {
   constructor() {
     const providerOptions = {
       walletconnect: {
-        package: WalletConnectProvider, // required
+        package: WalletConnectProvider, 
         options: {
-          infuraId: "INFURA_ID" // required
+          infuraId: "INFURA_ID" 
         }
       }
     };
 
     this.web3Modal = new Web3Modal({
-      network: "mainnet", // optional
-      cacheProvider: true, // optional
-      providerOptions, // required
+      network: "mainnet", 
+      cacheProvider: true, 
+      providerOptions,
       theme: {
         background: "rgb(39, 49, 56)",
         main: "rgb(199, 199, 199)",
@@ -45,8 +45,8 @@ export class PaymentsService {
   async connectAccount() {
     this.web3Modal.clearCachedProvider();
 
-    this.provider = await this.web3Modal.connect(); // set provider
-    this.web3js = new Web3(this.provider); // create web3 instance
+    this.provider = await this.web3Modal.connect();
+    this.web3js = new Web3(this.provider);
     this.accounts = await this.web3js.eth.getAccounts(); 
     this.accountStatusSource.next(this.accounts)
   }

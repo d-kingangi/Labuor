@@ -20,5 +20,5 @@ ALTER TABLE talents ADD isWelcomed BIT DEFAULT 0
 ALTER TABLE talents ADD isVerified BIT DEFAULT 0
 
 -- DROP TABLE Talents
--- SELECT * FROM talents
+SELECT * FROM talents
 -- DELETE FROM talents

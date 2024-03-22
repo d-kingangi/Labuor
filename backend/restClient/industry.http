@@ -1,0 +1,17 @@
+###
+POST http://localhost:3000/industry
+Content-Type: application/json
+
+{
+    "industryName": "Fashion & Apparel"
+}
+
+
+###
+GET http://localhost:3000/industry
+Content-Type: application/json
+
+
+###
+GET http://localhost:3000/industry/c3db3720-3c62-4b99-b5d8-0a8ba7060ab3
+Content-Type: application/json

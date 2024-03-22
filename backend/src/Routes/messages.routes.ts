@@ -4,10 +4,10 @@ import { verifyToken } from "../Middlewares/verifyToken";
 
 const messageRouter = Router()
 
-messageRouter.post('/', verifyToken, createMessage);
-messageRouter.get('/talent/:talentId', verifyToken, getTalentMessages);
-messageRouter.get('/employer/:orgId', verifyToken, getEmployerMessages);
-messageRouter.get('/talent/:talentId/employer/:employerId', verifyToken, getChatSessionMessages);
-messageRouter.put('/:messageId', verifyToken, updateMessageStatus);
+messageRouter.post('/',  createMessage);
+messageRouter.get('/talent/:talentId', getTalentMessages);
+messageRouter.get('/employer/:orgId', getEmployerMessages);
+messageRouter.get('/talent/:talentId/employer/:employerId', getChatSessionMessages);
+messageRouter.put('/:messageId', updateMessageStatus);
 
 export default messageRouter

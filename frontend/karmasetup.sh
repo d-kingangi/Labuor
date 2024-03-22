@@ -8,3 +8,7 @@ npm install --save-dev karma-jasmine
 npm install --save-dev karma-jasmine-html-reporter
 
 # bash
+
+
+
+

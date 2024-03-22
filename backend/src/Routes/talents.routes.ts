@@ -8,7 +8,7 @@ talentRouter.post('/', createTalent)
 talentRouter.get('/:id', getSingleTalent)
 talentRouter.get('/industry/:industryId', getTalentsPerIndustry)
 talentRouter.get('/', getAllTalents)
-talentRouter.put('/:id',verifyToken, updateTalent)
+talentRouter.put('/:id', verifyToken, updateTalent)
 talentRouter.delete('/:id', verifyToken, deleteTalent)
 
 export default talentRouter

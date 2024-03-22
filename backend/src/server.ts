@@ -14,7 +14,6 @@ import messageRouter from './Routes/messages.routes';
 import applicationRouter from './Routes/applications.routes';
 import reviewRouter from './Routes/review.routes';
 
-
 const multer  = require('multer')
 
 const app = express();
@@ -24,7 +23,7 @@ dotenv.config();
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3501",
+        origin: "http://localhost:3000",
         methods:["GET", "POST", "DELETE", "PUT"]
     }
 });

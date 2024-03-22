@@ -1,0 +1,13 @@
+###
+POST http://localhost:3000/review
+Content-Type: application/json
+
+{
+    "orgId":"a13d33e8-51dc-47ed-bb19-3fc36fde908d",
+    "talentId":"0d4a6cb6-d60f-4ee7-aa21-41c7efd1af75",
+    "comment":"Did get back to me!!!"
+}
+
+### 
+GET http://localhost:3000/review/0d4a6cb6-d60f-4ee7-aa21-41c7efd1af75
+Content-Type: application/json
