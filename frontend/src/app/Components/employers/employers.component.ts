@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
+import { SearchEmployerPipe } from '../../Pipes/search-employer.pipe';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 
 @Component({
   selector: 'app-employers',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule],
   templateUrl: './employers.component.html',
   styleUrl: './employers.component.css'
 })
@@ -22,6 +24,8 @@ export class EmployersComponent {
   employersByIndustry: { industryId: string; employers: employer[] }[] = [];
   isLoading = false;
   error = '';
+
+  filter = ''
 
 
   

@@ -9,6 +9,8 @@ CREATE TABLE jobs (
     salary MONEY,
     applicants TEXT  
     talentId VARCHAR(255),
+    "status" VARCHAR(255) CHECK ("status" IN ('INCOMPLETE', 'COMPLETE')) DEFAULT 'INCOMPLETE',
+    -- FOREIGN KEY (jobId) REFERENCES applications(jobId),
     FOREIGN KEY (orgId) REFERENCES employers(orgId),
     FOREIGN KEY (industryId) REFERENCES industry(industryId),
     FOREIGN KEY (talentId) REFERENCES talents(talentId)
@@ -17,7 +19,7 @@ CREATE TABLE jobs (
 ALTER TABLE jobs 
 DROP COLUMN applicants 
 
-ALTER TABLE jobs ADD "status" VARCHAR(255) CHECK ("status" IN ('INCOMPLETE', 'COMPLETE'));
+ALTER TABLE jobs ADD "status" VARCHAR(255) CHECK ("status" IN ('INCOMPLETE', 'COMPLETE')) DEFAULT 'INCOMPLETE';
 
 DELETE FROM jobs
 

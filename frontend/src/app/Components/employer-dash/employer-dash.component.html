@@ -87,8 +87,8 @@
               <td>{{ application?.orgname }}</td>
               <td>{{ application?.status }}</td>
               <td>
-                <button class="action-btn" >Accept</button>
-                <button class="action-btn">Reject</button>
+                <button class="action-btn" (click)="acceptJobApplication(application?.applicationId)">Accept</button>
+                <button class="action-btn" (click)="rejectJobApplication(application?.applicationId)">Reject</button>
               </td>
           </tr>
           </tbody>

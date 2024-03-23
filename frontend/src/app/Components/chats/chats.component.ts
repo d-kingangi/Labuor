@@ -36,8 +36,8 @@ export class ChatsComponent implements OnInit{
   }
 
   loadMessages() {
-    this.messages$ = this.chatService.getAllMessagesByTalentId(talentId);
-    this.messages$ = this.chatService.getAllMessages();
+    // this.messages$ = this.chatService.getAllMessagesByTalentId(talentId);
+    // this.messages$ = this.chatService.getAllMessages();
   }
 
   sendMessage() {

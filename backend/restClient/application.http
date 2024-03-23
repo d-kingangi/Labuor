@@ -18,9 +18,9 @@ GET http://localhost:3000/application/job/67b31f0e-3a1d-485e-8bcc-61570ca071e8
 Content-Type: application/json
 
 ###
-PUT http://localhost:3000/application/98b051d9-0c1a-47c8-9ce2-c3b262e6f0e7
+PUT http://localhost:3000/application/2c22b701-46ab-40aa-b55c-a4b735312c5e
 
 {
      "applicationId": "98b051d9-0c1a-47c8-9ce2-c3b262e6f0e7",
-     "status": "PENDING"
+     "status": "ACCEPTED"
 }
