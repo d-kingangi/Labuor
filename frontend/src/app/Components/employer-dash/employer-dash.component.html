@@ -26,6 +26,7 @@
         <table class="job-table" *ngIf="jobs.length > 0; else noJobs">
             <thead>
               <tr>
+                <!-- <th>No.</th> -->
                 <th>Job Name</th>
                 <th>Employer Name</th>
                 <th>Industry Name</th>
@@ -40,6 +41,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let job of jobs" (click)="getJobApplications(job.jobId)">
+                <!-- <td >{{i+1}}</td> -->
                 <td>{{ job?.jobname }}</td>
                 <td>{{ job?.employerName }}</td>
                 <td>{{ job?.industryName }}</td>

@@ -6,6 +6,7 @@ import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interfa
 import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
 import { application, applicationInfoResponse, allApplicationsResponse } from '../Interfaces/application.interface';
 import { review, allReviewsResponse, reviewInfoResponse } from '../Interfaces/review.interface';
+
 @Injectable({
   providedIn: 'root'
 })
