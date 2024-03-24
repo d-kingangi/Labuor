@@ -91,7 +91,7 @@ export const getSingleTalent = async (req: Request, res: Response) => {
 
         let talent = (await pool.request().input("talentId", id).execute('getSingleTalent')).recordset
 
-        return res.json({
+        return res.status(200).json({
             talent
         })
     } catch (error) {
@@ -184,7 +184,7 @@ export const deleteTalent = async (req: Request, res: Response) => {
                 error: "Account not found"
             })
         }else{
-            return res.status(200).json({
+            return res.json({
                 message: "Account deleted successfully"
             })
         }

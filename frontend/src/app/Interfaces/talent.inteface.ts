@@ -1,4 +1,5 @@
 export interface talent{
+    UserType: string;
     talentId: string;
     profileImg: string;
     firstname: string;
@@ -19,6 +20,7 @@ export interface talentInfoResponse{
 export interface talentInfoResponse{
     talent: [
         {
+        UserType: string;
         talentId: string;
         profileImg: string;
         firstname: string;
@@ -39,6 +41,7 @@ export interface talentInfoResponse{
 export interface allTalentsResponse{
     talents:[
         {
+            UserType: string;
             talentId: string;
             profileImg: string;
             firstname: string;

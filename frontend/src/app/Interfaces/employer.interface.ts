@@ -1,4 +1,5 @@
 export interface employer{
+    UserType: string;
     orgId: string;
     orgname: string;
     email: string;
@@ -14,6 +15,7 @@ export interface employerResponse{
 
 export interface employerInfoResponse{
     employer:[{
+        UserType: string;
         orgId: string;
         orgname: string;
         email: string;
@@ -28,6 +30,7 @@ export interface employerInfoResponse{
 export interface allEmployersResponse{
     employers:[
         {
+            UserType: string;
             orgId: string;
             orgname: string;
             email: string;
