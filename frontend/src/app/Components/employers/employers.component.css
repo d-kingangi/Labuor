@@ -80,4 +80,61 @@
     cursor: pointer; 
     margin: 0 10px;
   }
+
+
+  /* banner style */
+
+  .banner{
+    display: flex;
+    height: 50vh;
+    width: 80vw;
+    border-radius: 20px;
+    background-color: #f9a804;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 30px;
+    justify-content: center;
+  }
+
+  .banner-1{
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #3129a4;
+    margin-top: 30px;
+  }
+
+  .banner-2{
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #3129a4;
+    margin-top: 30px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .job-btn {
+    background-color: #030130;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: lightgray;
+    border: none;
+    cursor: pointer;
+  }
+
+  .try-btn{
+    background-color: #030130;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: lightgray;
+    border: none;
+    cursor: pointer;
+  }
+
   

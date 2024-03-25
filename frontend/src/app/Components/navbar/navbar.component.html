@@ -13,7 +13,7 @@
       <div>
         <li><a *ngIf="!isTokenAvailable()" routerLink="/login">Login</a></li>
         <li><a *ngIf="isTokenAvailable()" (click)="logout()">Logout</a></li>
-        <li><a *ngIf="!isTokenAvailable()" routerLink="/signup">Sign-up</a></li>
+        <li><a *ngIf="!isTokenAvailable()" routerLink="/registration">Sign-up</a></li>
       </div>
     <div class="profile-logo">
         <a routerLink="">

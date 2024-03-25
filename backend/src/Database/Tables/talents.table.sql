@@ -20,7 +20,10 @@ ALTER TABLE talents ADD isWelcomed BIT DEFAULT 0
 ALTER TABLE talents ADD isVerified BIT DEFAULT 0
 
 -- DROP TABLE Talents
--- SELECT * FROM talents
+SELECT * FROM talents
 -- DELETE FROM talents
 
 ALTER TABLE 
+
+-- UPDATE talents
+-- SET profileImg = 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png';
