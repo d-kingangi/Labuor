@@ -5,11 +5,12 @@ import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/route
 import { ApiServiceService } from '../../Services/api-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './employer-profile.component.html',
   styleUrl: './employer-profile.component.css'
 })

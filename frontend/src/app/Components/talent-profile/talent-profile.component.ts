@@ -5,11 +5,12 @@ import { ApiServiceService } from '../../Services/api-service.service';
 import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
 import { review, allReviewsResponse, reviewInfoResponse } from '../../Interfaces/review.interface';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-talent-profile',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule],
+  imports: [ NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './talent-profile.component.html',
   styleUrl: './talent-profile.component.css'
 })

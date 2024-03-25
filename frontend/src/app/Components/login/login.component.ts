@@ -6,11 +6,12 @@ import { loginDetails, loginResponse } from '../../Interfaces/login.interface';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, CommonModule, NavbarComponent ],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, NavbarComponent, FooterComponent ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

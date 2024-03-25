@@ -7,11 +7,12 @@ import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { SearchTalentPipe } from '../../Pipes/search-talent.pipe';
 import { FormsModule } from '@angular/forms'; 
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-talents',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination, FormsModule],
+  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination, FormsModule, SearchTalentPipe, FooterComponent],
   templateUrl: './talents.component.html',
   styleUrl: './talents.component.css'
 })

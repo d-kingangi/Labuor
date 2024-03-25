@@ -25,17 +25,24 @@
 
 
     <div><h3>Reviews</h3></div>
-    <div class="reviews">
+    <div class="reviews" *ngIf="reviews.length > 0; else noReview">
         <div *ngFor="let review of reviews">
             <div class="review">
               <div class="review-details">
                 <div><strong>Organization Name:</strong> {{ review.orgName }}</div>
-                <div><strong>Talent Name:</strong> {{ review.talentFirstName }} {{ review.talentLastName }}</div>
+                <!-- <div><strong>Talent Name:</strong> {{ review.talentFirstName }} {{ review.talentLastName }}</div> -->
                 <!-- <div><strong>Review ID:</strong> {{ review.reviewId }}</div> -->
                 <div><strong>Comment:</strong> {{ review.comment }}</div>  
               </div>
             </div>
         </div>
-    </div>   
+    </div>
+    
+    <ng-template #noReview>
+        <h5>No Reviews</h5>
+    </ng-template>
       
 </div>
+
+
+<app-footer></app-footer>

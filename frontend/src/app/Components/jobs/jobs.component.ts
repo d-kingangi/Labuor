@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule],
+  imports: [ NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule, SearchJobPipe],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.css'
 })

@@ -71,6 +71,7 @@ export class JobInfoComponent {
     const token = localStorage.getItem('token');
     if (!token) {
     console.error('Token not found');
+    this.router.navigate(['/login']);
     return;
    }
 

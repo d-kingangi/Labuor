@@ -3,16 +3,17 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
-import { job, jobInfoResponse, allJobsResponse } from '../../Interfaces/job.interface';
-import { employer, allEmployersResponse, employerInfoResponse } from '../../Interfaces/employer.interface';
+import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
+import { job, jobInfoResponse } from '../../Interfaces/job.interface';
+import { employer,  employerInfoResponse } from '../../Interfaces/employer.interface';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FaqItem }  from '../../Interfaces/faq.interface';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet, NgbAccordionModule, NavbarComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet, NgbAccordionModule, NavbarComponent, FooterComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })

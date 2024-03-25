@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/talent.inteface';
 import { employer, allEmployersResponse, employerInfoResponse } from '../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../Interfaces/job.interface';
-import { industry, industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
+import {  industryInfoResponse, allIndustriesResponse } from '../Interfaces/industry.interface';
 import { application, applicationInfoResponse, allApplicationsResponse } from '../Interfaces/application.interface';
 import { review, allReviewsResponse, reviewInfoResponse } from '../Interfaces/review.interface';
 

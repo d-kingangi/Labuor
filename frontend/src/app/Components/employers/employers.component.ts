@@ -5,13 +5,14 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } fr
 import { ApiServiceService } from '../../Services/api-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 import { SearchEmployerPipe } from '../../Pipes/search-employer.pipe';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-employers',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule],
+  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule, SearchEmployerPipe, FooterComponent],
   templateUrl: './employers.component.html',
   styleUrl: './employers.component.css'
 })

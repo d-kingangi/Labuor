@@ -3,10 +3,13 @@
 
 <div class="login"> 
     <div>
-        <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
-        <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
+        
 
         <form [formGroup]="loginForm" class="form" (ngSubmit)="loginUser(loginForm.value)">
+
+            <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+            <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
+
             <div class="input-div">
                 <input data-cy="email-input" formControlName="email" name="email" type="email" placeholder="Email">
                 <div class="email-err" id="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" data-cy="email-error">Email is required</div>
@@ -27,3 +30,5 @@
         <img src="../../../assets/high-2.jpeg" alt="Illustration of a person working on a laptop">
     </div>
 </div>
+
+<app-footer></app-footer>

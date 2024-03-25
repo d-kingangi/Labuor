@@ -7,11 +7,12 @@ import { AuthServiceService } from '../../Services/auth-service.service';
 import { employer, employerInfoResponse, allEmployersResponse } from '../../Interfaces/employer.interface';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
 import {  allApplicationsResponse, application, applicationInfoResponse} from '../../Interfaces/application.interface'
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-employer-dash',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './employer-dash.component.html',
   styleUrl: './employer-dash.component.css'
 })

@@ -139,7 +139,7 @@
 /* display talents */
 
 .talents {
-    height: 80vh;
+    height: 60vh;
     width: 80vw;
     margin-left: auto; 
     margin-right: auto;
@@ -367,41 +367,10 @@
 
 /* faq */
 
-/* .faq{
-    height: 80vh;
-    width: 80vw;
-    margin-left: auto; 
-    margin-right: auto; 
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: auto;
-}
-
-.faq-title {
-  margin-bottom: 20px;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; 
-}
-
-.faq-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.faq-question {
-  font-weight: bold;
-  margin-bottom: 10px; 
-} */
 
 
 .faq {
-    height: 80vh;
+    height: 60vh;
     width: 80vw;
     margin-left: auto; 
     margin-right: auto; 

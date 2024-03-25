@@ -8,11 +8,12 @@ import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/route
 import {  allApplicationsResponse, application, applicationInfoResponse} from '../../Interfaces/application.interface'
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
 import { BaseChartDirective } from 'ng2-charts';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-talent-dash',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule, BaseChartDirective],
+  imports: [ NavbarComponent, CommonModule, BaseChartDirective, FooterComponent],
   templateUrl: './talent-dash.component.html',
   styleUrl: './talent-dash.component.css'
 })
