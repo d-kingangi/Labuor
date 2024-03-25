@@ -15,6 +15,7 @@ import { ChatsComponent } from './Components/chats/chats.component';
 import { TalentDashComponent } from './Components/talent-dash/talent-dash.component';
 import { EmployerDashComponent } from './Components/employer-dash/employer-dash.component';
 import { PostJobComponent } from './Components/post-job/post-job.component';
+import { RegistrationComponent } from './Components/registration/registration.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'employers', component: EmployersComponent},
     {path: 'talents', component: TalentsComponent},
+    {path: 'registration', component: RegistrationComponent},
     {path: 'jobs', component: JobsComponent},
     {path: 'talent-profile/:talentId', component: TalentProfileComponent},
     {path: 'employer-profile/:employerId', component: EmployerProfileComponent},

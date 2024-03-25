@@ -4,11 +4,14 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { SearchJobPipe } from '../../Pipes/search-job.pipe';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule, RouterLink, RouterOutlet],
+  imports: [ NavbarComponent, CommonModule, RouterLink, RouterOutlet, FormsModule],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.css'
 })
@@ -21,6 +24,8 @@ export class JobsComponent {
   jobsByIndustry: { industryId: string; jobs: job[] }[] = [];
   isLoading = false;
   error = '';
+
+  filter = ''
 
     /**
    * Constructor for initializing ApiServiceService and Router.

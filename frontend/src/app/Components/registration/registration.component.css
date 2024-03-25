@@ -1,0 +1,46 @@
+.reg-btn{
+    background-color: #f9a804;; 
+    border-radius: 20px;
+    padding: 10px 20px; 
+    color: #ffffff; 
+    border: none; 
+    cursor: pointer; 
+    margin: 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .main{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+    width: 80vw;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+
+  .pages{
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+
+  .image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container img{
+    width: 75%;
+    height: auto;
+    border-radius: 10px;
+  }

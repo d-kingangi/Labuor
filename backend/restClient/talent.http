@@ -34,7 +34,22 @@ Content-Type: application/json
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IlRhbGVudCIsInRhbGVudElkIjoiMGQ0YTZjYjYtZDYwZi00ZWU3LWFhMjEtNDFjN2VmZDFhZjc1IiwicHJvZmlsZUltZyI6Imh0dHBzOi8vaGFwcHl0cmF2ZWwudmlhamVzL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIwLzA0LzE0Ni0xNDY4NDc5X215LXByb2ZpbGUtaWNvbi1ibGFuay1wcm9maWxlLXBpY3R1cmUtY2lyY2xlLWhkLnBuZyIsImZpcnN0bmFtZSI6Ik1lc2giLCJsYXN0bmFtZSI6IktvcmlyIiwiZW1haWwiOiJtZXNoLmtvcmlyQGV4YW1wbGUuY29tIiwiaW5kdXN0cnlJZCI6ImY0MjkxZjdjLWNmOTMtNGE5My05ZmJlLWI0NGY0MDAwZDk0NCIsInNwZWNpYWxpdHkiOiJXb3JkcHJlc3MgRGVzaWduIiwidGFsZW50V2FsbGV0IjoibWVzaC5rb3Jpci5ldGgiLCJsb2NhdGlvbiI6IkpvaCdidXJnLCBTb3V0aCBBZnJpY2EiLCJwaG9uZSI6Iis5NzEgNCAxMjMgNDU2NyIsImlzV2VsY29tZWQiOm51bGwsImlzVmVyaWZpZWQiOm51bGwsImlhdCI6MTcxMTA3OTY5MywiZXhwIjoxNzExMTE1NjkzfQ.f83AiFJ2K71JHGw_1rFLXRok79L7Wy28Ak3A0TpVYaU
 
 
+### ### update user
+POST  http://localhost:3000/talent/
+Content-Type: application/json
 
+{
+  "profileImg": "https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png",
+  "firstname": "Daniel",
+  "lastname": "Kitheka",
+  "email": "gamesmy177@gmail.com",
+  "industryId": "f4291f7c-cf93-4a93-9fbe-b44f4000d944",
+  "speciality": "Web Design",
+  "talentWallet": "Daniel.eth",
+  "location": "Nairobi",
+  "phone": "+1 000 000 000",
+  "password": "password123"
+}
 
 
 

@@ -8,11 +8,12 @@ import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.inte
 import { application } from '../../Interfaces/application.interface';
 import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces/talent.inteface';
 import { employer, allEmployersResponse, employerInfoResponse } from '../../Interfaces/employer.interface';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-job-info',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './job-info.component.html',
   styleUrl: './job-info.component.css'
 })

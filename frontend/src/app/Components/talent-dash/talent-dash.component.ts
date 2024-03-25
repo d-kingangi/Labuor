@@ -7,11 +7,12 @@ import { talent, talentInfoResponse, allTalentsResponse } from '../../Interfaces
 import { Router, RouterLink, RouterOutlet, ActivatedRoute } from '@angular/router';
 import {  allApplicationsResponse, application, applicationInfoResponse} from '../../Interfaces/application.interface'
 import { job, allJobsResponse, jobInfoResponse } from '../../Interfaces/job.interface';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-talent-dash',
   standalone: true,
-  imports: [ NavbarComponent, CommonModule],
+  imports: [ NavbarComponent, CommonModule, BaseChartDirective],
   templateUrl: './talent-dash.component.html',
   styleUrl: './talent-dash.component.css'
 })
@@ -78,8 +79,6 @@ export class TalentDashComponent {
   getTalentApplications(talentId: string){
     this.apiService.getTalentApplications(talentId).subscribe((res)=>{
       if(res.applications){
-        // console.log('Talent Application', this.applications);
-
         res.applications.forEach((application)=>{
           this.applications.push(application)
         })   

@@ -40,7 +40,7 @@ export const createJob = async (req:Request, res: Response) => {
         .input("talentId", mssql.VarChar, talentId)
         .execute('createJob')).rowsAffected
 
-        return res.json({
+        return res.status(200).json({
             message:"Job created successfully",
         })
 

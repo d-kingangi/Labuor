@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: #030130;
 }
 
@@ -7,5 +7,46 @@ footer{
     width: 80vw;
     margin-left: auto; 
     margin-right: auto; 
-}
+} */
+
+.footer {
+    background-color: #ffffff;
+    color: #000000;
+    /* background-color: #030130; */
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    height: 30vh;
+    /* width: 80vw; */
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .footer h4 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer li {
+    margin-bottom: 8px;
+  }
+  
+  .footer a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
 

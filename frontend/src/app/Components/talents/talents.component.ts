@@ -5,11 +5,13 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
 import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { SearchTalentPipe } from '../../Pipes/search-talent.pipe';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-talents',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination],
+  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination, FormsModule],
   templateUrl: './talents.component.html',
   styleUrl: './talents.component.css'
 })
@@ -22,6 +24,8 @@ export class TalentsComponent {
   talentsByIndustry: { industryId: string; talents: talent[] }[] = [];
   isLoading = false;
   error = '';
+
+  filter = ''
 
 
   constructor(private apiService: ApiServiceService, private router: Router){

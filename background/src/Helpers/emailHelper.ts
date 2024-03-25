@@ -1,6 +1,6 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import dotenv from 'dotenv';
-import { mail_configs } from '../Intefaces/mail.configs';
+import { mail_configs } from '../Interfaces/mail.configs';
 
 dotenv.config();
 
@@ -21,8 +21,8 @@ const configurations: mail_configs = {
     port: 587,
     requireTLS: true,
     auth: {
-        user: process.env.EMAIL_USER || " ",
-        pass: process.env.EMAIL_PASSWORD || " "
+        user: process.env?.['EMAIL_USERNAME'] as string,
+        pass: process.env?.['EMAIL_PASSWORD'] as string
     }
 };
 

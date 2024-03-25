@@ -10,6 +10,7 @@
             <img src="{{ talent.profileImg }}" alt="Profile Image">
         </div>
         <div class="details-container">
+        
             <p><strong>Name:</strong> {{ talent.firstname }} {{ talent.lastname }}</p>
             <p><strong>Email:</strong> {{ talent.email }}</p>
             <p><strong>Location:</strong> {{ talent.location }}</p>
@@ -24,6 +25,18 @@
 
     <hr>
 
+    <!-- <div>
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+
+    <hr> -->
+
     <div class="jobs">
         <div class="title">
             <h2>Your Jobs</h2>
@@ -31,6 +44,7 @@
         <table class="job-table" *ngIf="jobs.length > 0; else noCurrentJobs">
             <thead>
               <tr>
+                <!-- <th>No.</th> -->
                 <th>Job Name</th>
                 <th>Employer Name</th>
                 <!-- <th>Industry Name</th> -->
@@ -45,6 +59,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let job of jobs" >
+                <!-- <td >{{i+1}}</td> -->
                 <td>{{ job?.jobname }}</td>
                 <td>{{ job?.employerName }}</td>
                 <!-- <td>{{ job?.industryName }}</td> -->

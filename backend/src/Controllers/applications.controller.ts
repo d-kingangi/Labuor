@@ -112,7 +112,6 @@ export const updateApplication = async (req: Request, res: Response) => {
     }
 }
 
-
 export const deleteApplication = async (req: Request, res: Response) => {
     try {
         const { applicationId } = req.params;

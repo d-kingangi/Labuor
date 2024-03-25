@@ -22,3 +22,8 @@ ALTER TABLE talents ADD isVerified BIT DEFAULT 0
 -- DROP TABLE Talents
 SELECT * FROM talents
 -- DELETE FROM talents
+
+ALTER TABLE 
+
+-- UPDATE talents
+-- SET profileImg = 'https://happytravel.viajes/wp-content/uploads/2020/04/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png';
