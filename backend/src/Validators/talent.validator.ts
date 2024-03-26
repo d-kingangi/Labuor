@@ -1,4 +1,4 @@
-import joi, { string } from "joi";
+import joi from "joi";
 
 export const newTalentSchema = joi.object({
     profileImg: joi.string(),
