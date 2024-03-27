@@ -60,6 +60,7 @@
 
 .job-table {
     width: 80vw;
+    cursor: pointer;
     border-collapse: collapse;
   }
   

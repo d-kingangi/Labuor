@@ -3,16 +3,10 @@
 
 <div class="body">
   <!-- <h3>Join Labour</h3> -->
+  <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
+  <div *ngIf="successDiv" class="success-message">{{successMsg}}</div>
   <div class="container">
-    <form class="form-container" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">
-      
-      <div *ngIf="errorDiv" class="error-message">{{errorMsg}}</div>
-      <div *ngIf="successDiv" class="success-message">{{successMsg}}</div>
-
-      <!-- <div class="form-group">
-        <label for="profile-image">Profile Image</label>
-        <input type="file" id="profile-image" name="profile-image">
-      </div> -->
+    <form class="form-container" [formGroup]="registerTalentForm" (ngSubmit)="registerTalent(registerTalentForm.value)">   
 
       <div class="form-container-left">
         <div class="form-group">

@@ -11,11 +11,11 @@
             <div  *ngIf="successDiv"  class="success-message">{{successMsg}}</div>
 
             <div class="input-div">
-                <input data-cy="email-input" formControlName="email" name="email" type="email" placeholder="Email">
+                <input data-cy="email-input" formControlName="email" name="email" type="email" placeholder="Email" data-cy="email">
                 <div class="email-err" id="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" data-cy="email-error">Email is required</div>
             </div>
             <div class="input-div">
-                <input data-cy="password-input" type="password" name="password" formControlName="password" placeholder="Password">
+                <input data-cy="password-input" type="password" name="password" formControlName="password" placeholder="Password" data-cy="password">
                 <div class="pass-err" id="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" data-cy="email-error">Password is required</div>
             </div>
             <div class="input-div">

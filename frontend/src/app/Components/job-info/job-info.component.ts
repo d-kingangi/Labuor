@@ -26,6 +26,7 @@ export class JobInfoComponent {
   jobInfoResponse: jobInfoResponse;
   talentInfoResponse: talentInfoResponse
   employerInfoResponse: employerInfoResponse
+  successMessage: string = '';
   errorMessage: string = '';
 
   constructor(private apiService: ApiServiceService, private router: Router, private route: ActivatedRoute, private authService: AuthServiceService) {
@@ -99,9 +100,13 @@ export class JobInfoComponent {
         this.apiService.createApplication(application).subscribe(
           (response) => {
             console.log('Application created successfully:', response);
+            this.successMessage = 'Application created successfully.';
+            this.errorMessage = ''; 
           },
           (error) => {
             console.error('Error creating application:', error);
+            this.errorMessage = 'Failed to create application. Please try again.';
+            this.successMessage = ''; 
           }
         );
       },

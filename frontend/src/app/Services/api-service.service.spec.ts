@@ -78,28 +78,28 @@ describe('ApiServiceService', () => {
 
   // job service tests
 
-  // it('Should get all jobs', () => {
-  //   service.getEveryJob().subscribe((res) => {
-  //     expect(res.jobs).toEqual(expectedJobs);
-  //   })
+  it('Should get all jobs', () => {
+    service.getEveryJob().subscribe((res) => {
+      expect(res.jobs).toEqual(expectedJobs);
+    })
 
-  //   const mockReq = testingController.expectOne('http://localhost:3000/job');
-  //   mockReq.flush(Object.values(expectedJobs));
-  //   expect(mockReq.request.method).toEqual('GET');
+    const mockReq = testingController.expectOne('http://localhost:3000/job');
+    mockReq.flush(Object.values(expectedJobs));
+    expect(mockReq.request.method).toEqual('GET');
 
-  // })
+  })
 
 
-  // it('should get job by employerId', ()=>{
-  //   service.getJobsByEmployer('orgI23').subscribe((res)=>{
-  //     expect(res).toBeTruthy();
-  //     expect(res.jobs).toEqual(expectedJobs)
-  //   })
+  it('should get job by employerId', ()=>{
+    service.getJobsByEmployer('orgI23').subscribe((res)=>{
+      expect(res).toBeTruthy();
+      expect(res.jobs).toEqual(expectedJobs)
+    })
 
-  //   const mockReq = testingController.expectOne('http://localhost:3000/job/orgId')
-  //   mockReq.flush(Object.values(expectedJobs))
-  //   expect(mockReq.request.method).toEqual('GET');
-  // })
+    const mockReq = testingController.expectOne('http://localhost:3000/job/orgId')
+    mockReq.flush(Object.values(expectedJobs))
+    expect(mockReq.request.method).toEqual('GET');
+  })
 
 
   it('should get job by id', ()=>{

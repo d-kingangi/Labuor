@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
+import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { SearchTalentPipe } from '../../Pipes/search-talent.pipe';
 import { FormsModule } from '@angular/forms'; 
@@ -105,3 +105,4 @@ export class TalentsComponent {
 
   
 }
+
