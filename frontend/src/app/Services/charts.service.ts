@@ -11,7 +11,7 @@ export class ChartsService {
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/application/job/${jobId}`);
-  }
+  // getData(): Observable<any> {
+  //   return this.http.get<any>(`${this.apiUrl}/application/job/${jobId}`);
+  // }
 }

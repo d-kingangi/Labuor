@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthServiceService } from './auth-service.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing'
-import { expectedTalents } from './testdata/talent.register';
-import { mock } from 'node:test';
 
 describe('AuthServiceService', () => {
   let service: AuthServiceService;
@@ -35,6 +33,7 @@ describe('AuthServiceService', () => {
       phone: 'phone',
       password: 'password'
     };
+
     service.registerTalent(mockTalent).subscribe((response) => {
       expect(response).toEqual('Account created successfully');
     });
@@ -47,21 +46,20 @@ describe('AuthServiceService', () => {
 
 
   it('logs in a user', () => {
-    service.loginUser({email: 'email@email.com', password: 'password'}).subscribe((res) => {
+    let mockUser = {
+      email: 'email@email.com',
+      password: 'password'
+    }
+    
+    service.loginUser(mockUser).subscribe((res) => {
       expect(res.message).toEqual('Logged in successfully');
     })
+
+    const mockReq = testingController.expectOne('http://localhost:3000/auth/login');
+    expect(mockReq.request.method).toEqual('POST');
+    expect(mockReq.request.body).toEqual(mockUser);
+    mockReq.flush({message: 'Logged in successfully'});
   })
 
-  let mockUser = {
-    email: 'email@email.com',
-    password: 'password'
-  }
-
-  const mockReq = testingController.expectOne('http://localhost:3000/auth/login');
-  expect(mockReq.request.method).toEqual('POST');
-  expect(mockReq.request.body).toEqual(mockUser);
-  mockReq.flush({message: 'Logged in successfully'});
-
-
-
+  
 });

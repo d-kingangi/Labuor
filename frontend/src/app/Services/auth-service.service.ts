@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { loginDetails, loginResponse } from '../Interfaces/login.interface';
-import { Observable, of } from 'rxjs';
-import { talent, allTalentsResponse, talentInfoResponse } from '../Interfaces/talent.inteface';
-import { employer, allEmployersResponse, employerInfoResponse } from '../Interfaces/employer.interface';
+import { Observable } from 'rxjs';
+import { talent, talentInfoResponse } from '../Interfaces/talent.inteface';
+import { employer, employerInfoResponse } from '../Interfaces/employer.interface';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthServiceService {
 
   private apiUrl = 'http://localhost:3000';
