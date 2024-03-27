@@ -73,7 +73,7 @@ mssql.connect(sqlConfig, (err?: Error, connect?: ConnectionPool, req?: Request, 
     } else if (connect) {
         console.log("connected to mssql db");
         const PORT = process.env.PORT
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log('App is listening on port', PORT);
         })
     }

@@ -6,13 +6,13 @@ import { Router, RouterLink } from '@angular/router';
 import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { industry, industryInfoResponse, allIndustriesResponse } from '../../Interfaces/industry.interface';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { error } from 'console';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-talent-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NavbarComponent],
+  imports: [ReactiveFormsModule, CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './talent-registration.component.html',
   styleUrl: './talent-registration.component.css'
 })

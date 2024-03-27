@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ApiServiceService } from '../../Services/api-service.service';
-import { talent, allTalentsResponse, talentInfoResponse } from '../../Interfaces/talent.inteface';
+import { talent, talentInfoResponse } from '../../Interfaces/talent.inteface';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { SearchTalentPipe } from '../../Pipes/search-talent.pipe';
 import { FormsModule } from '@angular/forms'; 
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-talents',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination, FormsModule],
+  imports: [NavbarComponent, CommonModule, RouterLink, RouterOutlet, NgbPagination, FormsModule, SearchTalentPipe, FooterComponent],
   templateUrl: './talents.component.html',
   styleUrl: './talents.component.css'
 })
@@ -104,3 +105,4 @@ export class TalentsComponent {
 
   
 }
+

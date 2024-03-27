@@ -10,12 +10,16 @@ export class SearchTalentPipe implements PipeTransform {
 
     transform(talents: allTalentsResponse[], firstname: string): allTalentsResponse[] {
       if (!firstname || firstname.trim() === '') {
-        return talents; // If search term is empty, return the original list
+        return talents;
       }
-      
-      const filteredTalents: allTalentsResponse[] = talents.filter(talent => 
-        talent.talents[0].firstname.toLowerCase().includes(firstname.toLowerCase())
-      );
+    
+      const filteredTalents: allTalentsResponse[] = []
+
+      for(let talent of talents){
+        if(talent.talents[0].firstname.toLowerCase().includes(firstname.toLowerCase())){
+          filteredTalents.push(talent)
+        }
+      }
   
       return filteredTalents;
     }

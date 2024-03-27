@@ -7,8 +7,8 @@
     <div class="body">
         <div class="pages">
             <div class="tabs-btn">
-                <button (click)="navigateToTalentRegistration()" class="reg-btn">Go to Talent Registration</button>
-                <button (click)="navigateToEmployerRegistration()" class="reg-btn">Go to Employer Registration</button>
+                <button (click)="navigateToTalentRegistration()" class="reg-btn" data-testid="talent-registration">Go to Talent Registration</button>
+                <button (click)="navigateToEmployerRegistration()" class="reg-btn" data-testid="employer-registration">Go to Employer Registration</button>
             </div>
         </div>
         <div class="image-container">
@@ -17,3 +17,5 @@
     </div>
     
 </div>
+
+<app-footer></app-footer>

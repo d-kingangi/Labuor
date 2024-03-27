@@ -17,3 +17,6 @@ SELECT * FROM employers
 
 ALTER TABLE employers ADD isWelcomed BIT DEFAULT 0
 ALTER TABLE employers ADD isVerified BIT DEFAULT 0
+
+UPDATE employers
+SET logo = 'https://mma.prnewswire.com/media/887737/Soramitsu_Logo.jpg'

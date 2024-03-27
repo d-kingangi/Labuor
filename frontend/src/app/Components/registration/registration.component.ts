@@ -5,12 +5,13 @@ import { EmployerRegistrationComponent } from '../employer-registration/employer
 import { TalentRegistrationComponent } from '../talent-registration/talent-registration.component';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [EmployerRegistrationComponent, TalentRegistrationComponent, CommonModule, RouterOutlet,  NavbarComponent],
+  imports: [EmployerRegistrationComponent, TalentRegistrationComponent, CommonModule, RouterOutlet,  NavbarComponent, FooterComponent],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })

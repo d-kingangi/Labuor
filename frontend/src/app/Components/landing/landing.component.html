@@ -40,7 +40,7 @@
                 <p>Benefits include bonuses for Customers, while providing reduced fees, priority placement and visual highlighting in search results for Freelancers – putting them in prime position to win more work, and earn a higher income.</p>
             </div>
             <div class="button-container">
-                <button class="reg-btn" routerLink="">Register</button>
+                <button class="reg-btn" routerLink="/registration">Register</button>
             </div>
         </div>
         <div>
@@ -66,7 +66,7 @@
                 <p><b>Start Date:</b> {{ job?.startdate | date }}</p>
                 <p><b>Salary:</b> {{ job?.salary | currency }}</p>
                 <!-- <p><b>Talent ID:</b> {{ job?.talentId }}</p> -->
-                <p><b>Talent Name:</b> {{ job?.talentFirstName }}  {{ job?.talentLastName }}</p>
+                <!-- <p><b>Talent Name:</b> {{ job?.talentFirstName }}  {{ job?.talentLastName }}</p> -->
                 
               <div class="button-container">
                 <button class="job-btn" (click)="navigateToSingleJob(job.jobId)">View job</button>
@@ -149,3 +149,5 @@
         </div>
     </div>
 </div>
+
+<app-footer></app-footer>

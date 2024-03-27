@@ -22,10 +22,10 @@
                 <p><b>Duration:</b> {{ jobItem.duration }}</p>
                 <p><b>Start Date:</b> {{ jobItem.startdate | date }}</p>
                 <p><b>Salary:</b> {{ jobItem.salary | currency }}</p>
-                <p><b>Talent Assigned:</b> {{ jobItem.talentFirstName }} {{ jobItem.talentLastName }}</p>
+                <!-- <p><b>Talent Assigned:</b> {{ jobItem.talentFirstName }} {{ jobItem.talentLastName }}</p> -->
                 <!-- Add more details as needed -->
                 <div class="button-container">
-                  <button class="profile-btn" (click)="navigateToSingleJob(jobItem.jobId)">View Details</button>
+                  <button class="profile-btn" (click)="navigateToSingleJob(jobItem.jobId)" data-testid="jobInfo">View Details</button>
                 </div>
               </div>
             </div>

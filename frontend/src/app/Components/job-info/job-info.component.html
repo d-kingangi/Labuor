@@ -3,6 +3,16 @@
 <div class="main">
     <div><h2>Job Details</h2></div>
 <hr>
+
+<div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+
     <div class="job-details"  *ngIf="job">
         <p><b>Job Name:</b> {{ job.jobname }}</p>
         <p><b>Employer:</b> {{ job.employerName }}</p>

@@ -1,23 +1,13 @@
-/* body{
-    background-color: #030130;
-}
 
-footer{
-    height: 30vh;
-    width: 80vw;
-    margin-left: auto; 
-    margin-right: auto; 
-} */
 
 .footer {
-    background-color: #ffffff;
-    color: #000000;
     /* background-color: #030130; */
+    color: #ffffff;
     padding: 20px;
     display: flex;
     justify-content: space-around;
     height: 30vh;
-    /* width: 80vw; */
+    width: 80vw;
     margin-left: auto; 
     margin-right: auto; 
   }

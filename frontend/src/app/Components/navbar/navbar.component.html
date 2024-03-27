@@ -5,15 +5,15 @@
         </a>
     </div>
     <div class="nav-links">
-        <li><a routerLink="/jobs"> Jobs</a></li>
-        <li><a routerLink="/talents"> Talents</a></li>
-        <li><a routerLink="/employers">Employers</a></li>
-        <li><a routerLink="/chats/"> Chats</a></li>
+        <li><a routerLink="/jobs" data-testid="jobs"> Jobs</a></li>
+        <li><a routerLink="/talents" data-testid="talents"> Talents</a></li>
+        <li><a routerLink="/employers" data-testid="employers">Employers</a></li>
+        <li><a routerLink="/chats/" data-testid="chats"> Chats</a></li>
     </div>
       <div>
-        <li><a *ngIf="!isTokenAvailable()" routerLink="/login">Login</a></li>
-        <li><a *ngIf="isTokenAvailable()" (click)="logout()">Logout</a></li>
-        <li><a *ngIf="!isTokenAvailable()" routerLink="/registration">Sign-up</a></li>
+        <li><a *ngIf="!isTokenAvailable()" routerLink="/login" data-testid="login">Login</a></li>
+        <li><a *ngIf="isTokenAvailable()" (click)="logout()" data-testid="logout">Logout</a></li>
+        <li><a *ngIf="!isTokenAvailable()" routerLink="/registration" data-testid="sign-up">Sign-up</a></li>
       </div>
     <div class="profile-logo">
         <a routerLink="">
